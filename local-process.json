@@ -1,0 +1,21 @@
+{
+    "apps": [{
+            "name": "lri.workshopdesignstudio.org",
+            "script": "./index.js",
+            "watch": true,
+            "ignore_watch": [
+                "node_modules",
+                "static",
+                "templates",
+                "logs"
+            ],
+            "env": {
+                "NODE_ENV": "development",
+            },
+            "args": "--development",
+            "source_map_support": true,
+            "error_file": "./logs/err.log",
+            "out_file": "./logs/out.log",
+            "autorestart": false
+    }]
+}
