@@ -14,7 +14,10 @@ module.exports = function( wp, config, globals ) {
         /**
          * Get initial set of resources we need to render the page.
          */
-        [ wp.namespace( 'acf/v2' ).options().embed() ],
+        [ 
+            wp.namespace( 'acf/v2' ).options().embed(),
+            wp.pages().filter( 'pagename', '/about' )
+        ],
 
         /**
          * Success Case. All of the needed resources were properly resolved,
@@ -27,7 +30,7 @@ module.exports = function( wp, config, globals ) {
          */
         function( req, res, options ) {
 
-            globals.log.log( 'Successful request to index.', 'route-index:success-handler');
+            globals.log.log( 'Successful request to about.', 'route-index:success-handler');
 
             res.render('about.html', restructureAbout( options ) );
 
