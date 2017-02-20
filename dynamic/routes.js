@@ -8,7 +8,7 @@
 */
 
 var index = require('./routes/index.js');
-var index = require('./routes/about.js');
+var about = require('./routes/about.js');
 // var page = require('./routes/page.js');
 // var eventsArchive = require('./routes/events.js');
 // var alumniDirectory = require('./routes/alumniDirectory.js');
