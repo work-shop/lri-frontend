@@ -38,7 +38,8 @@ var mapResources = require('../utilities/resource-map.js');
             //res.render('index.html', restructureIndex( options ) );
             res.render('index.html', {
                 options: options.acf,
-                item: options.acf
+                item: options.acf,
+                globals: globals
             } );
 
         },
