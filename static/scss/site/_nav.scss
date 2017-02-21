@@ -16,6 +16,21 @@ $text-nav: (
 	top: 0;
 	left: 0;
 	width: 100%;
+	z-index: 7;
+
+	li{
+		display: inline-block;
+
+		a{
+			color: white;
+			padding: 10px;
+			outline: 1px solid white;
+		}
+	}
+
+	@media screen and (max-width: $sm) {
+		display: none;
+	}
 }
 
 #nav-main{
@@ -29,6 +44,7 @@ $text-nav: (
 	padding-top: 15px;
 
 	@media screen and (max-width: $sm) {
+		top: 0;
 		height: $nav-height-mobile;
 	}
 
