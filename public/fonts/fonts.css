@@ -1,0 +1,121 @@
+
+
+@font-face {
+	font-family: 'modern_pictograms_proregular';
+	src: url('modernpictogramspro_234.eot');
+	src: url('modernpictogramspro_234?#iefix') format('embedded-opentype'),
+		url('modernpictogramspro_234.woff') format('woff'),
+		url('modernpictogramspro_234.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+
+@font-face {
+    font-family: "Founders-Light";
+    src:url("FoundersGroteskWeb-Light.eot");
+    src:url("FoundersGroteskWeb-Light.eot?#iefix") format("embedded-opentype"),
+        url("FoundersGroteskWeb-Light.woff2") format("woff2"),
+        url("FoundersGroteskWeb-Light.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: "Founders-Light-Italic";
+    src:url("FoundsGroteskWeb-LightItalic.eot");
+    src:url("FoundsGroteskWeb-LightItalic.eot?#iefix") format("embedded-opentype"),
+        url("FoundsGroteskWeb-LightItalic.woff2") format("woff2"),
+        url("FoundsGroteskWeb-LightItalic.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: "Founders-Regular";
+    src:url("FoundersGroteskWeb-Regular.eot");
+    src:url("FoundersGroteskWeb-Regular.eot?#iefix") format("embedded-opentype"),
+        url("FoundersGroteskWeb-Regular.woff2") format("woff2"),
+        url("FoundersGroteskWeb-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: "Founders-Regular-Italic";
+    src:url("FoundsGroteskWeb-RegularItalic.eot");
+    src:url("FoundsGroteskWeb-RegularItalic.eot?#iefix") format("embedded-opentype"),
+        url("FoundsGroteskWeb-RegularItalic.woff2") format("woff2"),
+        url("FoundsGroteskWeb-RegularItalic.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Founders-Medium";
+    src:url("FoundersGroteskWeb-Medium.eot");
+    src:url("FoundersGroteskWeb-Medium.eot?#iefix") format("embedded-opentype"),
+        url("FoundersGroteskWeb-Medium.woff2") format("woff2"),
+        url("FoundersGroteskWeb-Medium.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: "Founders-Medium-Italic";
+    src:url("FoundsGroteskWeb-MediumItalic.eot");
+    src:url("FoundsGroteskWeb-MediumItalic.eot?#iefix") format("embedded-opentype"),
+        url("FoundsGroteskWeb-MediumItalic.woff2") format("woff2"),
+        url("FoundsGroteskWeb-MediumItalic.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Founders-Semibold";
+    src:url("FoundersGroteskWeb-Semibold.eot");
+    src:url("FoundersGroteskWeb-Semibold.eot?#iefix") format("embedded-opentype"),
+        url("FoundersGroteskWeb-Semibold.woff2") format("woff2"),
+        url("FoundersGroteskWeb-Semibold.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: "Founders-Semibold-Italic";
+    src:url("FoundsGroteskWeb-SemiboldItalic.eot");
+    src:url("FoundsGroteskWeb-SemiboldItalic.eot?#iefix") format("embedded-opentype"),
+        url("FoundsGroteskWeb-SemiboldItalic.woff2") format("woff2"),
+        url("FoundsGroteskWeb-SemiboldItalic.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: "Founders-Bold";
+    src:url("FoundersGroteskWeb-Bold.eot");
+    src:url("FoundersGroteskWeb-Bold.eot?#iefix") format("embedded-opentype"),
+        url("FoundersGroteskWeb-Bold.woff2") format("woff2"),
+        url("FoundersGroteskWeb-Bold.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: "Founders-Bold-Italic";
+    src:url("FoundsGroteskWeb-BoldItalic.eot");
+    src:url("FoundsGroteskWeb-BoldItalic.eot?#iefix") format("embedded-opentype"),
+        url("FoundsGroteskWeb-BoldItalic.woff2") format("woff2"),
+        url("FoundsGroteskWeb-BoldItalic.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
