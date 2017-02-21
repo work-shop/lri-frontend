@@ -29,6 +29,10 @@ module.exports = function( express, app, config, schema, log ) {
     app.set('views', path.join( __dirname, '..', 'templates' ) );
     swig.setDefaults({ cache: !config.development });
 
+    //create a route where static files are served from
+    //app.use is to install a middleware on that route
+    app.use('/public', express.static( path.join(__dirname, '..', 'public' )));    
+
 
     /**
      * We'll return a set of global configuration parameters

@@ -38,6 +38,12 @@ var pageAbout = require('./routes/generic/page.js')( {
 //     restructure: require('./structures/restructure-news.js')
 // });
 
+// var page = require('./routes/generic/page.js')( {
+//     type: "page",
+//     template: "make-ri-stronger.html",
+//     restructure: require('./structures/restructure-makeRiStronger.js')
+// });
+
 
 module.exports = function( express, app, config, globals ) {
 
@@ -46,6 +52,8 @@ module.exports = function( express, app, config, globals ) {
     */
 
     app.get('/', index( globals.wp, config, globals ) );
+
+    //app.get('/alumni', page( globals.wp, config, globals ) );
 
     //root level pages using generic page template
     //app.route(['/alumni', 'contact', 'donate', 'core-program', 'college-program']).get( page( globals.wp, config, globals ) );

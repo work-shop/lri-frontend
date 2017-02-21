@@ -8,11 +8,21 @@ $text-nav: (
 	xl: (15px, 53px)
 	) !default;
 
-#nav{
+
+#nav-top{
+	height: $nav-top-height;
+	background: #001A39;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+#nav-main{
 	height: $nav-height;
 	width: 100%;
 	position: fixed;
-	top: 0;
+	top: $nav-top-height;
 	left: 0;
 	z-index: 7;
 	background: white;

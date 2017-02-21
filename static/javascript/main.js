@@ -1,6 +1,5 @@
 "use strict";
 
-configuration
 var configuration = require('../../package.json').frontend;
 
 

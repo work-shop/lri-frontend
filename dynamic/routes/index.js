@@ -21,10 +21,7 @@ var mapResources = require('../utilities/resource-map.js');
          * Process the options to resolve the thoughts that should
          * be embedded on the main page.
          */
-         [ 
-         getNewsStories,
-         getNewsCategories
-         ],
+         [ getNewsStories ],
         /**
          * Success Case. All of the needed resources were properly resolved,
          * And the data is available for use immediately in the callback, along
@@ -82,25 +79,5 @@ var mapResources = require('../utilities/resource-map.js');
 
         });
     }
-
-    function getNewsCategories( options, callback ) {
-
-        async.map(( options.acf.featured_news || []), function( story, next ){
-            wp.news().param('_embed', true).filter( 'name', story.news_story.post_name )
-            .then( function( data ) { 
-                next( null, data[0] ); 
-            }).catch( function( err ) {
-             next( err ); 
-         });                
-
-        }, 
-        function( err, result ) {
-
-            options.acf.featured_news = result;
-
-            callback( err, options );
-
-        });
-    } 
 
 };
