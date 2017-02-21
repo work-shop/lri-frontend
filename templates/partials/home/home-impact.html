@@ -1,0 +1,31 @@
+<section class="block home-section" id="home-impact">
+	<div class="container-fluid">
+		<div class="home-section-intro bg-ultra-light">
+			<h2 class="underlined section-title">
+				{{ item.impact_title }}
+			</h2>
+			<h3 class="section-description">
+				{{ item.impact_introduction }}
+			</h3>
+		</div>
+		<div class="home-section-content">
+			{% if item.impact_slideshow %}
+				<div class="row">
+					<div class="slick slick-impact">
+						{% for slide in item.impact_slideshow %}
+							<div class="slide impact-slide col-md-offset-1 col-md-8">
+								<img class="impact-slide-headshot" src="{{ slide.headshot.sizes.person }}" />
+								<h4 class="impact-quote serif">
+									"{{ slide.quote }}"
+								</h4>
+								<h5 class="impact-credit">
+									{{ slide.credit }}
+								</h5>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+</section>

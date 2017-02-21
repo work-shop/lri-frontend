@@ -1,3 +1,20 @@
-<section class="block vhfull" id="home-introduction">
-	{{ options.introduction_statement }}
+<section class="block vh50" id="home-introduction">
+	<div class="block-background">
+		{% if item.introduction_gallery %}
+			<div class="slick slick-home">
+				{% for image in item.introduction_gallery %}
+					<img class="jank" src="{{ image.sizes.hero }}" />
+					<div class="slide" style="background_image: url('{{ image.sizes.hero }}')">
+					</div>
+				{% endfor %}
+			</div>
+		{% endif %}
+	</div>
+	<div class="container">
+		<div class="row vertical-center">
+			<div class="col-xs-12 col-md-9 col-lg-8">
+				<h1>{{ item.introduction_statement }}</h1>
+			</div>
+		</div>
+	</div>
 </section>

@@ -3,10 +3,10 @@
 var messages = require('../structures/error-message-structure.js');
 
 /**
- *
- *
- *
- */
+*
+*
+*
+*/
 module.exports = function( errorNumber ) {
     return function( wp, config, globals ) {
         return function( req,res ) {

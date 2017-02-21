@@ -1,0 +1,36 @@
+<section class="block bg-white" id="home-news">
+	<div class="container-fluid">
+		<div class="row">	
+			<div class="home-intro col-xs-6">
+				<h2 class="underlined section-title">
+					{{ item.news_title }}
+				</h2>
+				<h3 class="section-description">
+					{{ item.news_introduction }}
+				</h3>
+			</div>
+			{% if item.featured_news %}
+				{% for story in item.featured_news %}
+					<div class="col-xs-6 news-tile jank">
+						<a href="{% if story.external %} {{ story.external_news_story_link }}{% else %}{{ story.link }}{% endif %}">
+							<div class="news-tile-label">
+								
+							</div>
+							{% if story.external %}
+								<div class="news-tile-arrow">
+									<span class="icon" data-icon="Ú"></span>
+								</div>
+							{% endif %}
+							<h4 class="news-tile-title">
+								{{ story.title.rendered|safe }}
+							</h4>
+							<h5 class="news-tile-excerpt serif">
+								{{ story.acf.excerpt|safe }}
+							</h5>
+						</a>
+					</div>
+				{% endfor %}
+			{% endif %}			
+		</div>
+	</div>
+</section>
