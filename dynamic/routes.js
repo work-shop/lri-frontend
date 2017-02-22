@@ -8,17 +8,12 @@
 */
 
 var index = require('./routes/index.js');
-var about = require('./routes/about.js');
 // var page = require('./routes/page.js');
 // var eventsArchive = require('./routes/events.js');
 // var alumniDirectory = require('./routes/alumniDirectory.js');
 var error404 = require('./routes/error.js')( 404 );
 
-var pageAbout = require('./routes/generic/page.js')( {
-    type: "page",
-    template: "about.html",
-    restructure: require('./structures/restructure-about.js')
-});
+var page = require('./routes/generic/page.js');
 
 // var pageMakeRiStronger = require('./routes/generic/page.js')( {
 //     type: "page",
@@ -71,9 +66,8 @@ module.exports = function( express, app, config, globals ) {
     // app.get('/history', page( globals.wp, config, globals ) );
 
     // app.get('/make-ri-stronger', pageMakeRiStronger( globals.wp, config, globals ) );
-    // app.get('/strength', pageMakeRiStronger( globals.wp, config, globals ) );
 
-    app.get('/about', pageAbout( globals.wp, config, globals ) );
+    // app.get('/strength', pageMakeRiStronger( globals.wp, config, globals ) );
 
     // app.get('/alumni-directory', alumniDirectory( globals.wp, config, globals ) );
 
@@ -83,6 +77,12 @@ module.exports = function( express, app, config, globals ) {
 
     // app.get('/events', eventsArchive( globals.wp, config, globals ));
 
+    app.get('/:id', page( globals.wp, config, globals ) );
+
+    /**
+     * TODO:
+     *
+     */
     app.get('*', error404( globals.wp, config, globals ) );
 
     /**
