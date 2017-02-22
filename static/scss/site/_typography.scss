@@ -12,6 +12,16 @@ body{
 
 .serif{
 	font-family: $font-serif;
+
+	&.italic{
+		font-family: $font-serif-italic;
+		font-style: italic;
+	}
+
+	&.bold{
+		font-family: $font-serif-bold;
+		font-weight: bold;
+	}
 }
 
 
@@ -79,7 +89,7 @@ p{
 }
 
 .tracked-less{
-	letter-spacing: .05em;
+	letter-spacing: .06em;
 }
 
 .tracked{

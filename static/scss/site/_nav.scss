@@ -1,12 +1,12 @@
 
 
 $text-nav: (
-	xs: (12px, 9px),
-	sm: (14px, 34px),
-	md: (17px, 53px),
-	lg: (19px, 53px),
+	xs: (13px, 9px),
+	sm: (15px, 34px),
+	md: (16px, 53px),
+	lg: (18px, 53px),
 	xl: (19px, 53px)
-	) !default;
+	);
 
 
 #nav-top{
@@ -18,32 +18,52 @@ $text-nav: (
 	width: 100%;
 	z-index: 7;
 
+
 	ul{
 		float: right;
-		position: relative;
-		right: -11px;
+		margin-top: 10px;
 	}
 
 	li{
 		display: inline-block;
+		margin-left: 5px;
 
 		a{
 			color: white;
-			padding: 11px;
+			padding: 0px 10px;
 			display: block;
 			@extend .tracked;
 			@extend .uppercase;
-			@extend .bold;
+			font-family: $font-medium;
 			@include transition(opacity, .125s);
+			font-size: 15px;
 
 			&:hover{
 				opacity: .75;
+			}
+
+			&.donate-link{
+				background: $yellow;
+				border-radius: 2px;
 			}
 		}
 	}
 
 	@media screen and (max-width: $sm) {
 		display: none;
+	}
+}
+
+#nav-menu{
+	position: absolute;
+	right: $container-fluid-padding;
+
+	@media screen and (max-width: $md) {
+		right: $container-fluid-padding / 3;
+	}	
+
+	@media screen and (max-width: $sm) {
+		right: $container-fluid-padding-mobile;
 	}
 }
 
@@ -55,7 +75,8 @@ $text-nav: (
 	top: $nav-top-height;
 	left: 0;
 	z-index: 7;
-	background: $ultra-light;
+	background: white;
+	border-bottom: 2px solid $brand-ultra-light;
 
 	@media screen and (max-width: $sm) {
 		top: 0;
@@ -70,20 +91,28 @@ $text-nav: (
 		display: inline-block;
 		margin-left: 30px;
 
+		&:first-child{
+			margin-left: 0;
+		}
+
+		@media screen and (max-width: $md) {
+			margin-left: 20px;
+		}
+
 		a{
 			padding: 11px 0 6px 0;
 			display: block;
 			@include text-size($text-nav);
-			@extend .tracked;
+			@extend .tracked-less;
 			border-bottom: 5px solid transparent;
 			@include transition(border, .125s);
 
 			&:hover{
-				border-bottom: 5px solid lighten($brand,25%);
+				border-bottom: 5px solid $brand-bright;
 			}
 
 			&.active{
-				border-bottom: 5px solid lighten($brand,25%);				
+				border-bottom: 5px solid $brand-bright;
 			}
 		}
 	}	
@@ -95,11 +124,23 @@ $text-nav: (
 
 	margin-top: 15px;
 
+	@media screen and (max-width: $md) {
+		margin-top: 22px;
+	}
+
+	@media screen and (max-width: $sm) {
+		margin-top: 10px;
+	}	
+
 	svg{
 		width: 188px;
 
+		@media screen and (max-width: $md) {
+			width: 150px;
+		}
+
 		@media screen and (max-width: $sm) {
-			width: 115px;
+			width: 130px;
 		}
 
 	}
@@ -107,10 +148,6 @@ $text-nav: (
 	a{
 		display: block;
 	}
-
-}
-
-.nav-items{
 
 }
 

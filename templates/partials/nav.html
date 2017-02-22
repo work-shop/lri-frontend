@@ -21,12 +21,12 @@
 						{% include 'logo.svg' %}
 					</a>
 				</div>
-				<div class="col-sm-9 col-xs-6" id="nav-menu">
+				<div id="nav-menu">
 					<ul class="nav-items">
-						<li><a href="#menu-1">What We do <span class="icon" data-icon="”"></a></li>
-						<li><a href="#menu-2">Who We Are <span class="icon" data-icon="”"></a></li>
-						<li><a href="#menu-3">Get Involved <span class="icon" data-icon="”"></a></li>
-						<li><a href="#menu-4">Alumni <span class="icon" data-icon="”"></a></li>
+						<li><a href="#menu-1" class="menu-field-toggle" data-menu="1">What We do <span class="icon" data-icon="”"></a></li>
+						<li><a href="#menu-2" class="menu-field-toggle" data-menu="2">Who We Are <span class="icon" data-icon="”"></a></li>
+						<li><a href="#menu-3" class="menu-field-toggle" data-menu="3">Get Involved <span class="icon" data-icon="”"></a></li>
+						<li><a href="#menu-4" class="menu-field-toggle" data-menu="4">Alumni <span class="icon" data-icon="”"></a></li>
 					</ul>
 				</div>
 			</div>
@@ -34,9 +34,7 @@
 	</nav>
 </span>
 
-<div id="menu-1" class="menu-field">
-	
-</div>
+{% include "menus.html" %}	
 
 <div id="mobile-nav">
 	<ul class="mobile-nav-items">	

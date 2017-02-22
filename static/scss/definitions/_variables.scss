@@ -3,6 +3,8 @@
 
 //brand colors
 $brand: #002856;
+$brand-bright: #0055B8;
+$brand-ultra-light: #F5F6F6;
 
 //grays
 $ultra-light: #F5F5F5;
@@ -20,9 +22,12 @@ $error: #ff4a4a;
 //sizes
 $nav-top-height: 50px;
 $nav-height: 75px;
+$nav-drop: $nav-top-height + $nav-height;
+$nav-drop-after: $nav-top-height;
 $nav-height-mobile: 50px;
 $container-fluid-max-width: none;
 $container-fluid-padding: 100px;
+$container-fluid-padding-md: $container-fluid-padding / 3;
 $container-fluid-padding-mobile: 15px;
 $container-fluid-sum: $container-fluid-padding * 2;
 $container-fluid-sum-mobile: $container-fluid-padding-mobile * 2;
@@ -53,4 +58,6 @@ $font-medium-italic: 'Founders-Medium-Italic', Helvetica, Arial, Sans-serif;
 $font-light: 'Founders-Light', Helvetica, Arial, Sans-serif;
 $font-light-italic: 'Founders-Light-Italic', Helvetica, Arial, Sans-serif;
 $font-serif: 'Tisa Pro', Georgia, Times New Roman, Serif;
+$font-serif-italic: 'Tisa Pro', Georgia, Times New Roman, Serif;
+$font-serif-bold: 'Tisa Pro', Georgia, Times New Roman, Serif;
 

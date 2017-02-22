@@ -1,0 +1,109 @@
+
+$text-menu-link: (
+	xs: (15px, 15px),
+	sm: (18px, 18px),
+	md: (19px, 19px),
+	lg: (20px, 20px),
+	xl: (21px, 21px)
+	);
+
+
+//dropdowns
+.menu-field{
+	position: fixed;
+	overflow: scroll;
+	top: $nav-drop;
+	right: 0;
+	width: 50%;	
+	height: calc( 100vh - #{$nav-drop} );
+	background: $brand-bright;
+	z-index: 8;
+	padding-top: 70px;
+	box-shadow: -1px 1px 3px $medium-dark;
+	@include transform(rotateX(-90deg));
+	@include transform-origin(50% 0%);
+	@include transition(transform, .2s);
+
+	&.open{
+		@include transform(rotateX(0deg));
+	}
+
+	@media screen and (max-width: $lg) {
+		width: 66%;
+	}
+
+	@media screen and (max-width: $sm) {
+		width: 100%
+	}	
+
+
+	.menu-field-left{
+		width: 50%;
+		float: left;
+		padding: 0 30px;
+	}
+
+	.menu-field-right{
+		width: 50%;
+		float: left;
+		padding: 0 30px;
+	}
+
+	.menu-field-group{
+		margin-bottom: 80px;
+	}
+
+
+	*{
+		color: white;
+	}
+
+	h3{
+		@extend .bold;
+		@extend .uppercase;
+		@extend .tracked;
+		font-size: 18px;
+		margin-bottom: 20px;
+		line-height: 1;
+	}
+
+	.menu-field-call-text{
+		@extend .serif;
+		font-style: italic;
+		font-weight: bold;
+		@include text-size($text-large);
+		margin-bottom: 30px;
+	}
+
+	li {
+		margin-bottom: 15px;
+		line-height: 1;
+
+		a{
+			@include text-size($text-menu-link);
+			line-height: 1;
+			border-bottom: 1px solid transparent;
+			display: inline-block;
+
+			&:hover{
+				color: white;
+				border-bottom: 1px solid white;
+			}
+		}
+	}
+
+	.menu-field-button{
+		@extend .button;
+		margin-bottom: 20px;
+	}
+
+
+}
+
+
+.after{
+	.menu-field{
+		top: $nav-drop-after;
+		height: calc( 100vh - #{$nav-drop-after} );
+	}
+}

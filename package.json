@@ -40,8 +40,8 @@
   },
   "homepage": "http://github.com/work-shop/lri.workshopdesignstudio.org#readme",
   "socket": "lri.workshopdesignstudio.org.sock",
-  "external_api": "http://cms.lri.workshopdesignstudio.org/wp-json",
-  "internal_api": "http://cms.lri.workshopdesignstudio.org/wp-json",
+  "external_api": "http://cms.lri.wsri.host/wp-json",
+  "internal_api": "http://cms.lri.wsri.hostwp-json",
   "frontend": {
     "local_api": "http://localhost/lri/wp-json/wp/v2",
     "remote_api": "http://cms.lri.wsri.host/wp-json/wp/v2"
