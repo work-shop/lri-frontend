@@ -8,11 +8,16 @@ var baseStructure = require('./base-structure.js');
  *
  *
  */
-module.exports = function( about, options, globals ) {
+module.exports = function( about, people, options, globals ) {
 
     return baseStructure({
-        options: options.acf,
-        about: about.acf
+
+        item: about,
+
+        board: people.board,
+
+        staff: people.staff
+
     }, options, globals);
 
 };

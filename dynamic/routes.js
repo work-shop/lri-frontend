@@ -15,6 +15,8 @@ var error404 = require('./routes/error.js')( 404 );
 
 var page = require('./routes/generic/page.js');
 
+var about = require('./routes/about.js');
+
 // var pageMakeRiStronger = require('./routes/generic/page.js')( {
 //     type: "page",
 //     template: "make-ri-stronger.html",
@@ -77,12 +79,14 @@ module.exports = function( express, app, config, globals ) {
 
     // app.get('/events', eventsArchive( globals.wp, config, globals ));
 
+    app.get('/about', about( globals.wp, config, globals ) );
+    /**
+     * TODO: We need a way to differentiate the sub-pages from the parent pages.
+     * Right now, this matches ALL slugs, including slugs that should really be subpages of other slugs.
+     * We'll want to get this under control in some way.
+     */
     app.get('/:id', page( globals.wp, config, globals ) );
 
-    /**
-     * TODO:
-     *
-     */
     app.get('*', error404( globals.wp, config, globals ) );
 
     /**

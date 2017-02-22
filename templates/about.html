@@ -11,7 +11,14 @@
 	{% include 'partials/about/about-2.html' %}
 
     <script type="text/javascript">
-        console.log({{}})
+        console.log('item');
+        console.log({{ item|json|safe }});
+        
+        console.log('board');
+        console.log({{ board|json|safe }});
+
+        console.log('staff');
+        console.log({{ staff|json|safe }});
     </script>
 
 {% endblock %}
