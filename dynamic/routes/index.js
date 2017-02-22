@@ -35,12 +35,12 @@ var mapResources = require('../utilities/resource-map.js');
 
             globals.log.log( 'Successful request to index.', 'route-index:success-handler');
 
-            //res.render('index.html', restructureIndex( options ) );
-            res.render('index.html', {
-                options: options.acf,
-                item: options.acf,
-                globals: globals
-            } );
+            res.render('index.html', restructureIndex( options, globals ) );
+            // res.render('index.html', {
+            //     options: options.acf,
+            //     item: options.acf,
+            //     globals: globals
+            // } );
 
         },
         /**
@@ -65,13 +65,13 @@ var mapResources = require('../utilities/resource-map.js');
 
         async.map(( options.acf.featured_news || []), function( story, next ){
             wp.news().param('_embed', true).filter( 'name', story.news_story.post_name )
-            .then( function( data ) { 
-                next( null, data[0] ); 
+            .then( function( data ) {
+                next( null, data[0] );
             }).catch( function( err ) {
-             next( err ); 
-         });                
+             next( err );
+         });
 
-        }, 
+        },
         function( err, result ) {
 
             options.acf.featured_news = result;

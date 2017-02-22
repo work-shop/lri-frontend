@@ -12,12 +12,12 @@ var baseStructure = require('./base-structure.js');
  * @param options JSON the API response containing the standard options object
  * @return JSON the context to render an arbitrary page template in.
  */
-module.exports = function( page, options ) {
+module.exports = function( page, options, globals ) {
 
     return baseStructure({
 
         item: page
 
-    }, options);
+    }, options, globals);
 
 };

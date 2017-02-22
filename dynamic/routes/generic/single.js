@@ -31,7 +31,7 @@ var identity = function( x ) { return x; }
 
                  globals.log.log( 'successful generic request', 'route-generic-single:success-handler');
 
-                 res.render( routeOptions.template, (routeOptions.restructure || identity)( post, options ) );
+                 res.render( routeOptions.template, (routeOptions.restructure || identity)( post, options, globals ) );
 
              },
              /**

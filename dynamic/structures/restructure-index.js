@@ -7,13 +7,12 @@ var baseStructure = require('./base-structure.js');
  *
  *
  */
-module.exports = function( options ) {
+module.exports = function( options, globals ) {
 
     return baseStructure({
 
         item: options.acf,
-        options: options.acf
 
-    }, options);
+    }, options, globals);
 
 };

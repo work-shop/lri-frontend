@@ -4,8 +4,8 @@
 var single = require('./single.js');
 var identity = function( x ) { return x; };
 /**
- * This routone gets a single, top-level wordpress page object, resolved it,
- * and renders it using the basic
+ * This routine gets a single, top-level wordpress page object, resolved it,
+ * and renders it using the basic single.js logic.
  *
  * {
  *     type: (string) the wordpress post-type that you'd like to resolve.

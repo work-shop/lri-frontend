@@ -8,13 +8,11 @@ var baseStructure = require('./base-structure.js');
  *
  *
  */
-module.exports = function( about, options ) {
-
-    console.log( about );
+module.exports = function( about, options, globals ) {
 
     return baseStructure({
         options: options.acf,
         about: about.acf
-    }, options);
+    }, options, globals);
 
 };
