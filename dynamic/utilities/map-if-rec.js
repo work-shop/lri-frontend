@@ -8,7 +8,11 @@
  */
 function mapIf( predicate, transformation ) {
     return function decideObjectClassAndAct( object ) {
-        if ( Array.isArray( object ) ) {
+        if ( object === null ) {
+
+            return object;
+
+        } else if ( Array.isArray( object ) ) {
 
             return object.map( decideObjectClassAndAct );
 
