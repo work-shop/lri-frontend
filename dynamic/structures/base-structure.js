@@ -1,17 +1,19 @@
 "use strict";
 
-var util = require('util');
+var extend = require('util-extend');
+
 /**
  *
  *
  *
  */
-module.exports = function( compiled, apiResponse ) {
+module.exports = function( compiled, options ) {
 
-    return {
+    return extend({
+        options: options.acf,
         featured_image: function( item ) {
-
+            return "Not Implemented";
         }
-    };
+    }, compiled);
 
 };
