@@ -1,10 +1,9 @@
 <section class="block vh50" id="home-introduction">
-	<div class="block-background">
+	<div class="block-background vh50">
 		{% if item.introduction_gallery %}
-			<div class="slick slick-home">
+			<div class="slick slick-home vh50">
 				{% for image in item.introduction_gallery %}
-					<img class="jank" src="{{ image.sizes.hero }}" />
-					<div class="slide" style="background_image: url('{{ image.sizes.hero }}')">
+					<div class="vh50" style="background_image: url('{{ image.sizes.hero }}')">
 					</div>
 				{% endfor %}
 			</div>

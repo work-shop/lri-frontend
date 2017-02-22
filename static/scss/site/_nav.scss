@@ -1,11 +1,11 @@
 
 
 $text-nav: (
-	xs: (10px, 9px),
-	sm: (12px, 34px),
-	md: (14px, 53px),
-	lg: (14px, 53px),
-	xl: (15px, 53px)
+	xs: (12px, 9px),
+	sm: (14px, 34px),
+	md: (17px, 53px),
+	lg: (19px, 53px),
+	xl: (19px, 53px)
 	) !default;
 
 
@@ -20,7 +20,8 @@ $text-nav: (
 
 	ul{
 		float: right;
-
+		position: relative;
+		right: -11px;
 	}
 
 	li{
@@ -30,6 +31,14 @@ $text-nav: (
 			color: white;
 			padding: 11px;
 			display: block;
+			@extend .tracked;
+			@extend .uppercase;
+			@extend .bold;
+			@include transition(opacity, .125s);
+
+			&:hover{
+				opacity: .75;
+			}
 		}
 	}
 
@@ -38,6 +47,7 @@ $text-nav: (
 	}
 }
 
+
 #nav-main{
 	height: $nav-height;
 	width: 100%;
@@ -45,21 +55,48 @@ $text-nav: (
 	top: $nav-top-height;
 	left: 0;
 	z-index: 7;
-	background: white;
-	padding-top: 15px;
+	background: $ultra-light;
 
 	@media screen and (max-width: $sm) {
 		top: 0;
 		height: $nav-height-mobile;
 	}
 
+	ul{
+		float: right;
+	}
+
+	li{
+		display: inline-block;
+		margin-left: 30px;
+
+		a{
+			padding: 11px 0 6px 0;
+			display: block;
+			@include text-size($text-nav);
+			@extend .tracked;
+			border-bottom: 5px solid transparent;
+			@include transition(border, .125s);
+
+			&:hover{
+				border-bottom: 5px solid lighten($brand,25%);
+			}
+
+			&.active{
+				border-bottom: 5px solid lighten($brand,25%);				
+			}
+		}
+	}	
+
 }
 
 
 .logo{
 
+	margin-top: 15px;
+
 	svg{
-		width: 172px;
+		width: 188px;
 
 		@media screen and (max-width: $sm) {
 			width: 115px;
@@ -85,5 +122,10 @@ $text-nav: (
 }
 
 .hamburger{
+	display: none;
 
+	@media screen and (max-width: $sm) {
+		display: block;
+	}
 }
+

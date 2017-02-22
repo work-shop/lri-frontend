@@ -1,12 +1,13 @@
 
 body{
 	background-color: $body-background-color;
-	padding-top: $nav-height;
+	padding-top: $nav-height + $nav-top-height;
 
 	@media screen and (max-width: $sm) {
 		padding-top: $nav-height-mobile;
 	}
 }
+
 
 .container-fluid{
 
