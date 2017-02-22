@@ -1,16 +1,17 @@
 "use strict";
 
-var util = require('util');
 var base = require('./generic/base-route.js')();
 var async = require('async');
 
 var restructureIndex = require('../structures/restructure-index.js');
-var mapResources = require('../utilities/resource-map.js');
 /**
  *
  *
  */
  module.exports = function( wp, config, globals ) {
+
+    var urlReplace = require('../utilities/resource-map.js')( config );
+
     return base.route(
         /**
          * Get initial set of resources we need to render the page.
@@ -35,12 +36,7 @@ var mapResources = require('../utilities/resource-map.js');
 
             globals.log.log( 'Successful request to index.', 'route-index:success-handler');
 
-            res.render('index.html', restructureIndex( options, globals ) );
-            // res.render('index.html', {
-            //     options: options.acf,
-            //     item: options.acf,
-            //     globals: globals
-            // } );
+            res.render('index.html', urlReplace( restructureIndex( options, globals ) ) );
 
         },
         /**
