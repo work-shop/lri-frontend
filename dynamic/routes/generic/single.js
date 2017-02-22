@@ -2,6 +2,7 @@
 
 
 var base = require('./base-route.js')();
+var identity = function( x ) { return x; }
 /**
  * Gets a single object from a single wordpress post-type.
  *
@@ -9,7 +10,7 @@ var base = require('./base-route.js')();
  *     type: (string) the wordpress post-type that you'd like to resolve.
  *     template: (string) the name of the template to be rendered
  *     restructure: (function) the restructuring function that maps this post-type's API results to usable template contexts.
- *     resolveArchive: [optional] a (function) that implements custom route resolution logic.
+ *     resolvePost: [optional] a (function) that implements custom route resolution logic.
  * }
  */
  module.exports = function( routeOptions ) {
@@ -30,7 +31,7 @@ var base = require('./base-route.js')();
 
                  globals.log.log( 'successful generic request', 'route-generic-single:success-handler');
 
-                 res.render( routeOptions.template, (routeOptions.restructure || function(x) {return x;})( post, options ) );
+                 res.render( routeOptions.template, (routeOptions.restructure || identity)( post, options ) );
 
              },
              /**

@@ -14,7 +14,7 @@ module.exports = function( wp, config, globals ) {
         /**
          * Get initial set of resources we need to render the page.
          */
-        [ 
+        [
             wp.namespace( 'acf/v2' ).options().embed(),
             wp.pages().filter( 'pagename', '/about' )
         ],
@@ -28,7 +28,7 @@ module.exports = function( wp, config, globals ) {
          * @param res the Express Response Object
          * @param options JSON, the requested options data
          */
-        function( req, res, options ) {
+        function( req, res, options, about ) {
 
             globals.log.log( 'Successful request to about.', 'route-index:success-handler');
 
