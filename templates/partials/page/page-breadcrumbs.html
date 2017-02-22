@@ -1,0 +1,23 @@
+<section class="block" id="page-breadcrumbs">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<ul class="page-breadcrumbs-list">
+					<li>
+						<a href="/" >Home</a>
+						<span class="breadcrumb-slash">/</span>
+					</li>
+					{% if item.parent %}
+						<li>
+							<a href="{{ item._embedded.up.link }}">{{ item._embedded.up.title.rendered|safe }}</a>
+							<span class="breadcrumb-slash">/</span>
+						</li>
+					{% endif %}
+					<li>
+						<span>{{ item.title.rendered|safe }}</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>

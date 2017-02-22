@@ -1,0 +1,18 @@
+<section class="block" id="page-content">
+	{% if item.acf.featured_content %}
+		{% include "page-featured-content.html" %}
+	{% endif %}
+	<div class="page-content-body">
+		{% if item.acf.page_body_sections %}
+			{% for section in item.acf.page_body_sections %}
+				<div class="page-body-section">
+					<div class="page-body-section-title">
+						<h3>
+							{{ section.section_title|safe }}
+						</h3>
+					</div>
+				</div>
+			{% endfor %}
+		{% endif %}
+	</div>
+</section>

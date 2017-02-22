@@ -1,0 +1,13 @@
+{% extends 'partials/base.html' %}
+
+{% block definitions %} {% endblock %}
+{% block body_classes %} page page-{{item.slug}} {% endblock %}
+
+{% block content %}
+
+	{% include "partials/page/page-breadcrumbs.html" %}
+	{% include "partials/page/page-hero.html" %}
+	{% include "partials/page/page-content.html" %}	
+	{% include "partials/page/page-sidebar.html" %}	
+
+{% endblock %}
