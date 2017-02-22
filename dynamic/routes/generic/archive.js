@@ -18,6 +18,9 @@ var async = require('async');
  module.exports = function( routeOptions ) {
 
      return function( wp, config, globals ) {
+
+         var urlReplace = require('../../utilities/resource-map.js')( config );
+                 
          return base.route(
              [
                  wp.namespace( 'acf/v2' ).options().embed(),
@@ -33,7 +36,7 @@ var async = require('async');
 
                  globals.log.log( 'successful generic request', 'route-generic-unpaginated-archive:success-handler');
 
-                 res.render( routeOptions.template, (routeOptions.restructure || function(x) {return x;})( archive, options ) );
+                 res.render( routeOptions.template, urlReplace( (routeOptions.restructure || function(x) {return x;})( archive, options ) ) );
 
              },
              /**

@@ -19,6 +19,9 @@ var base = require('./base-route.js')();
  module.exports = function( routeOptions ) {
 
      return function( wp, config, globals ) {
+
+         var urlReplace = require('../../utilities/resource-map.js')( config );
+
          return base.route(
              [
                  wp.namespace( 'acf/v2' ).options().embed(),
@@ -34,7 +37,7 @@ var base = require('./base-route.js')();
 
                  globals.log.log( 'successful generic request', 'route-generic-paginated-archive:success-handler');
 
-                 res.render( routeOptions.template, (routeOptions.restructure || function(x) {return x;})( archive, options ) );
+                 res.render( routeOptions.template, urlReplace( (routeOptions.restructure || function(x) {return x;})( archive, options ) ) );
 
              },
              /**

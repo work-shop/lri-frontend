@@ -16,6 +16,9 @@ var identity = function( x ) { return x; }
  module.exports = function( routeOptions ) {
 
      return function( wp, config, globals ) {
+
+         var urlReplace = require('../../utilities/resource-map.js')( config );
+
          return base.route(
              [
                  wp.namespace( 'acf/v2' ).options().embed(),
@@ -31,7 +34,7 @@ var identity = function( x ) { return x; }
 
                  globals.log.log( 'successful generic request', 'route-generic-single:success-handler');
 
-                 res.render( routeOptions.template, (routeOptions.restructure || identity)( post, options, globals ) );
+                 res.render( routeOptions.template, urlReplace( (routeOptions.restructure || identity)( post, options, globals ) ) );
 
              },
              /**
