@@ -1,0 +1,75 @@
+
+$text-breadcrumbs: (
+	xs: (12px, 30px),
+	sm: (13px, 30px),
+	md: (14px, 50px),
+	lg: (14px, 50px),
+	xl: (14px, 50px)
+	) !default;
+
+#page-breadcrumbs{
+	height: 50px;
+
+	li{
+		display: inline-block;
+	}
+
+	a,.breadcrumb-current{
+		@include text-size($text-breadcrumbs);
+		@extend .uppercase;
+		@extend .tracked-less;
+		color: $medium-dark;
+
+		&:hover{
+			color: $brand;
+		}
+	}
+
+	.breadcrumb-slash{
+		margin: 0 10px;
+		color: $medium-dark;		
+	}
+
+	.breadcrumb-current{
+		font-family: $font-medium;
+		color: $brand;
+	}
+}
+
+
+
+//page content
+
+#page-content{
+	padding-top: 80px;
+}
+
+
+//page body sections
+
+.page-body-section{
+	margin-bottom: 80px;
+
+	h3{
+		color: $brand;
+	}
+}
+
+
+
+//page sidebar
+
+#page-sidebar{
+
+	.button{
+		display: block;
+		background: $yellow;
+		border-radius: 3px;
+		text-align: center;
+	}
+	
+	.page-sidebar-title{
+		@extend .bold;
+		@extend .uppercase;
+	}
+}

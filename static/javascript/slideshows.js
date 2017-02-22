@@ -12,6 +12,16 @@ module.exports = function($, slick) {
 			speed: 400
 		});
 
+		$('.slick-home').slick({
+			slidesToShow: 1,
+			dots: false,
+			arrows: false,
+			autoplay: true,
+			fade: true,
+			autoplaySpeed: 4000,
+			speed: 2500
+		});		
+
 		$('.slick-default').on('afterChange', function(){
 			$('.slick-default').slick('slickPause');
 		});

@@ -1,3 +1,15 @@
 
 /* home page */
 
+#home-introduction{
+	.slide{
+		background-size: cover;
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+
+	h1{
+		font-family: $font-medium;
+		@include text-size($text-massive);
+	}
+}

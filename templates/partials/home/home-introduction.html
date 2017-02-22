@@ -1,18 +1,18 @@
-<section class="block vh50" id="home-introduction">
-	<div class="block-background vh50">
+<section class="block vh60" id="home-introduction">
+	<div class="block-background vh60">
 		{% if item.introduction_gallery %}
-			<div class="slick slick-home vh50">
+			<div class="slick slick-home vh60">
 				{% for image in item.introduction_gallery %}
-					<div class="vh50" style="background_image: url('{{ image.sizes.hero }}')">
+					<div class="vh60 slide" style="background-image: url('{{ image.sizes.hero }}')">
 					</div>
 				{% endfor %}
 			</div>
 		{% endif %}
 	</div>
-	<div class="container">
-		<div class="row vertical-center">
-			<div class="col-xs-12 col-md-9 col-lg-8">
-				<h1>{{ item.introduction_statement }}</h1>
+	<div class="container-fluid vertical-center">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1 class="white">{{ item.introduction_statement|safe }}</h1>
 			</div>
 		</div>
 	</div>

@@ -1,12 +1,12 @@
 <div id="page-featured-content">
-	{{ item.acf.featured_content.acf_fc_layout }}
-	{% if item.acf.featured_content.acf_fc_layout === 'video' %}
+	{{ item.acf.featured_content[0].acf_fc_layout }}
+	{% if item.acf.featured_content[0].acf_fc_layout === 'video' %}
 		
 	{% endif %}
-	{% if item.acf.featured_content.acf_fc_layout === 'announcement' %}
+	{% if item.acf.featured_content[0].acf_fc_layout === 'announcement' %}
 
 	{% endif %}
-	{% if item.acf.featured_content.acf_fc_layout === 'news' %}
+	{% if item.acf.featured_content[0].acf_fc_layout === 'news' %}
 
 	{% endif %}		
 </div>

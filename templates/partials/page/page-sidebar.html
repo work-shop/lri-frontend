@@ -1,0 +1,23 @@
+<nav class="page-sidebar" id="page-sidebar">
+	{% if item.acf.sidebar_button %}
+		<a href="{{ item.acf.sidebar_button_link }}" class="button page-sidebar-button">
+			{{ item.acf.sidebar_button_text }}
+		</a>
+	{% endif %}
+	<div class="page-sidebar-outline">
+		<h4 class="page-sidebar-title">
+			{{ item.title.rendered|safe }}
+		</h4>
+		{% if item.acf.page_body_sections %}
+			<ul>
+				{% for section in item.acf.page_body_sections %}
+					<li>
+						<a href="#page-section-{{ loop.index }}">
+							{{ section.section_title|safe }}
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+	</div>
+</nav>

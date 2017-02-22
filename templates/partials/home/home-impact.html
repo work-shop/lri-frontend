@@ -11,7 +11,7 @@
 		<div class="home-section-content">
 			{% if item.impact_slideshow %}
 				<div class="row">
-					<div class="slick slick-impact">
+					<div class="slick slick-impact slick-default">
 						{% for slide in item.impact_slideshow %}
 							<div class="slide impact-slide col-md-offset-1 col-md-8">
 								<img class="impact-slide-headshot" src="{{ slide.headshot.sizes.person }}" />

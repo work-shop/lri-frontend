@@ -1,5 +1,5 @@
 <section class="block" id="page-breadcrumbs">
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-12">
 				<ul class="page-breadcrumbs-list">
@@ -9,12 +9,12 @@
 					</li>
 					{% if item.parent %}
 						<li>
-							<a href="{{ item._embedded.up.link }}">{{ item._embedded.up.title.rendered|safe }}</a>
+							<a href="{{ item._embedded.up[0].link }}">{{ item._embedded.up[0].title.rendered|safe }}</a>
 							<span class="breadcrumb-slash">/</span>
 						</li>
 					{% endif %}
 					<li>
-						<span>{{ item.title.rendered|safe }}</span>
+						<span class="breadcrumb-current">{{ item.title.rendered|safe }}</span>
 					</li>
 				</ul>
 			</div>
