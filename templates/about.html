@@ -1,24 +1,12 @@
 {% extends 'partials/base.html' %}
 
 {% block definitions %} {% endblock %}
-{% block body_classes %} page-about {% endblock %}
-
+{% block body_classes %} page page-about {% endblock %}
 
 {% block content %}
 
-	{% include 'partials/about/about-introduction.html' %}
-	{% include 'partials/about/about-1.html' %}
-	{% include 'partials/about/about-2.html' %}
-
-    <script type="text/javascript">
-        console.log('item');
-        console.log({{ item|json|safe }});
-        
-        console.log('board');
-        console.log({{ board|json|safe }});
-
-        console.log('staff');
-        console.log({{ staff|json|safe }});
-    </script>
+    {% include "partials/page/page-breadcrumbs.html" %}
+    {% include "partials/page/page-hero.html" %}
+    {% include "partials/about/page-content.html" %} 
 
 {% endblock %}

@@ -20,7 +20,7 @@ var stickyNav = require('./sticky-nav.js')($);
 
 
 //setup utilities
-jumpUtilities.setupJumpEvents('.jump', 75, 567, 50, true);
+jumpUtilities.setupJumpEvents('.jump', 125, 567, 50, true);
 loading.setupLoading();
 slideshows.setupSlideshows();
 menuUtilities.setupMenus();

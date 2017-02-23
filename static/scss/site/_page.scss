@@ -37,6 +37,29 @@ $text-breadcrumbs: (
 }
 
 
+//page hero
+#page-hero{
+
+	.page-hero-text{		
+		width: 66%;
+		margin: -160px auto 0 auto;
+		padding: 5em 4em 1em 4em;
+		position: relative;
+		z-index: 1;
+	}
+
+	.page-hero-scrolly{
+		display: block;
+		text-align: center;
+	}
+
+	.icon:before{
+		color: white;
+		font-size: 90px;
+	}
+}
+
+
 
 //page content
 

@@ -1,0 +1,148 @@
+<section class="block" id="page-content">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9 col-lg-7 page-content-body">
+				{% if item.acf.featured_content %}
+					{% include "../page/page-featured-content.html" %}
+				{% endif %}
+				<div class="page-body-sections">
+					<div class="page-body-section" id="mission">
+						<div class="page-body-section-title">
+							<h3 class="bold">
+								{{ item.acf.mission_title|safe }}
+							</h3>
+						</div>
+						<div class="page-body-section-body">
+							<div class="wysiwyg">
+								{{ item.acf.mission_body|safe }}
+							</div>
+						</div>						
+					</div>
+					<div class="page-body-section" id="vision">
+						<div class="page-body-section-title">
+							<h3 class="bold">
+								{{ item.acf.vision_title|safe }}
+							</h3>
+						</div>
+						<div class="page-body-section-body">
+							<div class="wysiwyg">
+								{{ item.acf.vision_body|safe }}
+							</div>
+						</div>						
+					</div>
+					<div class="page-body-section" id="beliefs">
+						<div class="page-body-section-title">
+							<h3 class="bold">
+								{{ item.acf.beliefs_title|safe }}
+							</h3>
+						</div>
+						<div class="page-body-section-body">
+							<div class="wysiwyg">
+								{{ item.acf.beliefs_body|safe }}
+							</div>
+						</div>						
+					</div>
+					<div class="page-body-section" id="impact">
+						<div class="page-body-section-title">
+							<h3 class="bold">
+								{{ item.acf.impact_title|safe }}
+							</h3>
+						</div>
+						<div class="page-body-section-body">
+							<div class="page-body-section-introduction">
+								{{ item.acf.impact_introduction|safe }}
+							</div>
+							<div class="impact-body">
+								<h3>Impact Slideshow</h3>
+							</div>
+						</div>						
+					</div>
+					<div class="page-body-section" id="history">
+						<div class="page-body-section-title">
+							<h3 class="bold">
+								{{ item.acf.history_title|safe }}
+							</h3>
+						</div>
+						<div class="page-body-section-body">
+							<div class="page-body-section-introduction">
+								{{ item.acf.history_introduction|safe }}
+							</div>
+							<div class="page-body-section-links">
+								<a href="/history" class="button section-link-button" target="_blank">
+									{{ item.acf.history_link_text }}
+								</a>
+							</div>						
+						</div>						
+					</div>
+					<div class="page-body-section" id="board">
+						<div class="page-body-section-title">
+							<h3 class="bold">
+								{{ item.acf.board_title|safe }}
+							</h3>
+						</div>
+						<div class="page-body-section-body">
+							<div class="page-body-section-introduction">
+								{{ item.acf.board_introduction|safe }}
+							</div>
+							<div class="board-body page-people-body">
+
+							</div>					
+						</div>						
+					</div>
+					<div class="page-body-section" id="staff">
+						<div class="page-body-section-title">
+							<h3 class="bold">
+								{{ item.acf.staff_title|safe }}
+							</h3>
+						</div>
+						<div class="page-body-section-body">
+							<div class="page-body-section-introduction">
+								{{ item.acf.staff_introduction|safe }}
+							</div>
+							<div class="staff-body page-people-body">
+
+							</div>					
+						</div>						
+					</div>									
+					<div class="page-body-section" id="partners">
+						<div class="page-body-section-title">
+							<h3 class="bold">
+								{{ item.acf.partners_title|safe }}
+							</h3>
+						</div>
+						<div class="page-body-section-body">
+							<div class="page-body-section-introduction">
+								{{ item.acf.partners_introduction|safe }}
+							</div>
+							<div class="page-body-section-links">
+								<a href="/partners" class="button section-link-button" target="_blank">
+									{{ item.acf.partners_link_text }}
+								</a>
+							</div>						
+						</div>						
+					</div>
+					<div class="page-body-section" id="opportunities">
+						<div class="page-body-section-title">
+							<h3 class="bold">
+								{{ item.acf.opportunities_title|safe }}
+							</h3>
+						</div>
+						<div class="page-body-section-body">
+							<div class="page-body-section-introduction">
+								{{ item.acf.opportunities_introduction|safe }}
+							</div>
+							<div class="page-body-section-links">
+								<a href="/opportunities" class="button section-link-button" target="_blank">
+									{{ item.acf.opportunities_link_text }}
+								</a>
+							</div>						
+						</div>						
+					</div>					
+				</div>				
+			</div>
+			<div class="col-md-3 col-lg-3 offset-lg-2 page-content-sidebar">
+				{% include "page-sidebar.html" %}	
+			</div>
+		</div>
+	</div>
+</section>
