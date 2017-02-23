@@ -1,7 +1,7 @@
 "use strict";
 
 var base = require('./generic/base-route.js')();
-var restructureAbout = require('../structures/restructure-about.js');
+var restructurePage = require('../structures/restructure-make-ri-stronger.js');
 /**
  *
  *
@@ -16,7 +16,7 @@ var restructureAbout = require('../structures/restructure-about.js');
          */
          [
              wp.namespace( 'acf/v2' ).options().embed(),
-             wp.pages().embed().filter('name', 'about' ),
+             wp.pages().embed().filter('name', 'make-ri-stronger' ),
              wp.people().embed()
          ],
 
@@ -26,7 +26,7 @@ var restructureAbout = require('../structures/restructure-about.js');
          */
          [
              passOptions,
-             filterAbout,
+             filterPage,
              splitPeople
          ],
         /**
@@ -38,18 +38,16 @@ var restructureAbout = require('../structures/restructure-about.js');
          * @param res the Express Response Object
          * @param options JSON, the requested options data
          */
-         function( req, res, options, about, people ) {
+         function( req, res, options, page, people ) {
 
-            globals.log.log( 'Successful request to about.', 'route-about:success-handler');
+            globals.log.log( 'Successful request to make-ri-stronger.', 'route-make-ri-stronger:success-handler');
 
             try {
-                res.render('about.html', urlReplace( restructureAbout( about, people, options, globals ) ) );
+                res.render('make-ri-stronger.html', urlReplace( restructurePage( page, people, options, globals ) ) );
             } catch( e ) {
                 globals.log.error( e, 'route-index:error-handler');
                 res.render('error.html', {error_code: 500, description: e.message });
             }
-
-
 
         },
         /**
@@ -76,15 +74,15 @@ var restructureAbout = require('../structures/restructure-about.js');
  * This routine acts as the identity on the options type, simply passing it along to the
  * next processing step.
  */
-var passOptions = function( options, about, people, callback ) { callback( null, options ); };
+var passOptions = function( options, page, people, callback ) { callback( null, options ); };
 
 
 /**
- * This routine simply filters the returned set of "about" pages (a set which is always
+ * This routine simply filters the returned set of pages we've filtered (a set which is always
  * of length 1) down to the the element contained in that set.
  */
-var filterAbout = function( options, about, people, callback ) {
-    try { callback( null, about[0] ); }
+var filterPage = function( options, page, people, callback ) {
+    try { callback( null, page[0] ); }
     catch ( e ) { callback( e ); }
 };
 
@@ -93,11 +91,11 @@ var filterAbout = function( options, about, people, callback ) {
  * and then returns an object with the people broken up by their taxonomies.
  *
  */
-var splitPeople = function( options, about, people, callback ) {
+var splitPeople = function( options, page, people, callback ) {
 
     callback( null, {
-        board: people.filter( function( person ) {
-            return !scanTerms( person, 'board' );
+        coaches: people.filter( function( person ) {
+            return !scanTerms( person, 'coach' );
         }),
         staff: people.filter( function( person ) {
             return !scanTerms( person, 'staff' );
