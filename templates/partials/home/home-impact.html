@@ -1,31 +1,29 @@
-<section class="block home-section" id="home-impact">
-	<div class="container-fluid">
-		<div class="home-section-intro bg-ultra-light">
-			<h2 class="underlined section-title">
-				{{ item.impact_title }}
-			</h2>
-			<h3 class="section-description">
-				{{ item.impact_introduction }}
-			</h3>
-		</div>
-		<div class="home-section-content">
-			{% if item.impact_slideshow %}
-				<div class="row">
-					<div class="slick slick-impact slick-default">
-						{% for slide in item.impact_slideshow %}
-							<div class="slide impact-slide col-md-offset-1 col-md-8">
-								<img class="impact-slide-headshot" src="{{ slide.headshot.sizes.person }}" />
-								<h4 class="impact-quote serif">
-									"{{ slide.quote }}"
-								</h4>
-								<h5 class="impact-credit">
-									{{ slide.credit }}
-								</h5>
-							</div>
-						{% endfor %}
+<section class="block home-sectiont vhfull" id="home-impact">
+	<div class="home-section-intro">
+		<h2 class=" section-title">
+			<span class="underlined">{{ item.impact_title }}</span>
+		</h2>
+		<h3 class="section-description">
+			{{ item.impact_introduction }}
+		</h3>
+	</div>
+	<div class="home-section-content">
+		{% if item.impact_slideshow %}
+			<div class="slick slick-impact slick-default">
+				{% for slide in item.impact_slideshow %}
+					<div class="slide impact-slide">
+						<img class="impact-slide-headshot" src="{{ slide.headshot.sizes.person }}" />
+						<div class="impact-slide-text">
+							<h4 class="impact-quote serif">
+								"{{ slide.quote }}"
+							</h4>
+							<h5 class="impact-credit">
+								{{ slide.quote_credit }}
+							</h5>
+						</div>
 					</div>
-				</div>
-			{% endif %}
-		</div>
+				{% endfor %}
+			</div>
+		{% endif %}
 	</div>
 </section>

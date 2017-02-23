@@ -16,16 +16,18 @@ $text-menu-link: (
 	right: 0;
 	width: 50%;	
 	height: calc( 100vh - #{$nav-drop} );
-	background: $brand-bright;
+	background: transparentize($brand-bright, .02);
 	z-index: 8;
 	padding-top: 70px;
 	box-shadow: -1px 1px 3px $medium-dark;
 	@include transform(rotateX(-90deg));
 	@include transform-origin(50% 0%);
-	@include transition(transform, .2s);
+	@include transition(opacity .2s ease-in .1s);
+	opacity: 0;
 
 	&.open{
 		@include transform(rotateX(0deg));
+		opacity: 1;
 	}
 
 	@media screen and (max-width: $lg) {
@@ -36,11 +38,10 @@ $text-menu-link: (
 		width: 100%
 	}	
 
-
 	.menu-field-left{
 		width: 50%;
 		float: left;
-		padding: 0 30px;
+		padding-left: $container-fluid-padding;
 	}
 
 	.menu-field-right{
@@ -95,6 +96,10 @@ $text-menu-link: (
 	.menu-field-button{
 		@extend .button;
 		margin-bottom: 20px;
+	}
+
+	.address{
+		line-height: 1.5;
 	}
 
 

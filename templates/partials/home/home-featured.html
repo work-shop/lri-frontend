@@ -1,10 +1,40 @@
 {% if item.featured_content %}
-	<section class="block" id="home-featured">
-		<div class="container-fluid">
-
-			<div class="col-sm-12 col-md-6">
-			</div>		
-			
-		</div>
+	<section class="block vh50" id="home-featured">
+		{% for feature in item.featured_content %}
+			<div class="half feature feature-{{ feature.featured_content_type }} {% if feature.image %}feature-has-image {% endif %}">
+				{% if feature.image %}
+					<div class="feature-image">
+						<img src="{{ feature.image.sizes.xs }}" />
+					</div>
+				{% endif %}
+				<div class="feature-text">
+					{% if feature.featured_content_type == 'event' %}
+						<h5>Featured Event</h5>
+					{% elseif feature.featured_content_type == 'news' %}
+						<h5>Featured News</h5>
+					{% endif %}
+					{% if feature.title %}
+						<h2>{{ feature.title|safe }}</h2>
+					{% endif %}
+					{% if feature.description %}
+						<h3>{{ feature.description|safe }}</h3>
+					{% endif %}
+					{% if feature.link_text %}
+						{% if feature.featured_content_type == 'event' %}
+							{% set link = feature.eventbrite_link %}
+						{% elseif feature.featured_content_type == 'news' %}
+							{% set link = feature.news_story %}
+						{% elseif feature.featured_content_type == 'page' %}
+							{% set link = feature.page %}
+						{% endif %}												
+						<div class="button">
+							<a href="{{ link }}">
+								{{ feature.link_text }}
+							</a>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		{% endfor %}
 	</section>
 {% endif %}

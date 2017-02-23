@@ -2,8 +2,10 @@
 	<div class="container-fluid">
 		<div class="row">	
 			<div class="home-intro col-xs-6">
-				<h2 class="underlined section-title">
-					{{ item.news_title }}
+				<h2 class="section-title">
+					<span class="underlined">
+						{{ item.news_title }}
+					</span>
 				</h2>
 				<h3 class="section-description">
 					{{ item.news_introduction }}
@@ -15,7 +17,7 @@
 						<a href="{% if story.external %} {{ story.external_news_story_link }}{% else %}{{ story.link }}{% endif %}">
 							<div class="news-tile-label">
 								{% if story._embedded['wp:term'][0][0].name %}
-									{{ story._embedded['wp:term'][0][0].name }}
+									<span>{{ story._embedded['wp:term'][0][0].name }}</span>
 								{% endif %}
 							</div>
 							{% if story.external %}
