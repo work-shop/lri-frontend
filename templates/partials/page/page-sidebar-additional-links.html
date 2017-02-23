@@ -1,0 +1,9 @@
+{% if item.acf.sidebar_additional_links %}
+	{% for link in item.acf.sidebar_additional_links %}
+		<li class="additional-link">
+			<a href="{{ link.additional_link_url }}">
+				{{ link.additional_link_text|safe }} <span class="icon" data-icon="Ú"></span>
+			</a>
+		</li>
+	{% endfor %}				
+{% endif %}		

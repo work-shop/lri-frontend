@@ -16,15 +16,9 @@
 			<li><a href="#coaches" class="jump">{{ item.acf.coaches_title }}</a></li>
 			<li><a href="#news" class="jump">{{ item.acf.news_title }}</a></li>
 			<li><a href="#events" class="jump">{{ item.acf.events_title }}</a></li>
-			{% if item.acf.sidebar_additional_links %}
-				{% for link in item.acf.sidebar_additional_links %}
-					<li class="additional-link">
-						<a href="{{ link.additional_link_url }}">
-							{{ link.additional_link_text|safe }}
-						</a>
-					</li>
-				{% endfor %}				
-			{% endif %}			
+
+			{% include "../page/page-sidebar-additional-links.html" %}
+	
 		</ul>
 	</div>
 </nav>

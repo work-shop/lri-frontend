@@ -60,7 +60,6 @@ $text-breadcrumbs: (
 }
 
 
-
 //page content
 
 #page-content{
@@ -79,7 +78,6 @@ $text-breadcrumbs: (
 }
 
 
-
 //page sidebar
 
 #page-sidebar{
@@ -89,10 +87,35 @@ $text-breadcrumbs: (
 		background: $yellow;
 		border-radius: 3px;
 		text-align: center;
+		margin-bottom: 20px;
+		@extend .bold;
+		@extend .tracked;
 	}
 	
 	.page-sidebar-title{
 		@extend .bold;
 		@extend .uppercase;
+		margin-bottom: 20px;
+		@extend .tracked;
 	}
+
+	li{
+		margin-bottom: 20px;
+		line-height: 1;
+
+		a{
+			display: inline-block;
+			padding: 3px 0;
+			&:hover{
+				color: $brand;
+			}
+		}
+	}
+
+	.additional-link{
+		.icon:before{
+			color: $medium;
+		}
+	}
+
 }
