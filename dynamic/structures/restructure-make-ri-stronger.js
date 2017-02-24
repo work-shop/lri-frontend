@@ -8,15 +8,15 @@ var baseStructure = require('./base-structure.js');
  *
  *
  */
-module.exports = function( page, people, options, globals ) {
+module.exports = function( page, people, news, options, globals ) {
 
     return baseStructure({
 
         item: page,
 
-        coaches: people.coaches,
+        coaches: people['coach'],
 
-        staff: people.staff
+        news: news['make-ri-stronger-news']
 
     }, options, globals);
 

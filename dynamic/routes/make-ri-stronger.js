@@ -2,6 +2,9 @@
 
 var base = require('./generic/base-route.js')();
 var restructurePage = require('../structures/restructure-make-ri-stronger.js');
+var filterMakeRIStrongerNews = require('../transformations/filter-term-by-taxonomy.js')('make-ri-stronger-news', 'news_categories');
+var filterCoaches = require('../transformations/filter-term-by-taxonomy.js')('coach', 'people_categories');
+
 /**
  *
  *
@@ -17,7 +20,8 @@ var restructurePage = require('../structures/restructure-make-ri-stronger.js');
          [
              wp.namespace( 'acf/v2' ).options().embed(),
              wp.pages().embed().filter('name', 'make-ri-stronger' ),
-             wp.people().embed()
+             wp.people().embed(),
+             wp.news().embed()
          ],
 
         /**
@@ -27,7 +31,8 @@ var restructurePage = require('../structures/restructure-make-ri-stronger.js');
          [
              passOptions,
              filterPage,
-             splitPeople
+             function( options, page, people, news, callback ) { filterCoaches( people, callback ); },
+             function( options, page, people, news, callback ) { filterMakeRIStrongerNews( news, callback ); }
          ],
         /**
          * Success Case. All of the needed resources were properly resolved,
@@ -38,12 +43,12 @@ var restructurePage = require('../structures/restructure-make-ri-stronger.js');
          * @param res the Express Response Object
          * @param options JSON, the requested options data
          */
-         function( req, res, options, page, people ) {
+         function( req, res, options, page, people, news ) {
 
             globals.log.log( 'Successful request to make-ri-stronger.', 'route-make-ri-stronger:success-handler');
 
             try {
-                res.render('make-ri-stronger.html', urlReplace( restructurePage( page, people, options, globals ) ) );
+                res.render('make-ri-stronger.html', urlReplace( restructurePage( page, people, news, options, globals ) ) );
             } catch( e ) {
                 globals.log.error( e, 'route-index:error-handler');
                 res.render('error.html', {error_code: 500, description: e.message });
@@ -74,45 +79,14 @@ var restructurePage = require('../structures/restructure-make-ri-stronger.js');
  * This routine acts as the identity on the options type, simply passing it along to the
  * next processing step.
  */
-var passOptions = function( options, page, people, callback ) { callback( null, options ); };
+var passOptions = function( options, page, people, news, callback ) { callback( null, options ); };
 
 
 /**
  * This routine simply filters the returned set of pages we've filtered (a set which is always
  * of length 1) down to the the element contained in that set.
  */
-var filterPage = function( options, page, people, callback ) {
+var filterPage = function( options, page, people, news, callback ) {
     try { callback( null, page[0] ); }
     catch ( e ) { callback( e ); }
-};
-
-/**
- * This routine takes the set of people off of the API, splits them up into buckets
- * and then returns an object with the people broken up by their taxonomies.
- *
- */
-var splitPeople = function( options, page, people, callback ) {
-
-    callback( null, {
-        coaches: people.filter( function( person ) {
-            return !scanTerms( person, 'coach' );
-        }),
-        staff: people.filter( function( person ) {
-            return !scanTerms( person, 'staff' );
-        })
-    });
-};
-
-/**
- * This routine determines whether a given person API response object
- * belongs to a specified term in the people_categories taxonomy.
- *
- * @param person JSON Person API Response
- * @param slug String the slug of the term to check the person against
- * @return boolean true if the given person belongs to this passed category.
- */
-var scanTerms = function( person, slug ) {
-    return (person['_embedded'] || {'wp:term': [[]]})['wp:term'][0].reduce( function( p, term ) {
-        return p || (term.taxonomy === "people_categories" && term.slug === slug );
-    }, false);
 };
