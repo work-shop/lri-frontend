@@ -13,7 +13,8 @@ var page = require('./routes/generic/page.js');
 var about = require('./routes/about.js');
 var alumni = require('./routes/alumni.js');
 var makeRiStronger = require('./routes/make-ri-stronger.js');
-
+var opportunities = require('./routes/opportunities.js');
+var news = require('./routes/news.js');
 
 module.exports = function( express, app, config, globals ) {
 
@@ -25,11 +26,15 @@ module.exports = function( express, app, config, globals ) {
 
     app.get('/about', about( globals.wp, config, globals ) );
 
+    app.get('/about/opportunities', opportunities( globals.wp, config, globals ) );
+
     app.get('/alumni', alumni( globals.wp, config, globals ) );
 
     app.get('/make-ri-stronger', makeRiStronger( globals.wp, config, globals ) );
     // TODO:make this a redirect instead
     app.get('/strengths', makeRiStronger( globals.wp, config, globals ) );
+
+    app.get('/news', news( globals.wp, config, globals ) );
 
     app.get('/:id', page( globals.wp, config, globals ) );
 
