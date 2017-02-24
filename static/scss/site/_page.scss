@@ -80,6 +80,8 @@ $text-breadcrumbs: (
 
 //page sidebar
 
+$sidebar-link-height: 30px;
+
 #page-sidebar{
 
 	.button{
@@ -100,21 +102,42 @@ $text-breadcrumbs: (
 	}
 
 	li{
-		margin-bottom: 20px;
-		line-height: 1;
+		
+		height: $sidebar-link-height;
+		margin-bottom: 0px;
 
 		a{
 			display: inline-block;
-			padding: 3px 0;
+			height: $sidebar-link-height;
+			line-height: $sidebar-link-height;
+			vertical-align: middle;
+			//outline: 1px solid black;
+			
 			&:hover{
-				color: $brand;
+				color: $brand-bright;
+
+				.icon{
+					&:before{
+						@include transform(rotate(-45deg));
+					}
+				}
+
 			}
 		}
 	}
 
 	.additional-link{
-		.icon:before{
-			color: $medium;
+		.icon{
+			&:before{
+				color: $medium;
+				height: $sidebar-link-height;
+				line-height: $sidebar-link-height;
+				display: inline-block;
+				margin-left: 10px;
+				font-size: 28px;
+				@include transform(rotate(0deg));
+				@include transition(transform .125s);
+			}
 		}
 	}
 

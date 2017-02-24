@@ -7,11 +7,13 @@ body{
 }
 
 *{
-	font-family: $font-main;	
+	font-family: $font-main;
+	letter-spacing: .02em;	
 }
 
 .serif{
 	font-family: $font-serif;
+	letter-spacing: 0;
 
 	&.italic{
 		font-family: $font-serif-italic;
