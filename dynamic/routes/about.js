@@ -2,6 +2,7 @@
 
 var base = require('./generic/base-route.js')();
 var restructureAbout = require('../structures/restructure-about.js');
+var filterPeople = require('../transformations/filter-term-by-taxonomy.js')(['staff','board'], 'people_categories');
 /**
  *
  *
@@ -27,7 +28,7 @@ var restructureAbout = require('../structures/restructure-about.js');
          [
              passOptions,
              filterAbout,
-             splitPeople
+             function( options, about, people, callback ) { filterPeople( people, callback ); }
          ],
         /**
          * Success Case. All of the needed resources were properly resolved,
@@ -93,17 +94,17 @@ var filterAbout = function( options, about, people, callback ) {
  * and then returns an object with the people broken up by their taxonomies.
  *
  */
-var splitPeople = function( options, about, people, callback ) {
-
-    callback( null, {
-        board: people.filter( function( person ) {
-            return !scanTerms( person, 'board' );
-        }),
-        staff: people.filter( function( person ) {
-            return !scanTerms( person, 'staff' );
-        })
-    });
-};
+// var splitPeople = function( options, about, people, callback ) {
+//
+//     callback( null, {
+//         board: people.filter( function( person ) {
+//             return !scanTerms( person, 'board' );
+//         }),
+//         staff: people.filter( function( person ) {
+//             return !scanTerms( person, 'staff' );
+//         })
+//     });
+// };
 
 /**
  * This routine determines whether a given person API response object
@@ -113,8 +114,8 @@ var splitPeople = function( options, about, people, callback ) {
  * @param slug String the slug of the term to check the person against
  * @return boolean true if the given person belongs to this passed category.
  */
-var scanTerms = function( person, slug ) {
-    return (person['_embedded'] || {'wp:term': [[]]})['wp:term'][0].reduce( function( p, term ) {
-        return p || (term.taxonomy === "people_categories" && term.slug === slug );
-    }, false);
-};
+// var scanTerms = function( person, slug ) {
+//     return (person['_embedded'] || {'wp:term': [[]]})['wp:term'][0].reduce( function( p, term ) {
+//         return p || (term.taxonomy === "people_categories" && term.slug === slug );
+//     }, false);
+// };
