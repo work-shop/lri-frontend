@@ -16,6 +16,12 @@ var makeRiStronger = require('./routes/make-ri-stronger.js');
 var opportunities = require('./routes/opportunities.js');
 var news = require('./routes/news.js');
 var newsStory = require('./routes/news-story.js');
+var contact = require('./routes/generic/single.js')({
+    type: "pages",
+    name: "contact",
+    template: "contact.html",
+    restructure: require('./structures/restructure-page.js')
+});
 
 module.exports = function( express, app, config, globals ) {
 
@@ -38,6 +44,8 @@ module.exports = function( express, app, config, globals ) {
     app.get('/news', news( globals.wp, config, globals ) );
 
     app.get('/news/:id', newsStory( globals.wp, config, globals ) );
+
+    app.get('/contact', contact( globals.wp, config, globals ) );
 
     app.get('/:id', page( globals.wp, config, globals ) );
 

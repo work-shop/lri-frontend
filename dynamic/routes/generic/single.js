@@ -60,7 +60,7 @@ var identity = function( x ) { return x; };
         */
         function resolveRequestedPost( callback, req ) {
 
-          wp[ routeOptions.type ]().embed().filter('name', req.params.id )
+          wp[ routeOptions.type ]().embed().filter('name', req.params.id || routeOptions.name )
 
             .then( function( post ) {
 
