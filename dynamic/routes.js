@@ -11,6 +11,7 @@ var index = require('./routes/index.js');
 var error404 = require('./routes/error.js')( 404 );
 var page = require('./routes/generic/page.js');
 var about = require('./routes/about.js');
+var alumni = require('./routes/alumni.js');
 var makeRiStronger = require('./routes/make-ri-stronger.js');
 
 
@@ -23,6 +24,8 @@ module.exports = function( express, app, config, globals ) {
     app.get('/', index( globals.wp, config, globals ) );
 
     app.get('/about', about( globals.wp, config, globals ) );
+
+    app.get('/alumni', alumni( globals.wp, config, globals ) );
 
     app.get('/make-ri-stronger', makeRiStronger( globals.wp, config, globals ) );
     // TODO:make this a redirect instead
