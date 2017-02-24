@@ -15,6 +15,7 @@ var alumni = require('./routes/alumni.js');
 var makeRiStronger = require('./routes/make-ri-stronger.js');
 var opportunities = require('./routes/opportunities.js');
 var news = require('./routes/news.js');
+var newsStory = require('./routes/news-story.js');
 
 module.exports = function( express, app, config, globals ) {
 
@@ -35,6 +36,8 @@ module.exports = function( express, app, config, globals ) {
     app.get('/strengths', makeRiStronger( globals.wp, config, globals ) );
 
     app.get('/news', news( globals.wp, config, globals ) );
+
+    app.get('/news/:id', newsStory( globals.wp, config, globals ) );
 
     app.get('/:id', page( globals.wp, config, globals ) );
 

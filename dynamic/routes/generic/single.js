@@ -2,7 +2,7 @@
 
 
 var base = require('./base-route.js')();
-var identity = function( x ) { return x; }
+var identity = function( x ) { return x; };
 /**
  * Gets a single object from a single wordpress post-type.
  *
