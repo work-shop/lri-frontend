@@ -18,7 +18,7 @@ var filterPeople = require('../transformations/filter-term-by-taxonomy.js')(['st
          [
              wp.namespace( 'acf/v2' ).options().embed(),
              wp.pages().embed().filter('name', 'about' ),
-             wp.people().embed()
+             wp.people().perPage(100).embed()
          ],
 
         /**

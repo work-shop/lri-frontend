@@ -20,7 +20,7 @@ var filterCoaches = require('../transformations/filter-term-by-taxonomy.js')('co
          [
              wp.namespace( 'acf/v2' ).options().embed(),
              wp.pages().embed().filter('name', 'make-ri-stronger' ),
-             wp.people().embed(),
+             wp.people().perPage(100).embed(),
              wp.news().embed()
          ],
 
