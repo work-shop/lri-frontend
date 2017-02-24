@@ -7,7 +7,7 @@
 {% block definitions %}
 {% set social_title = '' %}
 {% set social_description = '' %}
-{% set social_image = '' %}    
+{% set social_image = '' %}
 {% endblock %}
 
 <!DOCTYPE html>
@@ -28,7 +28,7 @@
     <meta property="og:type" content="website" />
 
     <!-- Twitter Card data -->
-    <meta name="twitter:card" value="{{social_description}}">     
+    <meta name="twitter:card" value="{{social_description}}">
 
     <link rel="icon" type="image/png" sizes="16x16" href="/public/images/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/public/images/favicon-32x32.png">
@@ -47,9 +47,9 @@
 
         {% include "ie.html" %}
         {% include "header.html" %}
-        
+
         <main id="content">{% block content %}{% endblock %}</main>
-        
+
         {% include "footer.html" %}
         {% include "modals.html" %}
 
@@ -57,6 +57,22 @@
 
         {% if globals.development %}
             <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+            <script>
+                console.log( 'options:' );
+                console.log( {{ options|json|safe }});
+                console.log( 'globals:' );
+                console.log( {{ globals|json|safe }});
+                console.log( 'item:' );
+                console.log( {{ item|json|safe }});
+                console.log( 'news:' );
+                console.log( {{ news|json|safe }});
+                console.log( 'coaches:' );
+                console.log( {{ coaches|json|safe }});
+                console.log( 'staff:' );
+                console.log( {{ staff|json|safe }});
+                console.log( 'board:' );
+                console.log( {{ board|json|safe }});
+            </script>
         {% endif %}
 
         <!--<script>
