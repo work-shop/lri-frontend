@@ -16,25 +16,42 @@ var makeRiStronger = require('./routes/make-ri-stronger.js');
 var opportunities = require('./routes/opportunities.js');
 var news = require('./routes/news.js');
 var newsStory = require('./routes/news-story.js');
-var events = require('./routes/events.js');
+// var events = require('./routes/events.js');
+
 var contact = require('./routes/generic/single.js')({
     type: "pages",
     name: "contact",
     template: "contact.html",
     restructure: require('./structures/restructure-page.js')
 });
+
 var partners = require('./routes/generic/single.js')({
     type: "pages",
     name: "partners",
     template: "page.html",
     restructure: require('./structures/restructure-page.js')
 });
-// var events = require('./routes/generic/single.js')({
-//     type: "pages",
-//     name: "events",
-//     template: "events.html",
-//     restructure: require('./structures/restructure-events.js')
-// });
+
+var collegeCurrentClass = require('./routes/generic/single.js')({
+    type: "pages",
+    name: "college-current-class",
+    template: "page.html",
+    restructure: require('./structures/restructure-page.js')
+});
+
+var coreCurrentClass = require('./routes/generic/single.js')({
+    type: "pages",
+    name: "core-current-class",
+    template: "page.html",
+    restructure: require('./structures/restructure-page.js')
+});
+
+var events = require('./routes/generic/single.js')({
+    type: "pages",
+    name: "events",
+    template: "events.html",
+    restructure: require('./structures/restructure-events.js')
+});
 
 module.exports = function( express, app, config, globals ) {
 
@@ -49,6 +66,10 @@ module.exports = function( express, app, config, globals ) {
     app.get('/about/opportunities', opportunities( globals.wp, config, globals ) );
 
     app.get('/about/partners', partners( globals.wp, config, globals ) );
+
+    app.get('/college-program/college-current-class', collegeCurrentClass( globals.wp, config, globals ) );
+
+    app.get('/core-program/core-current-class', coreCurrentClass( globals.wp, config, globals ) );
 
     app.get('/alumni', alumni( globals.wp, config, globals ) );
 

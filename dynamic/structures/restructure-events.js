@@ -7,13 +7,15 @@ var baseStructure = require('./base-structure.js');
  *
  *
  */
-module.exports = function( options, globals ) {
+module.exports = function( page, options, globals ) {
 
     return baseStructure({
  		
- 		pageType: 'archive', 
+ 		pageType: 'page', 
  		pageTitle: 'Events',   
-        item: options.acf,
+        item: page,
+        itemUpcomingEvents: page.acf.upcoming_events,
+        itemPastEvents: page.acf.past_events
 
     }, options, globals);
 
