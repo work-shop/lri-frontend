@@ -32,7 +32,7 @@ modals.setupModals();
 //site
 if( $('#page-hero') ){
 	var heroShift = require('./hero-shift.js')($);
-	jumpUtilities.setupJumpEvents('.page-hero-scrolly', 25, 567, 50, true);		
+	jumpUtilities.setupJumpEvents('.page-hero-scrolly', -100, 567, 50, true);		
 	heroShift.initialize();
 }
 
