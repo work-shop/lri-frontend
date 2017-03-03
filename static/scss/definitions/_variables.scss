@@ -6,6 +6,7 @@ $brand: #003F87;
 $brand-bright: #0055B8;
 $brand-ultra-light: #F5F6F6;
 
+
 //grays
 $ultra-light: #F5F5F5;
 $light: #D8D8D8;
@@ -13,6 +14,7 @@ $medium-light: #9B9B9B;
 $medium: #828282;
 $medium-dark: #555555;
 $dark: #222222;
+$light-blue: #DAE3ED;
 
 
 //utility colors
@@ -47,6 +49,7 @@ $lg: 1199px;
 //site
 $body-background-color: white;
 $yellow: #FDBA44;
+$yellow: #FFCB45;
 $yellow-darker: darken($yellow, 16%);
 
 $font-main: 'Founders-Regular', Helvetica, Arial, Sans-serif;
@@ -57,7 +60,8 @@ $font-medium: 'Founders-Medium', Helvetica, Arial, Sans-serif;
 $font-medium-italic: 'Founders-Medium-Italic', Helvetica, Arial, Sans-serif;
 $font-light: 'Founders-Light', Helvetica, Arial, Sans-serif;
 $font-light-italic: 'Founders-Light-Italic', Helvetica, Arial, Sans-serif;
-$font-serif: 'Tisa Pro', Georgia, Times New Roman, Serif;
-$font-serif-italic: 'Tisa Pro', Georgia, Times New Roman, Serif;
-$font-serif-bold: 'Tisa Pro', Georgia, Times New Roman, Serif;
+$font-serif: 'ff-tisa-web-pro', Georgia, Times New Roman, Serif;
+$font-serif-italic: 'ff-tisa-web-pro', Georgia, Times New Roman, Serif;
+$font-serif-bold: 'ff-tisa-web-pro', Georgia, Times New Roman, Serif;
+$font-serif-bold-italic: 'ff-tisa-web-pro', Georgia, Times New Roman, Serif;
 

@@ -14,16 +14,18 @@ body{
 .serif{
 	font-family: $font-serif;
 	letter-spacing: 0;
+	font-weight: 400;
 
 	&.italic{
 		font-family: $font-serif-italic;
 		font-style: italic;
 	}
 
-	&.bold{
+	&.bold,&strong{
 		font-family: $font-serif-bold;
-		font-weight: bold;
+		font-weight: 700;
 	}
+
 }
 
 

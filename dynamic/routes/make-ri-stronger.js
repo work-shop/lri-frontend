@@ -48,7 +48,7 @@ var filterCoaches = require('../transformations/filter-term-by-taxonomy.js')('co
             globals.log.log( 'Successful request to make-ri-stronger.', 'route-make-ri-stronger:success-handler');
 
             try {
-                res.render('make-ri-stronger.html', urlReplace( restructurePage( page, people, news, options, globals ) ) );
+                res.render('page.html', urlReplace( restructurePage( page, people, news, options, globals ) ) );
             } catch( e ) {
                 globals.log.error( e, 'route-index:error-handler');
                 res.render('error.html', {error_code: 500, description: e.message });

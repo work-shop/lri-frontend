@@ -1,0 +1,57 @@
+<div class="person person-{% if person.acf.external === false %}staff{% endif %}" id="person-{{ person.slug }}">
+	<div class="person-headshot">
+		{% if person.acf.headshot %}
+			<img src="{{ person.acf.headshot.sizes.person }}">
+		{% else %}
+			<img src="/public/images/person.png">
+		{% endif %}
+	</div>
+	<div class="person-info">
+		<h4 class="person-name">
+			{{ person.title.rendered|safe }}
+		</h4>
+		<h4 class="person-title">
+			{{ person.acf.job_title|safe }}
+		</h4>
+
+		<h4 class="person-alum">
+			{% if person.acf.alum === 'clri' || person.acf.alum === 'lri' %}
+				{% if person.acf.alum === 'clri' %}
+					CLRI
+				{% else %}
+					LRI
+				{% endif %} 
+				'{{ person.acf.lri_year }}
+			{% endif %}
+			&nbsp;
+		</h4>
+		{% if person.acf.external === false %}
+			{% if person.acf.email %}
+				<h4 class="person-email">
+					<a href="mailto:{{ person.acf.email|safe }}" target="_blank">
+						{{ person.acf.email|safe }}
+					</a>
+				</h4>
+			{% endif %}		
+			{% if person.acf.phone_number %}
+				<h4 class="person-phone_number">
+					{{ person.acf.phone_number|safe }}
+				</h4>
+			{% endif %}	
+		{% endif %}
+		{% if person.acf.external %}
+			<h5 class="person-external person-sub">
+				{% if person.acf.external_job_title %}
+					{{ person.acf.external_job_title }}{% if person.acf.external_organization %},{% endif %}
+				{% endif %}
+				{% if person.acf.external_organization %}
+					{{ person.acf.external_organization}}
+				{% endif %}
+			</h5>
+		{% elseif person.acf.contact_about %}
+			<h5 class="person-contact-about person-sub">
+				{{person.acf.contact_about}}
+			</h5>
+		{% endif %}
+	</div>
+</div>

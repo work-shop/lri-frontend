@@ -15,7 +15,9 @@ var baseStructure = require('./base-structure.js');
 module.exports = function( story, options, globals ) {
 
     return baseStructure({
-
+ 		
+ 		pageType: 'single', 
+ 		pageTitle: story.title.rendered,   
         item: story
 
     }, options, globals);

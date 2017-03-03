@@ -1,4 +1,4 @@
-<section class="block" id="page-content">
+<section class="block spy-target" id="page-content">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-9 col-lg-7 page-content-body">
@@ -6,34 +6,47 @@
 					{% include "page-featured-content.html" %}
 				{% endif %}
 				<div class="page-body-sections">
-					{% if item.acf.page_body_sections %}
-						{% for section in item.acf.page_body_sections %}
-							<div class="page-body-section" id="page-section-{{ loop.index}}">
-								<div class="page-body-section-title">
-									<h3 class="bold">
-										{{ section.section_title|safe }}
-									</h3>
-								</div>
-								<div class="page-body-section-body">
-									<div class="wysiwyg">
-										{{ section.section_body|safe }}
+					{# custom page content #}	
+					{% if pageTitle === 'About' %}
+						{% include "../about/about-content.html" %}
+					{% elseif pageTitle === 'Make RI Stronger' %}
+						{% include "../make-ri-stronger/make-ri-stronger-content.html" %}
+					{% else %}
+						{# default page content #}
+						{% if item.acf.page_body_sections %}
+							{% for section in item.acf.page_body_sections %}
+								<div class="page-body-section spy-target" id="page-section-{{ loop.index}}">
+									<div class="page-body-section-title">
+										<h3 class="bold">
+											{{ section.section_title|safe }}
+										</h3>
 									</div>
-								</div>
-								{% if section.section_links %}
-									<div class="page-body-section-links">
-										{% for link in section.section_links %}
-											<a href="{{ link.link_url }}" class="button section-link-button" target="_blank">
-												{{ link.link_text }}
-											</a>
-										{% endfor %}
+									<div class="page-body-section-body">
+										<div class="wysiwyg">
+											{{ section.section_body|safe }}
+										</div>
 									</div>
-								{% endif %}
-							</div>
-						{% endfor %}
+									{% if section.section_links %}
+										<div class="page-body-section-links">
+											{% for link in section.section_links %}
+												<div class="button section-link-button">
+													<a href="{{ link.link_url }}" class="" target="_blank">
+														{{ link.link_text }}
+													</a>
+												</div>
+											{% endfor %}
+										</div>
+									{% endif %}
+								</div>
+							{% endfor %}
+						{% endif %}
+					{% endif %}
+					{% if pageTitle === 'Alumni' %}
+						<h3> alumni News</h3>
 					{% endif %}
 				</div>				
 			</div>
-			<div class="col-md-3 col-lg-3 offset-lg-2 page-content-sidebar">
+			<div class="col-md-3 col-lg-5 page-content-sidebar">
 				{% include "page-sidebar.html" %}	
 			</div>
 		</div>

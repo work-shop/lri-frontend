@@ -1,5 +1,16 @@
 
+
+
+.page-body-section-introduction{
+	p{
+		@include text-size($text-page-body);
+	}
+}
+
+
 .wysiwyg{
+
+	@include text-size($text-page-body);
 
 	*{
 		@extend .serif;
@@ -10,11 +21,21 @@
 	}
 
 	h1,h2,h3,h4,h5,h6{
-		@extend .bold;
+		font-weight: 700;
 	}
 
-	em>strong{
-		font-family: $font-bold-italic;
+	em{
+		font-style: italic;
+		*{
+			font-style: italic;
+		}
+	}
+
+	strong{
+		font-weight: 700;
+		*{
+			font-weight: 700;
+		}
 	}
 
 	a{
@@ -26,8 +47,22 @@
 		}
 	}
 
-	ol{
-		padding-left: 15px;
+	ol,ul{
+		-webkit-padding-start: 25px;
+	}
+
+	ul li{
+		list-style: disc;
+	}
+
+	ol li{
+		list-style: decimal;
+	}
+
+	li{
+		font-size: .95em;
+		line-height: 1.3;
+		margin-bottom: .75em;
 	}
 
 }

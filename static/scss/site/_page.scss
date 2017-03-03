@@ -2,13 +2,30 @@
 $text-breadcrumbs: (
 	xs: (12px, 30px),
 	sm: (13px, 30px),
-	md: (14px, 50px),
-	lg: (14px, 50px),
-	xl: (14px, 50px)
-	) !default;
+	md: (14px, 45px),
+	lg: (14px, 45px),
+	xl: (14px, 45px)
+	);
+
+
+$text-sidebar: (
+	xs: (13px, 27px),
+	sm: (13px, 27px),
+	md: (14px, 29px),
+	lg: (15px, 31px),
+	xl: (17px, 36px)
+	);
+
+$page-body-section-margin: 100px;
+
 
 #page-breadcrumbs{
-	height: 50px;
+	height: 45px;
+	border-bottom: 1px solid $light-blue;
+
+	@media screen and (max-width: $sm) {
+		height: 30px;
+	}
 
 	li{
 		display: inline-block;
@@ -36,53 +53,179 @@ $text-breadcrumbs: (
 	}
 }
 
+$text-hero: (
+	xs: (13px, 17px),
+	sm: (18px, 24px),
+	md: (20px, 24px),
+	lg: (22px, 35px),
+	xl: (26px, 38px)  
+	);
+
 
 //page hero
 #page-hero{
 
+	padding-bottom: $page-body-section-margin;
+
+	img{
+		-webkit-filter: saturate(80%);
+	}
+
 	.page-hero-text{		
-		width: 66%;
-		margin: -160px auto 0 auto;
-		padding: 5em 4em 1em 4em;
+		width: 72%;
+		margin: 0 auto 3px auto;
+		padding: 4em 7em 2em 7em;
 		position: relative;
 		z-index: 1;
+		border-radius: 4px;
+		box-shadow: 0px 0px 3px $dark;
+
+		@media screen and (max-width: $sm) {
+			width: 90%;
+			padding: 1.2em;
+		}
+
+	}
+
+	h2{
+		@include text-size($text-hero);
+		margin-bottom: 0;
 	}
 
 	.page-hero-scrolly{
 		display: block;
 		text-align: center;
+		//opacity: .75;
+		@include animation(bounce 2.7s ease-in-out infinite);
 	}
 
 	.icon:before{
-		color: white;
+		color: $yellow;
 		font-size: 90px;
+
+		@media screen and (max-width: $md) {
+			font-size: 40px;
+		}
 	}
+}
+
+@include keyframes(bounce) {
+	0% {
+		@include transform(translateY(0%));
+	}
+	25% {
+		@include transform(translateY(23%));
+	}
+	75% {
+		@include transform(translateY(0%));
+	}
+	100% {
+		@include transform(translateY(0%));
+	}  
+
 }
 
 
 //page content
 
 #page-content{
-	padding-top: 80px;
+	//padding-top: $page-body-section-margin;
+	//background: $light-blue;
 }
+
+
+
+//page featured content
+
+.page-feature{
+	margin-bottom: $page-body-section-margin;
+
+	&.page-feature-announcement{
+		background: lighten($ultra-light, 2%);
+		border-bottom: 4px solid $yellow;
+		padding: 2em;
+
+		h3{
+			color: $brand-bright;
+			font-family: 'Founders-Bold';
+			margin-bottom: 1em;
+		}
+
+		h4{
+			width: 80%;
+			@extend .serif;
+			color: $dark;
+		}
+	}
+
+	&.page-feature-video{
+		width: 95%;
+
+		iframe{
+			height: 400px;
+		}
+	}
+
+
+}
+
 
 
 //page body sections
 
 .page-body-section{
-	margin-bottom: 80px;
+	margin-bottom: $page-body-section-margin;
+	clear: both;
 
 	h3{
 		color: $brand;
+		margin-bottom: 1em;
+		@extend .tracked-less;
+		margin-top: 0;
+	}
+
+	p{
+		@include text-size($text-page-body);
+		margin-bottom: $page-body-section-margin / 3;
+	}
+}
+
+.wysiwyg,.page-body-section-introduction{
+	*{
+		font-family: $font-serif !important;
+	}	
+}
+
+.page-body-section-links{
+	.button{
+		display: inline-block;
+		margin-right: 15px;
 	}
 }
 
 
+
 //page sidebar
 
-$sidebar-link-height: 30px;
+$sidebar-link-height: 36px;
+
+// #page-content{
+// 	border: 2px solid $light;
+// }
+
+#page-content.active{
+	#page-sidebar{
+		position: fixed;
+		top: $nav-drop + $page-body-section-margin;
+		right: $container-fluid-padding;
+	}
+}
 
 #page-sidebar{
+
+	width: 280px;
+	float: right;
+	position: relative;
 
 	.button{
 		display: block;
@@ -107,11 +250,11 @@ $sidebar-link-height: 30px;
 		margin-bottom: 0px;
 
 		a{
+			@include text-size($text-sidebar);
 			display: inline-block;
 			height: $sidebar-link-height;
 			line-height: $sidebar-link-height;
 			vertical-align: middle;
-			//outline: 1px solid black;
 			
 			&:hover{
 				color: $brand-bright;

@@ -1,12 +1,26 @@
 <div id="page-featured-content">
-	{{ item.acf.featured_content[0].acf_fc_layout }}
-	{% if item.acf.featured_content[0].acf_fc_layout === 'video' %}
-		
-	{% endif %}
-	{% if item.acf.featured_content[0].acf_fc_layout === 'announcement' %}
-
-	{% endif %}
-	{% if item.acf.featured_content[0].acf_fc_layout === 'news' %}
-
-	{% endif %}		
+	<div class="page-feature page-feature-{{item.acf.featured_content[0].acf_fc_layout}}">
+		{% if item.acf.featured_content[0].acf_fc_layout === 'video' %}
+			<div class="page-feature-video-embed">
+				{% if item.acf.featured_content[0].vimeo_or_youtube === 'vimeo' %}
+					<iframe src="https://player.vimeo.com/video/{{ item.acf.featured_content[0].vimeo_id }}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+				{% endif %}
+				{% if item.acf.featured_content[0].vimeo_or_youtube === 'youtube' %}
+					<iframe src="https://www.youtube.com/embed/{{ item.acf.featured_content[0].youtube_id }}" frameborder="0" allowfullscreen></iframe>
+				{% endif %}				
+			</div>
+		{% endif %}
+		{% if item.acf.featured_content[0].acf_fc_layout === 'announcement' %}
+			<div class="page-feature-announcement-container">
+				<h3>{{ item.acf.featured_content[0].announcement_title|safe }}</h3>
+				<h4>{{ item.acf.featured_content[0].announcement_text|safe }}</h4>
+			</div>
+		{% endif %}
+		{% if item.acf.featured_content[0].acf_fc_layout === 'news' %}
+			<div class="page-feature-news-container">
+				<h3>{{ item.acf.featured_content[0].news_item.title }}</h3>
+				
+			</div>
+		{% endif %}	
+	</div>	
 </div>

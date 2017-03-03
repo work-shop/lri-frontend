@@ -1,13 +1,13 @@
-{% if item.acf.hero %}
-	<section class="block" id="page-hero">
+{% if item.acf.hero && item.acf.hero_image %}
+	<section class="block spy-target spy-start" id="page-hero">
 		<div class="page-hero-image">
 			<img src="{{ item.acf.hero_image.sizes.hero }}" />
 		</div>
 		<div class="page-hero-text bg-brand">
 			<h2 class="serif white centered page-hero-statement">
-				{{ item.acf.hero_text }}
+				{{ item.acf.hero_text|safe }}
 			</h2>
-			<a href="#page-content" class="jump page-hero-scrolly">
+			<a href="#page-content" class="page-hero-scrolly">
 				<span class="icon" data-icon="”"></span>
 			</a>
 		</div>

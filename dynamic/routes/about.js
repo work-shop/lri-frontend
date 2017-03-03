@@ -44,7 +44,7 @@ var filterPeople = require('../transformations/filter-term-by-taxonomy.js')(['st
             globals.log.log( 'Successful request to about.', 'route-about:success-handler');
 
             try {
-                res.render('about.html', urlReplace( restructureAbout( about, people, options, globals ) ) );
+                res.render('page.html', urlReplace( restructureAbout( about, people, options, globals ) ) );
             } catch( e ) {
                 globals.log.error( e, 'route-index:error-handler');
                 res.render('error.html', {error_code: 500, description: e.message });

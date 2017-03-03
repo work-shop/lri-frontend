@@ -1,0 +1,96 @@
+<div class="page-body-section" id="overview">
+	<div class="page-body-section-title">
+		<h3 class="bold">
+			{{ item.acf.overview_title|safe }}
+		</h3>
+	</div>
+	<div class="page-body-section-body">
+		<div class="wysiwyg">
+			{{ item.acf.overview_body|safe }}
+		</div>
+	</div>						
+</div>
+<div class="page-body-section" id="impact">
+	<div class="page-body-section-title">
+		<h3 class="bold">
+			{{ item.acf.impact_title|safe }}
+		</h3>
+	</div>
+	<div class="page-body-section-body">
+		<div class="page-body-section-introduction">
+			<p>{{ item.acf.impact_introduction|safe }}</p>
+		</div>
+		<div class="impact-body">
+			<h3>! Impact Slideshow !</h3>
+		</div>
+	</div>						
+</div>
+<div class="page-body-section" id="clients">
+	<div class="page-body-section-title">
+		<h3 class="bold">
+			{{ item.acf.clients_title|safe }}
+		</h3>
+	</div>
+	<div class="page-body-section-body">
+		<div class="page-body-section-introduction">
+			<p>{{ item.acf.clients_introduction|safe }}</p>
+			<h3>! Clients List !</h3>
+		</div>					
+	</div>						
+</div>					
+<div class="page-body-section" id="services">
+	<div class="page-body-section-title">
+		<h3 class="bold">
+			{{ item.acf.services_title|safe }}
+		</h3>
+	</div>
+	<div class="page-body-section-body">
+		<div class="page-body-section-introduction">
+			<p>{{ item.acf.services_introduction|safe }}</p>
+			<h3>! Services List !</h3>
+		</div>					
+	</div>						
+</div>
+<div class="page-body-section" id="coaches">
+	<div class="page-body-section-title">
+		<h3 class="bold">
+			{{ item.acf.coaches_title|safe }}
+		</h3>
+	</div>
+	<div class="page-body-section-body">
+		<div class="page-body-section-introduction">
+			<p>{{ item.acf.coaches_introduction|safe }}</p>
+		</div>
+		<div class="coaches-body page-people-body">
+			{% if coaches %}
+				{% for person in coaches %}
+					{% include "../person.html" %}
+				{% endfor %}
+			{% endif %}			
+		</div>					
+	</div>						
+</div>								
+<div class="page-body-section" id="news">
+	<div class="page-body-section-title">
+		<h3 class="bold">
+			{{ item.acf.news_title|safe }}
+		</h3>
+	</div>
+	<div class="page-body-section-body">
+		<div class="page-body-section-introduction">
+			<p>{{ item.acf.news_introduction|safe }}</p>
+		</div>					
+	</div>						
+</div>
+<div class="page-body-section" id="events">
+	<div class="page-body-section-title">
+		<h3 class="bold">
+			{{ item.acf.events_title|safe }}
+		</h3>
+	</div>
+	<div class="page-body-section-body">
+		<div class="page-body-section-introduction">
+			<p>{{ item.acf.events_introduction|safe }}</p>
+		</div>					
+	</div>						
+</div>	

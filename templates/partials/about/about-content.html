@@ -1,0 +1,150 @@
+<div class="page-body-section" id="mission">
+	<div class="page-body-section-title">
+		<h3 class="bold">
+			{{ item.acf.mission_title|safe }}
+		</h3>
+	</div>
+	<div class="page-body-section-body">
+		<div class="wysiwyg">
+			{{ item.acf.mission_body|safe }}
+		</div>
+	</div>						
+</div>
+<div class="page-body-section" id="vision">
+	<div class="page-body-section-title">
+		<h3 class="bold">
+			{{ item.acf.vision_title|safe }}
+		</h3>
+	</div>
+	<div class="page-body-section-body">
+		<div class="wysiwyg">
+			{{ item.acf.vision_body|safe }}
+		</div>
+	</div>						
+</div>
+<div class="page-body-section" id="beliefs">
+	<div class="page-body-section-title">
+		<h3 class="bold">
+			{{ item.acf.beliefs_title|safe }}
+		</h3>
+	</div>
+	<div class="page-body-section-body">
+		<div class="wysiwyg">
+			{{ item.acf.beliefs_body|safe }}
+		</div>
+	</div>						
+</div>
+<div class="page-body-section" id="impact">
+	<div class="page-body-section-title">
+		<h3 class="bold">
+			{{ item.acf.impact_title|safe }}
+		</h3>
+	</div>
+	<div class="page-body-section-body">
+		<div class="page-body-section-introduction">
+			<p>	{{ item.acf.impact_introduction|safe }}</p>
+		</div>
+		<div class="impact-body">
+			<h3>Impact Slideshow</h3>
+		</div>
+	</div>						
+</div>
+<div class="page-body-section" id="history">
+	<div class="page-body-section-title">
+		<h3 class="bold">
+			{{ item.acf.history_title|safe }}
+		</h3>
+	</div>
+	<div class="page-body-section-body">
+		<div class="page-body-section-introduction">
+			<p>{{ item.acf.history_introduction|safe }}</p>
+		</div>					
+	</div>	
+	<div class="page-body-section-links">
+		<div class="button section-link-button">
+			<a href="/history" target="_blank">
+				{{ item.acf.history_link_text }}
+			</a>
+		</div>			
+	</div>							
+</div>
+<div class="page-body-section" id="board">
+	<div class="page-body-section-title">
+		<h3 class="bold">
+			{{ item.acf.board_title|safe }}
+		</h3>
+	</div>
+	<div class="page-body-section-body">
+		<div class="page-body-section-introduction">
+			<p>{{ item.acf.board_introduction|safe }}</p>
+		</div>
+		<div class="board-body page-people-body">
+			{% if board %}
+				{% for person in board %}
+					{% include "../person.html" %}
+				{% endfor %}
+			{% endif %}
+		</div>					
+	</div>						
+</div>
+<div class="page-body-section" id="staff">
+	<div class="page-body-section-title">
+		<h3 class="bold">
+			{{ item.acf.staff_title|safe }}
+		</h3>
+	</div>
+	<div class="page-body-section-body">
+		<div class="page-body-section-introduction">
+			<p>{{ item.acf.staff_introduction|safe }}</p>
+		</div>
+		<div class="staff-body page-people-body">
+			{% if staff %}
+				{% for person in staff %}
+					{% include "../person.html" %}
+				{% endfor %}
+			{% endif %}
+		</div>					
+	</div>						
+</div>									
+<div class="page-body-section" id="partners">
+	<div class="page-body-section-title">
+		<h3 class="bold">
+			{{ item.acf.partners_title|safe }}
+		</h3>
+	</div>
+	<div class="page-body-section-body">
+		<div class="page-body-section-introduction">
+			<p>{{ item.acf.partners_introduction|safe }}</p>
+		</div>
+		{% if item.acf.partners_link_text %}
+			<div class="page-body-section-links">
+				<div class="button section-link-button">
+					<a href="/partners" target="_blank">
+						{{ item.acf.partners_link_text }}
+					</a>
+				</div>			
+			</div>	
+		{% endif %}					
+	</div>						
+</div>
+<div class="page-body-section" id="opportunities">
+	<div class="page-body-section-title">
+		<h3 class="bold">
+			{{ item.acf.opportunities_title|safe }}
+		</h3>
+	</div>
+	<div class="page-body-section-body">
+		<div class="page-body-section-introduction">
+			<p>{{ item.acf.opportunities_introduction|safe }}</p>
+		</div>				
+	</div>
+	{% if item.acf.partners_link_text %}
+		<div class="page-body-section-links">
+			<div class="button section-link-button">
+				<a href="/opportunities" class="" target="_blank">
+					{{ item.acf.opportunities_link_text }}
+				</a>
+			</div>			
+		</div>	
+	{% endif %}						
+</div>

@@ -47,7 +47,7 @@ var filterFirst = require('../transformations/filter-first-result.js');
             globals.log.log( 'Successful request to about.', 'route-about:success-handler');
 
             try {
-                res.render('opportunities.html', urlReplace( restructureOpportunities( opportunities, jobs, options, globals ) ) );
+                res.render('page.html', urlReplace( restructureOpportunities( opportunities, jobs, options, globals ) ) );
             } catch( e ) {
                 globals.log.error( e, 'route-index:error-handler');
                 res.render('error.html', {error_code: 500, description: e.message });

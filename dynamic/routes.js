@@ -35,6 +35,8 @@ module.exports = function( express, app, config, globals ) {
 
     app.get('/about/opportunities', opportunities( globals.wp, config, globals ) );
 
+    //app.get('/about/partners', page( globals.wp, config, globals ) );
+
     app.get('/alumni', alumni( globals.wp, config, globals ) );
 
     app.get('/make-ri-stronger', makeRiStronger( globals.wp, config, globals ) );

@@ -82,5 +82,11 @@ $text-button: (
 		@extend .tracked-less;
 		display: inline-block;
 		text-align: center;
+		border: 2px solid $yellow;
+		@include transition(background .125s);
+
+		&:hover{
+			background: white;
+		}
 	}
 }

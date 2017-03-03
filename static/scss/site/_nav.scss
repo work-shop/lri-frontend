@@ -75,8 +75,8 @@ $text-nav: (
 	top: $nav-top-height;
 	left: 0;
 	z-index: 7;
-	background: white;
-	border-bottom: 2px solid $brand-ultra-light;
+	background: $brand-ultra-light;
+	border-bottom: 1px solid $light-blue;
 
 	@media screen and (max-width: $sm) {
 		top: 0;
@@ -118,6 +118,19 @@ $text-nav: (
 	}	
 
 }
+
+
+// .before{
+// 	#nav-top, #nav-main{
+// 		position: static;
+// 	}
+// }
+
+// .after{
+// 	#nav-main{
+// 		position: fixed;
+// 	}
+// }
 
 
 .logo{

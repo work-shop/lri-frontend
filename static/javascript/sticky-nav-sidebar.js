@@ -11,9 +11,7 @@ module.exports = function( $ ){
 		stickyNav.selector = selector;
 		stickyNav.navHeight = navHeight;
 		stickyNav.mobileNavHeight = mobileNavHeight;
-		stickyNav.element = $(stickyNav.selector);
-
-		//stickyNav.previousElement = $(stickyNav.previousElementSelector);
+		stickyNav.element = $(stickyNav.selector); 
 
 		calculatePositions();
 

@@ -16,7 +16,7 @@ $text-massive: (
   md: (36px, 36px),
   lg: (45px, 46px),
   xl: (55px, 56px)  
-) !default;
+);
 
 $text-huge: (
   xs: (16px, 24px),
@@ -24,23 +24,23 @@ $text-huge: (
   md: (24px, 30px),
   lg: (29px, 40px),
   xl: (29px, 40px)  
-) !default;
+);
 
 $text-large: (
   xs: (16px, 21px),
   sm: (18px, 23px),
-  md: (21px, 26px),
-  lg: (22px, 29px),
-  xl: (22px, 29px)
-) !default;
+  md: (22px, 31px),
+  lg: (26px, 35px),
+  xl: (27px, 37px)
+);
 
 $text-regular: (
-  xs: (12px, 20px),
-  sm: (13px, 22px),
-  md: (15px, 27px),
-  lg: (15px, 29px),
-  xl: (16px, 31px)
-) !default;
+  xs: (13px, 18px),
+  sm: (15px, 22px),
+  md: (17px, 24px),
+  lg: (19px, 28px),
+  xl: (20px, 30px)
+);
 
 $text-medium-small: (
   xs: (11px, 18px),
@@ -48,7 +48,7 @@ $text-medium-small: (
   md: (14px, 25px),
   lg: (15px, 29px),
   xl: (16px, 30px)
-) !default;
+);
 
 $text-small: (
   xs: (10px, 16px),
@@ -56,9 +56,16 @@ $text-small: (
   md: (11px, 18px),
   lg: (12px, 20px),
   xl: (12px, 20px)
-) !default;
+);
 
 
-
+//for wywiwyg and page content
+$text-page-body: (
+  xs: (13px, 21px),
+  sm: (15px, 25px),
+  md: (16px, 26px),
+  lg: (18px, 30px),
+  xl: (19px, 32px)
+);
 
 

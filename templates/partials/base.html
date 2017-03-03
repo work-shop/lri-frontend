@@ -5,9 +5,6 @@
 {# ------------------------------------------------------- #}
 
 {% block definitions %}
-{% set social_title = '' %}
-{% set social_description = '' %}
-{% set social_image = '' %}
 {% endblock %}
 
 <!DOCTYPE html>
@@ -18,7 +15,21 @@
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="{% block description %} {{ globals.site_description }} {% endblock %}">
 
-    <title>{% block title %} {{ globals.site_title }} {% endblock %} - {{ globals.site_description }}</title>
+    <title>
+        {% if pageType === 'home' %}
+            {{ globals.site_title|safe }} | {{ options.site_description|safe }}
+        {% elseif pageType === 'single' %}
+            {{ pageTitle|safe }} | {{ globals.site_title|safe }}
+        {% elseif pageType === 'archive' %}
+            {{ pageTitle|safe }} | {{ globals.site_title|safe }}
+        {% elseif pageType === 'page' %}
+            {{ pageTitle|safe }} | {{ globals.site_title|safe }}
+        {% elseif pageType === 'options' %}
+            {{ pageTitle|safe }} | {{ globals.site_title|safe }}
+        {% else %}
+            {{ globals.site_title|safe }} | {{ options.site_description|safe }}
+        {% endif %}          
+    </title>
 
     <!-- Facebook Open Graph data -->
     <meta property="og:title" content="{{social_title}}" />
@@ -55,6 +66,9 @@
 
         <script type="text/javascript" src="/public/bundle.js"></script>
 
+        <script src="https://use.typekit.net/uxi1vbd.js"></script>
+        <script>try{Typekit.load({ async: true });}catch(e){}</script>        
+
         {% if globals.development %}
             <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
             <script>
@@ -80,6 +94,7 @@
                 console.log( {{ staff|json|safe }});
                 console.log( 'board:' );
                 console.log( {{ board|json|safe }});
+                console.log( '=======================' );
             </script>
         {% endif %}
 

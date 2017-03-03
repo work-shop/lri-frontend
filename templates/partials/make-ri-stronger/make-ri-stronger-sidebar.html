@@ -1,0 +1,12 @@
+<ul>
+	<li><a href="#overview" class="sidebar-jump">{{ item.acf.overview_title }}</a></li>
+	<li><a href="#impact" class="sidebar-jump">{{ item.acf.impact_title }}</a></li>
+	<li><a href="#clients" class="sidebar-jump">{{ item.acf.clients_title }}</a></li>
+	<li><a href="#services" class="sidebar-jump">{{ item.acf.services_title }}</a></li>
+	<li><a href="#coaches" class="sidebar-jump">{{ item.acf.coaches_title }}</a></li>
+	<li><a href="#news" class="sidebar-jump">{{ item.acf.news_title }}</a></li>
+	<li><a href="#events" class="sidebar-jump">{{ item.acf.events_title }}</a></li>
+	{% if item.acf.sidebar_additional_links %}
+		{% include "../page/page-sidebar-additional-links.html" %}
+	{% endif %}		
+</ul>
