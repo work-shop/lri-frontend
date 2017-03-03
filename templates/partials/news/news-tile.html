@@ -1,0 +1,20 @@
+<div class="col-xs-6 news-tile jank">
+	<a href="{% if story.external %} {{ story.external_news_story_link }}{% else %}{{ story.link }}{% endif %}">
+		<div class="news-tile-label">
+			{% if story._embedded['wp:term'][0][0].name %}
+				<span>{{ story._embedded['wp:term'][0][0].name }}</span>
+			{% endif %}
+		</div>
+		{% if story.external %}
+			<div class="news-tile-arrow">
+				<span class="icon" data-icon="Ú"></span>
+			</div>
+		{% endif %}
+		<h4 class="news-tile-title">
+			{{ story.title.rendered|safe }}
+		</h4>
+		<h5 class="news-tile-excerpt serif">
+			{{ story.acf.excerpt|safe }}
+		</h5>
+	</a>
+</div>

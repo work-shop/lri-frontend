@@ -33,4 +33,14 @@
 			{% endif %}
 		{% endif %}		
 	</div>
+	{% if item.acf.page_contact %}
+		<div class="page-sidebar-contact">
+			<h4 class="page-sidebar-title">
+				Contact
+			</h4>		
+			<h4 class="page-sidebar-contact-info">
+				{{ item.acf.page_contact.post_title|safe }}
+			</h4>
+		</div>
+	{% endif %}
 </nav>

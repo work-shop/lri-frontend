@@ -208,24 +208,24 @@ $text-hero: (
 //page sidebar
 
 $sidebar-link-height: 36px;
-
-// #page-content{
-// 	border: 2px solid $light;
-// }
+$page-sidebar-top: $nav-drop + $page-body-section-margin;
 
 #page-content.active{
 	#page-sidebar{
 		position: fixed;
-		top: $nav-drop + $page-body-section-margin;
+		top: $page-sidebar-top;
 		right: $container-fluid-padding;
+		height: calc(100vh - #{$page-sidebar-top});
+		overflow: scroll;
 	}
 }
 
 #page-sidebar{
 
-	width: 280px;
+	width: 290px;
 	float: right;
 	position: relative;
+
 
 	.button{
 		display: block;
@@ -242,6 +242,7 @@ $sidebar-link-height: 36px;
 		@extend .uppercase;
 		margin-bottom: 20px;
 		@extend .tracked;
+		color: $yellow-darker;
 	}
 
 	li{
@@ -284,4 +285,8 @@ $sidebar-link-height: 36px;
 		}
 	}
 
+}
+
+.page-sidebar-contact{
+	margin-top: 30px;
 }

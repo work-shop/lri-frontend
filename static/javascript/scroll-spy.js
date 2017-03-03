@@ -131,8 +131,8 @@ module.exports = function($){
 						firstPass = false;
 					}
 
-					console.log('targetOffset: ' + scrollSpy.spyMap[i].targetOffset);
-					console.log( 'targetPosition: ' + targetPosition );
+					//console.log('targetOffset: ' + scrollSpy.spyMap[i].targetOffset);
+					//console.log( 'targetPosition: ' + targetPosition );
 
 					scrollSpy.currentElement.removeClass('active');
 
@@ -167,7 +167,7 @@ module.exports = function($){
 
 		var spyTrigger = debounce(function() {
 			window.requestAnimationFrame(spy);
-			console.log('scrollTop: ' + $(window).scrollTop());
+			//console.log('scrollTop: ' + $(window).scrollTop());
 		}, 10);
 
 		var spyUpdate = debounce(function() {

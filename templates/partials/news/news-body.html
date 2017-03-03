@@ -1,0 +1,16 @@
+<section class="block" id="news-content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-9">
+				{% if items %}
+					<div class="row">
+						{% for story in items %}
+							{% include "news-tile.html" %}
+						{% endfor %}
+
+					</div>
+				{% endif %}	
+			</div>
+		</div>
+	</div>
+</section>

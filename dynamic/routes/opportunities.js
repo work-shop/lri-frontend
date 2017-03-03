@@ -18,7 +18,7 @@ var filterFirst = require('../transformations/filter-first-result.js');
          */
          [
              wp.namespace( 'acf/v2' ).options().embed(),
-             wp.pages().embed().filter('name', 'opportunities-and-jobs' ),
+             wp.pages().embed().filter('name', 'opportunities' ),
              wp.jobs().embed()
          ],
 
@@ -42,9 +42,9 @@ var filterFirst = require('../transformations/filter-first-result.js');
          */
          function( req, res, options, opportunities, jobs ) {
 
-            console.log( opportunities );
+            //console.log( opportunities );
 
-            globals.log.log( 'Successful request to about.', 'route-about:success-handler');
+            globals.log.log( 'Successful request to opportunities.', 'route-about:success-handler');
 
             try {
                 res.render('page.html', urlReplace( restructureOpportunities( opportunities, jobs, options, globals ) ) );
@@ -52,7 +52,6 @@ var filterFirst = require('../transformations/filter-first-result.js');
                 globals.log.error( e, 'route-index:error-handler');
                 res.render('error.html', {error_code: 500, description: e.message });
             }
-
 
 
         },
