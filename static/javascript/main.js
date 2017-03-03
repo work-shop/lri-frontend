@@ -42,4 +42,9 @@ if($('body').hasClass('page')){
 	scrollSpy.initialize('.spy-start', '.spy-target', '.spy-link', 113);
 }
 
+if($('body').hasClass('page-events')){
+	var events = require('./events.js')($, configuration);
+	events.initialize();
+}
+
 

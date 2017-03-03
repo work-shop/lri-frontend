@@ -16,7 +16,7 @@
     "url": "git+https://github.com/work-shop/lri.workshopdesignstudio.org.git"
   },
   "keywords": [],
-  "author": "Work-Shop (Greg Nemes, Nic Schumann, Raghda Maaliki)",
+  "author": "Work-Shop (Greg Nemes, Nic Schumann)",
   "license": "ISC",
   "dependencies": {
     "argparse": "^1.0.7",
@@ -44,6 +44,7 @@
   "internal_api": "http://cms.lri.wsri.hostwp-json",
   "frontend": {
     "local_api": "http://localhost/lri/wp-json/wp/v2",
-    "remote_api": "http://cms.lri.wsri.host/wp-json/wp/v2"
+    "remote_api": "http://cms.lri.wsri.host/wp-json/wp/v2",
+    "eventbrite_token": "E52QJKT37PA37P6FABPA"
   }
 }

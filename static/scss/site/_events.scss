@@ -1,0 +1,22 @@
+
+.event-tile{
+	margin-bottom: 40px;
+
+	a{
+		height: 225px;
+		background: $ultra-light;
+		display: block;
+		padding: 3em 2em 0em 2em;
+		border-bottom: 3px solid $ultra-light;
+		@include transition(border, .125s);
+		&:hover{
+			border-bottom: 3px solid $yellow;
+		}
+	}
+
+	h3{
+		@extend .bold;
+		line-height: 1.1;
+		margin-bottom: 0;
+	}
+}
