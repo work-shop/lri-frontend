@@ -25,6 +25,25 @@ module.exports = function($) {
 			window.requestAnimationFrame( heroShift );	
 		});		
 
+		// $('.page-hero-scrolly').click(function(e){
+
+		// 	e.preventDefault();
+		// 	var href = $(this).attr("href").toLowerCase();
+
+		// 	jump(href, 125);	
+
+		// });
+
+
+	}
+
+
+	function jump(destination, offset){
+
+		$('html,body').animate({
+			scrollTop: $(destination).offset().top - offset
+		},1500);
+
 	}
 
 

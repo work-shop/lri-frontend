@@ -6,6 +6,7 @@ module.exports = function( $ ) {
 		if(!speed){
 			speed = 1500;
 		}
+		console.log('jump');
 
 		$('html,body').animate({
 			scrollTop: $(destination).offset().top - offset

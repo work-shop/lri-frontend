@@ -32,14 +32,14 @@ modals.setupModals();
 //site
 if( $('#page-hero') ){
 	var heroShift = require('./hero-shift.js')($);
-	jumpUtilities.setupJumpEvents('.page-hero-scrolly', -100, 567, 50, true);		
+	jumpUtilities.setupJumpEvents('.page-hero-scrolly', 225, 567, 50, true);		
 	heroShift.initialize();
 }
 
 //page specific
 if($('body').hasClass('page')){
 	jumpUtilities.setupJumpEvents('.sidebar-jump', 220, 567, 100, true);	
-	scrollSpy.initialize('.spy-start', '.spy-target', '.spy-link', 113);
+	//scrollSpy.initialize('.spy-start', '.spy-target', '.spy-link', 113);
 }
 
 if($('body').hasClass('page-events')){
