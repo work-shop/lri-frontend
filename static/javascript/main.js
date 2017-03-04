@@ -19,7 +19,7 @@ var modals = require('./modals.js')($);
 // var stickyNav = require('./sticky-nav.js')($);
 // var stickyNavSidebar = require('./sticky-nav.js')($);
 //var scrollSpy = require('./scroll-spy.js')($);
-var nav = require('./nav.js')($);
+var stickies = require('./stickies.js')($);
 
 
 
@@ -29,20 +29,19 @@ loading.setupLoading();
 slideshows.setupSlideshows();
 menuUtilities.setupMenus();
 modals.setupModals();
-nav.setupNav();
+stickies.initialize();
 
 
 //site
 if( $('#page-hero') ){
 	var heroShift = require('./hero-shift.js')($);
-	jumpUtilities.setupJumpEvents('.page-hero-scrolly', 125, 567, 50, true);		
+	jumpUtilities.setupJumpEvents('.page-hero-scrolly', 75, 567, 50, true);		
 	heroShift.initialize();
 }
 
 //page specific
-if($('body').hasClass('page')){
-	jumpUtilities.setupJumpEvents('.sidebar-jump', 220, 567, 100, true);
-	//var stickySidebar = require('./sticky-sidebar.js')($);		
+if( $('#page-sidebar').length > 0 ){
+	jumpUtilities.setupJumpEvents('.sidebar-jump', 175, 567, 100, true);
 }
 
 if($('body').hasClass('page-events')){

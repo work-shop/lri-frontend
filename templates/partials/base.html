@@ -51,50 +51,78 @@
 
     {% block head_extra %}{% endblock %}
 
-</head>
-<body class="loading menu-closed modal-off before spy {% block body_classes %}{% endblock %} ">
+    </head>
+    <body class="loading menu-closed modal-off sidebar-before before spy {% block body_classes %}{% endblock %} ">
 
-    {% block body %}
+        {% block body %}
 
-        {% include "ie.html" %}
-        {% include "header.html" %}
+            {% include "ie.html" %}
+            {% include "header.html" %}
 
-        <main id="content">{% block content %}{% endblock %}</main>
+            <main id="content">{% block content %}{% endblock %}</main>
 
-        {% include "footer.html" %}
-        {% include "modals.html" %}
+            {% include "footer.html" %}
+            {% include "modals.html" %}
 
-        <script type="text/javascript" src="/public/bundle.js"></script>
+            <script type="text/javascript" src="/public/bundle.js"></script>
 
-        <script src="https://use.typekit.net/uxi1vbd.js"></script>
-        <script>try{Typekit.load({ async: true });}catch(e){}</script>        
+            <script src="https://use.typekit.net/uxi1vbd.js"></script>
+            <script>try{Typekit.load({ async: true });}catch(e){}</script>        
 
-        {% if globals.development %}
-            <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
-            <script>
-                console.log( 'options:' );
-                console.log( {{ options|json|safe }});
-                console.log( 'globals:' );
-                console.log( {{ globals|json|safe }});
-                console.log( '=======================' );
-                console.log( 'item:' );
-                console.log( {{ item|json|safe }});
-                console.log( 'items:' );
-                console.log( {{ items|json|safe }});
-                console.log( 'categories:' );
-                console.log( {{ categories|json|safe }});
-                console.log( '=======================' );
-                console.log( 'news:' );
-                console.log( {{ news|json|safe }});
-                console.log( 'jobs:' );
-                console.log( {{ jobs|json|safe }});
-                console.log( 'coaches:' );
-                console.log( {{ coaches|json|safe }});
-                console.log( 'staff:' );
-                console.log( {{ staff|json|safe }});
-                console.log( 'board:' );
-                console.log( {{ board|json|safe }});
-                console.log( '=======================' );
+            {% if globals.development %}
+                <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+                <script>
+                    console.log( '===== JSON CONTEXT =====' );
+                    {% if options %} 
+                        console.log( 'options:' );
+                        console.log( {{ options|json|safe }});
+                        console.log( '========================' );
+                    {% endif %} 
+                    {% if globals %}
+                        console.log( 'globals:' );
+                        console.log( {{ globals|json|safe }});
+                        console.log( '========================' );
+                    {% endif %} 
+                    {% if item %}
+                        console.log( 'item:' );
+                        console.log( {{ item|json|safe }});
+                        console.log( '========================' );
+                    {% endif %}  
+                    {% if items %}
+                        console.log( 'items:' );
+                        console.log( {{ items|json|safe }});
+                        console.log( '========================' );
+                    {% endif %}  
+                    {% if categories %}
+                        console.log( 'categories:' );
+                        console.log( {{ categories|json|safe }});
+                        console.log( '========================' );
+                    {% endif %}  
+                    {% if news %}
+                        console.log( 'news:' );
+                        console.log( {{ news|json|safe }});
+                        console.log( '========================' );
+                    {% endif %}  
+                    {% if jobs %}
+                        console.log( 'jobs:' );
+                        console.log( {{ jobs|json|safe }});
+                        console.log( '========================' );
+                    {% endif %}     
+                    {% if coaches %}
+                        console.log( 'coaches:' );
+                        console.log( {{ coaches|json|safe }});
+                        console.log( '========================' );
+                    {% endif %}     
+                    {% if staff %}
+                        console.log( 'staff:' );
+                        console.log( {{ staff|json|safe }});
+                        console.log( '========================' );
+                    {% endif %}        
+                    {% if board %}
+                        console.log( 'board:' );
+                        console.log( {{ board|json|safe }});
+                        console.log( '========================' );
+                    {% endif %} 
             </script>
         {% endif %}
 
@@ -109,7 +137,7 @@
 
         {% block scripts_extra %}{% endblock %}
 
-    {% endblock %}
+        {% endblock %}
 
-</body>
-</html>
+    </body>
+    </html>

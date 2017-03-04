@@ -10,31 +10,22 @@ $text-sidebar: (
 	);
 
 $sidebar-link-height: 36px;
-$page-sidebar-top: $nav-drop + $page-body-section-margin;
+$page-sidebar-top: $nav-height + $page-body-section-margin;
 
 
+#page-sidebar{
 
-#page-content.active{
-	#page-sidebar{
+	&.fixed{
 		position: fixed;
 		top: $page-sidebar-top;
 		right: $container-fluid-padding;
 		height: calc(100vh - #{$page-sidebar-top});
 		overflow: scroll;
 	}
-}
-
-#page-content{
-	background: $light-blue;
-}
-
-
-#page-sidebar{
 
 	width: 290px;
 	float: right;
 	position: relative;
-	outline: 1px solid $light;
 
 	.button{
 		display: block;
