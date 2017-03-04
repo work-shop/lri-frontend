@@ -19,7 +19,7 @@ module.exports = function($, configuration) {
 
 
 	function getEvents(){
-		console.log(upcomingEvents);
+		//console.log(upcomingEvents);
 		for( var i = 0; i < upcomingEvents.length; i++ ){
 			requestEvent( upcomingEvents[i].eventbrite_id, true );
 		}
@@ -39,21 +39,21 @@ module.exports = function($, configuration) {
 			dataType: 'json'
 		})
 		.done(function( data ) {
-			console.log("success loading events");
+			//console.log("success loading events");
 			renderEvent( data, upcoming );
 		})
 		.fail(function() {
 			console.log("error loading events");
 		})
 		.always(function() {
-			console.log("completed request for events");
+			//console.log("completed request for events");
 		});
 	}
 
 
 	function renderEvent( response, upcoming ){
 		
-		var eventMarkup = generateMarkup( response );
+		var eventMarkup = generateMarkup( response, upcoming );
 		
 	}
 
@@ -66,7 +66,6 @@ module.exports = function($, configuration) {
 		//m4 = d.format('dddd, mmmm dS, yyyy, h:MM tt');
 		m4 = d;
 		m6 = event.name.text;
-		//console.log(m2 + m4 + m6);
 		
 		var markup = m1+m2+m3+m4+m5+m6+m7;
 
