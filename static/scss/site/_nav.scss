@@ -12,12 +12,11 @@ $text-nav: (
 #nav-top{
 	height: $nav-top-height;
 	background: #001A39;
-	position: fixed;
+	//position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	z-index: 7;
-
 
 	ul{
 		float: right;
@@ -54,6 +53,7 @@ $text-nav: (
 	}
 }
 
+
 #nav-menu{
 	position: absolute;
 	right: $container-fluid-padding;
@@ -71,9 +71,8 @@ $text-nav: (
 #nav-main{
 	height: $nav-height;
 	width: 100%;
-	position: fixed;
-	top: $nav-top-height;
 	left: 0;
+	top: 0;
 	z-index: 7;
 	background: $brand-ultra-light;
 	border-bottom: 1px solid $light-blue;
@@ -120,17 +119,18 @@ $text-nav: (
 }
 
 
-// .before{
-// 	#nav-top, #nav-main{
-// 		position: static;
-// 	}
-// }
+.before{
+	#nav-top, #nav-main{
+		//position: static;
+	}
+}
 
-// .after{
-// 	#nav-main{
-// 		position: fixed;
-// 	}
-// }
+.after{
+	#nav-main{
+		position: fixed;
+		top: 0;
+	}
+}
 
 
 .logo{

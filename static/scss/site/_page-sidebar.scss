@@ -1,0 +1,101 @@
+
+//page sidebar
+
+$text-sidebar: (
+	xs: (13px, 27px),
+	sm: (13px, 27px),
+	md: (14px, 29px),
+	lg: (15px, 31px),
+	xl: (17px, 36px)
+	);
+
+$sidebar-link-height: 36px;
+$page-sidebar-top: $nav-drop + $page-body-section-margin;
+
+
+
+#page-content.active{
+	#page-sidebar{
+		position: fixed;
+		top: $page-sidebar-top;
+		right: $container-fluid-padding;
+		height: calc(100vh - #{$page-sidebar-top});
+		overflow: scroll;
+	}
+}
+
+#page-content{
+	background: $light-blue;
+}
+
+
+#page-sidebar{
+
+	width: 290px;
+	float: right;
+	position: relative;
+	outline: 1px solid $light;
+
+	.button{
+		display: block;
+		background: $yellow;
+		border-radius: 3px;
+		text-align: center;
+		margin-bottom: 20px;
+		@extend .bold;
+		@extend .tracked;
+	}
+	
+	.page-sidebar-title{
+		@extend .bold;
+		@extend .uppercase;
+		margin-bottom: 20px;
+		@extend .tracked;
+		color: $yellow-darker;
+	}
+
+	li{
+		
+		height: $sidebar-link-height;
+		margin-bottom: 0px;
+
+		a{
+			@include text-size($text-sidebar);
+			display: inline-block;
+			height: $sidebar-link-height;
+			line-height: $sidebar-link-height;
+			vertical-align: middle;
+			
+			&:hover{
+				color: $brand-bright;
+
+				.icon{
+					&:before{
+						@include transform(rotate(-45deg));
+					}
+				}
+
+			}
+		}
+	}
+
+	.additional-link{
+		.icon{
+			&:before{
+				color: $medium;
+				height: $sidebar-link-height;
+				line-height: $sidebar-link-height;
+				display: inline-block;
+				margin-left: 10px;
+				font-size: 28px;
+				@include transform(rotate(0deg));
+				@include transition(transform .125s);
+			}
+		}
+	}
+
+}
+
+.page-sidebar-contact{
+	margin-top: 30px;
+}

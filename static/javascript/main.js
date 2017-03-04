@@ -18,7 +18,9 @@ var slideshows = require('./slideshows.js')($, slick);
 var modals = require('./modals.js')($);
 // var stickyNav = require('./sticky-nav.js')($);
 // var stickyNavSidebar = require('./sticky-nav.js')($);
-var scrollSpy = require('./scroll-spy.js')($);
+//var scrollSpy = require('./scroll-spy.js')($);
+var nav = require('./nav.js')($);
+
 
 
 //setup utilities
@@ -27,19 +29,20 @@ loading.setupLoading();
 slideshows.setupSlideshows();
 menuUtilities.setupMenus();
 modals.setupModals();
+nav.setupNav();
 
 
 //site
 if( $('#page-hero') ){
 	var heroShift = require('./hero-shift.js')($);
-	jumpUtilities.setupJumpEvents('.page-hero-scrolly', 225, 567, 50, true);		
+	jumpUtilities.setupJumpEvents('.page-hero-scrolly', 125, 567, 50, true);		
 	heroShift.initialize();
 }
 
 //page specific
 if($('body').hasClass('page')){
-	jumpUtilities.setupJumpEvents('.sidebar-jump', 220, 567, 100, true);	
-	//scrollSpy.initialize('.spy-start', '.spy-target', '.spy-link', 113);
+	jumpUtilities.setupJumpEvents('.sidebar-jump', 220, 567, 100, true);
+	//var stickySidebar = require('./sticky-sidebar.js')($);		
 }
 
 if($('body').hasClass('page-events')){

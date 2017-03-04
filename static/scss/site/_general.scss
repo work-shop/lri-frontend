@@ -25,10 +25,15 @@
 
 body{
 	background-color: $body-background-color;
-	padding-top: $nav-height + $nav-top-height;
+	transition: none !important;
+	padding-top: 0;	
+
+	&.after{
+		padding-top: $nav-height;
+	}
 
 	@media screen and (max-width: $sm) {
-		padding-top: $nav-height-mobile;
+		//padding-top: $nav-height-mobile;
 	}
 }
 
