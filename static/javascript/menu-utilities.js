@@ -9,17 +9,20 @@ module.exports = function($) {
 			$('.menu-toggle').click(function(e) {
 				e.preventDefault();
 				menuToggle();
-			});			
-		});
+			});	
 
+			$('#blanket').click(function(e) {
+				e.preventDefault();
+				var menu = $('.menu-field.open');
+				closeFieldMenu( menu );
+			});					
 
-		$( document ).ready( function() {
 			$('.menu-field-toggle').click(function(e) {
 				var menu = $(this).data('menu');
 				e.preventDefault();
 				menuFieldToggle( menu, $(this) );
-			});			
-		});		
+			});						
+		});
 
 	}
 

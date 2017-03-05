@@ -105,20 +105,24 @@ $text-menu-link: (
 
 }
 
-// .menu-open{
-// 	#blanket.on{
-// 		width: 50%;
-// 		left: 0;
-// 		background: yellow;
-// 		@extend .vhfull;
-// 		top: $nav-drop;
-// 		opacity: 1;
-// 	}
-// }
+.menu-open{
+	#blanket.on{
+		width: 50%;
+		left: 0;
+		background: transparentize($brand-ultra-light, .8);
+		@extend .vhfull;
+		top: $nav-drop;
+		opacity: 1;
+	}
+}
 
 .after{
 	.menu-field{
 		top: $nav-drop-after;
 		height: calc( 100vh - #{$nav-drop-after} );
+	}
+
+	#blanket.on{
+		top: $nav-drop-after;
 	}
 }
