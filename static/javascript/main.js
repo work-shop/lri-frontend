@@ -44,9 +44,14 @@ if( $('#page-sidebar').length > 0 ){
 	jumpUtilities.setupJumpEvents('.sidebar-jump', 175, 567, 100, true);
 }
 
-if($('body').hasClass('page-events')){
+if($('body').hasClass('archive-events')){
 	var events = require('./events.js')($, configuration);
 	events.initialize();
+}
+
+if($('body').hasClass('page-home')){
+	var wwd = require('./wwd.js')($);
+	wwd.initialize();
 }
 
 

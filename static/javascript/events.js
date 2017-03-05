@@ -13,13 +13,13 @@ module.exports = function($, configuration) {
 	var pastEvents = _itemPastEvents;
 
 	var m1 = '<div class="col-xs-6 event event-tile"><a href="';
-	var m3 = '" ><h4>';
-	var m5 = '</h4><h3>';
-	var m7 = '</h3></a></div>';
+	var m3 = '" ><div class="event-image"><img src="';
+	var m5 = '"></div><div class="event-text"><h5>';
+	var m7 = '</h5><h4>';
+	var m9 = '</h4></div></a></div>';
 
 
 	function getEvents(){
-		//console.log(upcomingEvents);
 		for( var i = 0; i < upcomingEvents.length; i++ ){
 			requestEvent( upcomingEvents[i].eventbrite_id, true );
 		}
@@ -52,22 +52,28 @@ module.exports = function($, configuration) {
 
 
 	function renderEvent( response, upcoming ){
-		
+
+		console.log(response);
+
 		var eventMarkup = generateMarkup( response, upcoming );
 		
 	}
 
 
 	function generateMarkup( event, upcoming ){
-		var m2,m4,m6;
+		var m2,m4,m6,m8;
 		
 		m2 = event.url;
+		
+		m4 = event.logo.url;
+
 		var d = new Date(event.start.local);
 		//m4 = d.format('dddd, mmmm dS, yyyy, h:MM tt');
-		m4 = d;
-		m6 = event.name.text;
+		m6 = formatDate(d);	
 		
-		var markup = m1+m2+m3+m4+m5+m6+m7;
+		m8 = event.name.text;
+
+		var markup = m1+m2+m3+m4+m5+m6+m7+m8+m9;
 
 		if( upcoming ){
 			$upcomingEventsContainer.append( markup );			
@@ -76,6 +82,15 @@ module.exports = function($, configuration) {
 			$pastEventsContainer.append( markup );			
 		}
 	}	
+
+
+	function formatDate( d ){
+		var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+		var months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+		var month = d.getMonth();
+    	var date = months[month] + ' ' + d.getDate() + ', ' + d.getFullYear();
+    	return date; 
+	}
 
 
 	//setup this process

@@ -54,12 +54,6 @@ module.exports = function( $ ){
 		if( sidebar ){
 			stickies.sidebar = $('#page-sidebar');
 			stickies.sidebarOffset = stickies.sidebar.offset().top;
-			console.log(stickies.sidebarOffset);
-
-			var testOffset = stickies.sidebar.offset();
-			testOffset = testOffset.top;
-			console.log(testOffset);
-
 			stickies.sidebarTriggerPosition = stickies.sidebarOffset - mainNavHeight - sidebarPadding;			
 		}
 
@@ -79,7 +73,6 @@ module.exports = function( $ ){
 
 			//sidebar
 			if( sidebar ){
-				console.log( $('body').scrollTop() );
 				if ( $('body').scrollTop() >= stickies.sidebarTriggerPosition && stickies.sidebar.hasClass('static') ){
 					toggleSidebar();
 				}else if($('body').scrollTop() < stickies.sidebarTriggerPosition && stickies.sidebar.hasClass('fixed') ){

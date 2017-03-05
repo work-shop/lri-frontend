@@ -69,8 +69,8 @@ $text-button: (
 	xs: (11px, 16px),
 	sm: (12px, 18px),
 	md: (12px, 12px),
-	lg: (13px, 13px),
-	xl: (13px, 13px)
+	lg: (12px, 12px),
+	xl: (12px, 12px)
 	);
 
 .button{
@@ -84,7 +84,7 @@ $text-button: (
 		color: $dark;
 		@extend .uppercase;	
 		border-radius: 2px;
-		@extend .tracked-less;
+		letter-spacing: .13em;
 		display: inline-block;
 		text-align: center;
 		border: 2px solid $yellow;

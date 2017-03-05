@@ -3,20 +3,32 @@
 	margin-bottom: 40px;
 
 	a{
-		height: 225px;
-		background: $ultra-light;
 		display: block;
-		padding: 3em 2em 0em 2em;
-		border-bottom: 3px solid $ultra-light;
-		@include transition(border, .125s);
+		
 		&:hover{
-			border-bottom: 3px solid $yellow;
+			.event-text{
+				border-bottom: 3px solid $yellow;
+			}
 		}
 	}
 
-	h3{
+	img{
+		display: block;
+	}
+
+	.event-text{
+		background: $ultra-light;
+		padding: 15px;
+		border-bottom: 3px solid $ultra-light;
+		height: 150px;
+		margin-top: 0;
+		@include transition(border, .125s);
+	}
+
+	h4{
 		@extend .bold;
 		line-height: 1.1;
 		margin-bottom: 0;
+		margin-top: 0;
 	}
 }
