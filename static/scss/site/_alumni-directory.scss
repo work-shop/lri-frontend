@@ -12,7 +12,7 @@ $d-row-height: 55px;
 		margin: 0;
 		border: 0;
 		outline: 0;	
-		padding: 7px;			
+		padding: 10px;			
 	}
 
 	th{
@@ -35,4 +35,40 @@ $d-row-height: 55px;
 			background: $ultra-light;
 		}
 	}
+}
+
+.directory-filters{
+	margin-bottom: 20px;
+	
+	li{
+		margin-right: 30px;
+		display: inline-block;
+		//height: 30px;
+
+		&.select-style{
+			// border: 1px solid #ccc;
+			// width: 120px;
+			// border-radius: 3px;
+			// overflow: hidden;
+			// background: #fafafa;
+			// padding: 2px;	
+		}
+
+	}
+
+	select{
+		// width: 100%;
+		// border: none;
+		// box-shadow: none;
+		// background: transparent;
+		// background-image: none;
+		// -webkit-appearance: none;
+		// color: $brand;
+		// font-size: 16px;
+
+		font-size: 16px;
+		width: 100px;
+
+	}
+
 }
