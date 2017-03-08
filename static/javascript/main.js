@@ -51,8 +51,8 @@ if($('body').hasClass('page-home')){
 	wwd.initialize();
 }
 
-if($('body').hasClass('page-directory')){
-	var directory = require('./directory.js')($);
+if($('body').hasClass('page-alumni-directory')){
+	var directory = require('./directory.js')($, configuration);
 	directory.initialize();
 }
 

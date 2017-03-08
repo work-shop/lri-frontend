@@ -12,7 +12,7 @@ module.exports = function($, configuration) {
 	var m7 = '</td><td class="d-title">';
 	var m9 = '</td></tr>';
 	var initialType = 'lri';
-	var initialYear = 2016;	
+	var initialYear = '2016';	
 
 
 	function getAlumni( classType, classYear ){
@@ -22,7 +22,7 @@ module.exports = function($, configuration) {
 			classYear = initialYear;
 		}
 
-		requestAlumni( classType, classYear );		
+		requestAlumni( 'lri', '2016' );		
 
 	}
 
@@ -31,6 +31,7 @@ module.exports = function($, configuration) {
 	function requestAlumni( classType, classYear ){
 
 		var endpoint = base + '/' + classType + '/' + classYear;
+		console.log(endpoint);
 
 		$.ajax({
 			url: endpoint,
@@ -51,7 +52,7 @@ module.exports = function($, configuration) {
 
 	function parse( response ){
 
-		var alumni = response.content.results;
+		var alumni = response.content.records;
 
 		if( typeof alumni !== 'undefined'){
 			if ( alumni.length > 0 ){
@@ -67,10 +68,10 @@ module.exports = function($, configuration) {
 		
 		var m2,m4,m6,m8;
 		
-		m2 = item.name;
-		m4 = item.year;
-		m6 = item.current_employer;	
-		m8 = item.current_title;
+		m2 = item.Name;
+		m4 = item.Class_Year__c;
+		m6 = item.Current_Employer__c;	
+		m8 = item.Current_Title__c;
 
 		var markup = m1+m2+m3+m4+m5+m6+m7+m8+m9;
 
