@@ -30,16 +30,18 @@ module.exports = function( express, app, config ) {
                     loginUrl: config.salesforce.endpoint
                 });
 
-                conn.login(config.salesforce.username, [config.salesforce.password, config.salesforce.token].join(''), function( err, userInfo ) {
+                conn.login(config.salesforce.username, [config.salesforce.password, config.salesforce.token].join(''), function( err ) {
 
                     if ( err ) {
                         log.error( err, 'initial-salesforce-connection-error');
                         process.exit( 1 );
                     }
 
-                    log.log( util.inspect( userInfo, { depth: 4 } ), "salesforce-authentication");
+                    log.log( "salesforce connection established.", "salesforce-authentication");
 
                     var globals = generateConfig( express, app, config, schema, conn, log );
+
+                    console.log( config.port );
 
                     routes( express, app, config, globals );
 
