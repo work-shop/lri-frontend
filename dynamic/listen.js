@@ -34,7 +34,15 @@ module.exports = function( app, config, globals ) {
 
 		process.on('SIGTERM', function( ) { process.exit(0); });
 
-		process.on('exit', function( ) { fs.unlinkSync( config.socket ); });
+		process.on('exit', function( ) {
+
+            globals.salesforce.logout( function( err ) {
+
+                fs.unlinkSync( config.socket );
+
+            })
+
+        });
 
 	}
 

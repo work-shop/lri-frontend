@@ -49,3 +49,6 @@ public/*.js
 
 # Output of 'npm pack'
 *.tgz
+
+# Credentials
+.salesforce.conf.json

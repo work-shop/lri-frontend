@@ -17,7 +17,7 @@ var cms = require('./cms.js');
  * @param log Logger a logger object to install on the globals
  * @return an object of global parameters to use in the server's routes.
  */
-module.exports = function( express, app, config, schema, log ) {
+module.exports = function( express, app, config, schema, conn, log ) {
 
     /**
      * We start by instantiating a number of
@@ -44,6 +44,7 @@ module.exports = function( express, app, config, schema, log ) {
         site_url: schema.home,
         development: config.development || false,
         log: log,
+        salesforce: conn,
         wp: cms( schema, config )
     };
 
