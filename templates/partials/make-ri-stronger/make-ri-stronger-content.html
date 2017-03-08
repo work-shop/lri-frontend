@@ -21,7 +21,20 @@
 			<p>{{ item.acf.impact_introduction|safe }}</p>
 		</div>
 		<div class="impact-body">
-			<h3>! Impact Slideshow !</h3>
+			{% if item.acf.impact_body %}
+				<div class="slick-impact slick-default">
+					{% for impact_item in item.acf.impact_body %}
+						<div class="slide slide-impact impact-item">
+							<h2 class="impact-item-number">
+								{{ impact_item.impact_item_statistic }}
+							</h2>
+							<h4 class="serif" class="impact-item-label">
+								{{ impact_item.impact_item_label }}
+							</h4>							
+						</div>
+					{% endfor %}
+				</div>
+			{% endif %}
 		</div>
 	</div>						
 </div>
@@ -34,8 +47,25 @@
 	<div class="page-body-section-body">
 		<div class="page-body-section-introduction">
 			<p>{{ item.acf.clients_introduction|safe }}</p>
-			<h3>! Clients List !</h3>
-		</div>					
+		</div>	
+		<div class="clients-body">
+			{% if item.acf.clients_body %}
+				<div class="slick-clients slick-default">
+					{% for client in item.acf.clients_body %}
+						{% if loop.index0 === 0 || loop.index0 % 6 === 0 %}
+							<div class="slide slide-clients">							
+							{% endif %}
+							<a href="{{ client.client_website }}" target="_blank" class="client-item">
+								<img src="{{ client.client_logo.sizes.xs }}">
+							</a>
+							{% if loop.index0 % 6 === 5 || loop.last %}
+							</div>
+						{% endif %}
+					{% endfor %}
+
+				</div>
+			{% endif %}
+		</div>						
 	</div>						
 </div>					
 <div class="page-body-section" id="services">
@@ -47,8 +77,25 @@
 	<div class="page-body-section-body">
 		<div class="page-body-section-introduction">
 			<p>{{ item.acf.services_introduction|safe }}</p>
-			<h3>! Services List !</h3>
-		</div>					
+		</div>	
+		<div class="services-body">
+			{% if item.acf.strengths_services %}
+				<div class="slick-clients slick-default">
+					{% for client in item.acf.clients_body %}
+						{% if loop.index0 === 0 || loop.index0 % 6 === 0 %}
+							<div class="slide slide-clients">							
+							{% endif %}
+							<a href="{{ client.client_website }}" target="_blank" class="client-item">
+								<img src="{{ client.client_logo.sizes.xs }}">
+							</a>
+							{% if loop.index0 % 6 === 5 || loop.last %}
+							</div>
+						{% endif %}
+					{% endfor %}
+
+				</div>
+			{% endif %}
+		</div>			
 	</div>						
 </div>
 <div class="page-body-section" id="coaches">
@@ -79,18 +126,34 @@
 	<div class="page-body-section-body">
 		<div class="page-body-section-introduction">
 			<p>{{ item.acf.news_introduction|safe }}</p>
-		</div>					
+		</div>	
+		<div class="news-body">
+			{% if news %}
+				<div class="row">
+					{% for story in news %}
+						{% include "../news/news-tile.html" %}
+					{% endfor %}						
+				</div>
+			{% endif %}	
+		</div>				
 	</div>						
 </div>
-<div class="page-body-section" id="events">
-	<div class="page-body-section-title">
-		<h3 class="bold">
-			{{ item.acf.events_title|safe }}
-		</h3>
-	</div>
-	<div class="page-body-section-body">
-		<div class="page-body-section-introduction">
-			<p>{{ item.acf.events_introduction|safe }}</p>
-		</div>					
-	</div>						
-</div>	
+{% if item.acf.events %}
+	<div class="page-body-section" id="events">
+		<div class="page-body-section-title">
+			<h3 class="bold">
+				{{ item.acf.events_title|safe }}
+			</h3>
+		</div>
+		<div class="page-body-section-body">
+			<div class="page-body-section-introduction">
+				<p>{{ item.acf.events_introduction|safe }}</p>
+			</div>	
+			<div class="events-body" id="events-upcoming">
+			</div>				
+		</div>						
+	</div>	
+	<script>
+		var _makeRiStrongerEvents = {{events|json|safe}};
+	</script>	
+{% endif %}

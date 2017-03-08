@@ -3,28 +3,39 @@
 
 module.exports = function($, configuration) {
 
-	//var dateFormat = require('date-format.js');
-
 	var base = 'https://www.eventbriteapi.com/v3/events/';
 	var token = '/?token=' + configuration.eventbrite_token;
+
+	var upcomingEvents, pastEvents;
+
+	if($('body').hasClass('page-make-ri-stronger')){
+		upcomingEvents = _makeRiStrongerEvents;
+	}else{
+		upcomingEvents = _itemUpcomingEvents;
+		pastEvents = _itemPastEvents;		
+	}
+
 	var $upcomingEventsContainer = $('#events-upcoming');
 	var $pastEventsContainer = $('#events-past');
-	var upcomingEvents = _itemUpcomingEvents;
-	var pastEvents = _itemPastEvents;
 
 	var m1 = '<div class="col-xs-6 event event-tile"><a href="';
-	var m3 = '" ><div class="event-image"><img src="';
+	var m3 = '" target="_blank"><div class="event-image"><img src="';
 	var m5 = '"></div><div class="event-text"><h5>';
 	var m7 = '</h5><h4>';
 	var m9 = '</h4></div></a></div>';
 
 
 	function getEvents(){
-		for( var i = 0; i < upcomingEvents.length; i++ ){
-			requestEvent( upcomingEvents[i].eventbrite_id, true );
+		if( typeof upcomingEvents !== 'undefined' ){
+			for( var i = 0; i < upcomingEvents.length; i++ ){
+				requestEvent( upcomingEvents[i].eventbrite_id, true );
+			}
 		}
-		for( var i = 0; i < pastEvents.length; i++ ){
-			requestEvent( pastEvents[i].eventbrite_id, false );
+		if( typeof pastEvents !== 'undefined' ){
+			console.log('pastEvents');
+			for( var i = 0; i < pastEvents.length; i++ ){
+				requestEvent( pastEvents[i].eventbrite_id, false );
+			}
 		}
 	}
 
@@ -52,8 +63,6 @@ module.exports = function($, configuration) {
 
 
 	function renderEvent( response, upcoming ){
-
-		console.log(response);
 
 		var eventMarkup = generateMarkup( response, upcoming );
 		
@@ -88,8 +97,8 @@ module.exports = function($, configuration) {
 		var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 		var months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
 		var month = d.getMonth();
-    	var date = months[month] + ' ' + d.getDate() + ', ' + d.getFullYear();
-    	return date; 
+		var date = months[month] + ' ' + d.getDate() + ', ' + d.getFullYear();
+		return date; 
 	}
 
 

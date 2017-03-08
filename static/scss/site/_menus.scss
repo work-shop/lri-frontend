@@ -19,7 +19,7 @@ $text-menu-link: (
 	background: transparentize($brand-bright, .02);
 	z-index: 8;
 	padding-top: 70px;
-	box-shadow: -1px 1px 3px $medium-dark;
+	box-shadow: -1px 1px 3px transparentize($dark, .6);
 	@include transform(rotateX(-90deg));
 	@include transform-origin(50% 0%);
 	@include transition(opacity .2s ease-in .1s);
@@ -105,14 +105,31 @@ $text-menu-link: (
 
 }
 
+#blanket{
+	width: 50%;
+	left: 0;
+	background: transparent;
+	opacity: 0;
+	@include transform(translateY(-200%));
+	@extend .vhfull;
+	// @include transition(opacity .01s ease-in .29s);	
+
+	@media screen and (max-width: $lg) {
+		width: 34%;
+	}
+
+	@media screen and (max-width: $sm) {
+		display: none;
+	}		
+
+}
+
 .menu-open{
 	#blanket.on{
-		width: 50%;
-		left: 0;
-		background: transparentize($brand-ultra-light, .8);
-		@extend .vhfull;
+		//background: transparentize($brand-ultra-light, .8);
 		top: $nav-drop;
 		opacity: 1;
+		@include transform(translateY(0%));
 	}
 }
 

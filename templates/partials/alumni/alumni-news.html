@@ -1,0 +1,20 @@
+<div class="page-body-section" id="news">
+	<div class="page-body-section-title">
+		<h3 class="bold">
+			Alumni News
+		</h3>
+	</div>
+	<div class="page-body-section-body">
+		<div class="news-body">
+			{% if news %}
+				<div class="row">
+					{% for story in news %}
+						{% if loop.index < 5 %}
+							{% include "../news/news-tile.html" %}
+						{% endif %}
+					{% endfor %}						
+				</div>
+			{% endif %}	
+		</div>				
+	</div>						
+</div>	

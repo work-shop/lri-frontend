@@ -16,7 +16,8 @@ module.exports = function( page, people, news, options, globals ) {
  		pageTitle: 'Make RI Stronger',   
         item: page,
         coaches: people['coach'],
-        news: news['make-ri-stronger-news']
+        news: news['make-ri-stronger-news'],
+        events: page.acf.events
 
     }, options, globals);
 

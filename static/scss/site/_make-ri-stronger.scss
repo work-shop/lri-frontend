@@ -1,0 +1,23 @@
+
+
+.clients-body{
+	margin-top: $page-body-section-margin;
+	margin-bottom: $page-body-section-margin;
+}
+
+.client-item{
+	width: 33%;
+	display: block;
+	float: left;
+	padding: 15px;
+	//outline: 1px solid $light;
+	height: 150px;
+	margin-bottom: 15px;
+
+	img{
+		max-height: 100%;
+		width: auto;
+		margin: 0 auto;
+		// -webkit-filter: saturate(0);
+	}
+}
