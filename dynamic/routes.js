@@ -53,6 +53,13 @@ var events = require('./routes/generic/single.js')({
     restructure: require('./structures/restructure-events.js')
 });
 
+var alumniDirectory = require('./routes/generic/single.js')({
+    type: "pages",
+    name: "directory",
+    template: "alumni-directory.html",
+    restructure: require('./structures/restructure-page.js')
+});
+
 module.exports = function( express, app, config, globals ) {
 
     /**
@@ -72,6 +79,8 @@ module.exports = function( express, app, config, globals ) {
     app.get('/core-program/core-current-class', coreCurrentClass( globals.wp, config, globals ) );
 
     app.get('/alumni', alumni( globals.wp, config, globals ) );
+
+    app.get('/alumni/directory', alumniDirectory( globals.wp, config, globals ) );
 
     app.get('/make-ri-stronger', makeRiStronger( globals.wp, config, globals ) );
     app.get('/strengths', makeRiStronger( globals.wp, config, globals ) );// TODO:make this a redirect instead
