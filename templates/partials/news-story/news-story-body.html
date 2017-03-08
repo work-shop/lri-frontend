@@ -1,0 +1,13 @@
+<div class="news-story-body" id="news-story-body">
+	<div class="story-intro">
+		<h1 class="brand story-title">
+			{{ item.title.rendered|safe }}
+		</h1>
+		<h4 class="story-subtitle bold mt2 mb2">
+			{{ item.acf.story_subtitle|safe }}
+		</h4>
+	</div>
+	<div class="story-main wysiwyg">
+		{{ item.acf.story_body|safe }}
+	</div>
+</div>
