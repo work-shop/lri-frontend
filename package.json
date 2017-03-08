@@ -48,7 +48,7 @@
     "local_api": "http://localhost/lri/wp-json/wp/v2",
     "remote_api": "http://cms.lri.wsri.host/wp-json/wp/v2",
     "eventbrite_token": "E52QJKT37PA37P6FABPA",
-    "directory_endpoint" : "http://localhost:8080/json/alumni"
+    "directory_endpoint" : "http://lri.wsri.host/json/alumni"
   },
   "salesforce_configuration": ".salesforce.conf.json"
 }
