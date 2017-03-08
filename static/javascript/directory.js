@@ -3,7 +3,8 @@
 
 module.exports = function($, configuration) {
 
-	var base = configuration.directory_endpoint;
+	var base = getUrl();
+	var route = configuration.directory_endpoint;
 	var $directoryContainer = $('#directory_container');
 	var $dCount = $('#d-count');
 	var m1 = '<tr class="d-item"><td class="d-name">';
@@ -33,7 +34,7 @@ module.exports = function($, configuration) {
 	//get events from Evenbrite API
 	function requestAlumni( classType, classYear ){
 
-		var endpoint = base + '/' + classType + '/' + classYear;
+		var endpoint = base + route + '/' + classType + '/' + classYear;
 		console.log(endpoint);
 
 		$.ajax({
@@ -114,6 +115,12 @@ module.exports = function($, configuration) {
 	//remove all items from the directory
 	function emptyDirectory(){
 		$('.d-item').remove();
+	}
+
+
+	function getUrl(){
+		var url = window.location.origin;
+		return url;
 	}
 
 
