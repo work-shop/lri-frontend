@@ -3,110 +3,87 @@
 
 module.exports = function($, configuration) {
 
-	var base = 'https://www.eventbriteapi.com/v3/events/';
-	var token = '/?token=' + configuration.eventbrite_token;
 
-	var upcomingEvents, pastEvents;
-
-	if($('body').hasClass('page-make-ri-stronger')){
-		upcomingEvents = _makeRiStrongerEvents;
-	}else{
-		upcomingEvents = _itemUpcomingEvents;
-		pastEvents = _itemPastEvents;		
-	}
-
-	var $upcomingEventsContainer = $('#events-upcoming');
-	var $pastEventsContainer = $('#events-past');
-
-	var m1 = '<div class="col-xs-6 event event-tile"><a href="';
-	var m3 = '" target="_blank"><div class="event-image"><img src="';
-	var m5 = '"></div><div class="event-text"><h5>';
-	var m7 = '</h5><h4>';
-	var m9 = '</h4></div></a></div>';
+	var base = configuration.directory_endpoint;
+	var $directory_container = $('#directory_container');
+	var m1 = '<tr class="d-item"><td class="d-name">';
+	var m3 = '</td><td class="d-year">';
+	var m5 = '</td><td class="d-organization">';
+	var m7 = '</td><td class="d-title">';
+	var m9 = '</td></tr>';
+	var initialType = 'lri';
+	var initialYear = 2016;	
 
 
-	function getEvents(){
-		if( typeof upcomingEvents !== 'undefined' ){
-			for( var i = 0; i < upcomingEvents.length; i++ ){
-				requestEvent( upcomingEvents[i].eventbrite_id, true );
-			}
+	function getAlumni( classType, classYear ){
+		
+		if( typeof classType === 'undefined' ){
+			classType = initialType;
+			classYear = initialYear;
 		}
-		if( typeof pastEvents !== 'undefined' ){
-			console.log('pastEvents');
-			for( var i = 0; i < pastEvents.length; i++ ){
-				requestEvent( pastEvents[i].eventbrite_id, false );
-			}
-		}
+
+		requestAlumni( classType, classYear );		
+
 	}
 
 
 	//get events from Evenbrite API
-	function requestEvent( id, upcoming ){
+	function requestAlumni( classType, classYear ){
 
-		var endpoint = base + id + token;
+		var endpoint = base + '/' + classType + '/' + classYear;
 
 		$.ajax({
 			url: endpoint,
 			dataType: 'json'
 		})
 		.done(function( data ) {
-			//console.log("success loading events");
-			renderEvent( data, upcoming );
+			console.log("success loading alumni");
+			parse( data );
 		})
 		.fail(function() {
-			console.log("error loading events");
+			console.log("error loading alumni");
 		})
 		.always(function() {
-			//console.log("completed request for events");
+			//console.log("completed request for alumni");
 		});
 	}
 
 
-	function renderEvent( response, upcoming ){
+	function parse( response ){
 
-		var eventMarkup = generateMarkup( response, upcoming );
-		
+		var alumni = response.content.results;
+
+		if( typeof alumni !== 'undefined'){
+			if ( alumni.length > 0 ){
+				for (var i = 0; i < alumni.length; i++) {
+					render( alumni[i] );
+				}
+			}
+		}
 	}
 
 
-	function generateMarkup( event, upcoming ){
+	function render( item ){
+		
 		var m2,m4,m6,m8;
 		
-		m2 = event.url;
-		
-		m4 = event.logo.url;
-
-		var d = new Date(event.start.local);
-		//m4 = d.format('dddd, mmmm dS, yyyy, h:MM tt');
-		m6 = formatDate(d);	
-		
-		m8 = event.name.text;
+		m2 = item.name;
+		m4 = item.year;
+		m6 = item.current_employer;	
+		m8 = item.current_title;
 
 		var markup = m1+m2+m3+m4+m5+m6+m7+m8+m9;
 
-		if( upcoming ){
-			$upcomingEventsContainer.append( markup );			
-		}
-		else{
-			$pastEventsContainer.append( markup );			
-		}
+		$directory_container.append( markup );
+
 	}	
-
-
-	function formatDate( d ){
-		var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-		var months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
-		var month = d.getMonth();
-		var date = months[month] + ' ' + d.getDate() + ', ' + d.getFullYear();
-		return date; 
-	}
 
 
 	//setup this process
 	function initialize() {
 
 		$( document ).ready( function() {
-			window.requestAnimationFrame( getEvents );	
+			window.requestAnimationFrame( getAlumni );	
 		});
 
 	}

@@ -1,4 +1,4 @@
-$ad-row-height: 40px;
+$d-row-height: 55px;
 
 #directory{
 
@@ -22,11 +22,11 @@ $ad-row-height: 40px;
 	}
 
 	tr{
-		height: $ad-row-height;
+		height: $d-row-height;
 
-		// &.ad-head{
-		// 	height: $ad-row-height * 1.5;
-		// }
+		&.d-header{
+			height: $d-row-height * 1.25;
+		}
 	}
 
 	tbody{
