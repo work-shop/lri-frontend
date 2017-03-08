@@ -51,4 +51,10 @@ if($('body').hasClass('page-home')){
 	wwd.initialize();
 }
 
+if($('body').hasClass('page-directory')){
+	var directory = require('./directory.js')($);
+	directory.initialize();
+}
+
+
 

@@ -9,6 +9,8 @@
 					{# custom page content #}	
 					{% if pageTitle === 'About' %}
 						{% include "../about/about-content.html" %}
+					{% elseif pageTitle === 'Alumni Directory' %}
+						{% include "../alumni-directory/alumni-directory-content.html" %}
 					{% elseif pageTitle === 'Make RI Stronger' %}
 						{% include "../make-ri-stronger/make-ri-stronger-content.html" %}
 					{% else %}

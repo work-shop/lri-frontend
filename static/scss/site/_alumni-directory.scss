@@ -1,0 +1,38 @@
+$ad-row-height: 40px;
+
+#directory{
+
+	table{
+		width: 100%;
+		text-align: left;
+		border-collapse: collapse;
+	}
+
+	th,td{
+		margin: 0;
+		border: 0;
+		outline: 0;	
+		padding: 7px;			
+	}
+
+	th{
+		@extend .bold;
+		border-top: 1px solid $medium;
+		border-bottom: 1px solid $medium;
+	}
+
+	tr{
+		height: $ad-row-height;
+
+		// &.ad-head{
+		// 	height: $ad-row-height * 1.5;
+		// }
+	}
+
+	tbody{
+
+		tr:nth-child(odd){
+			background: $ultra-light;
+		}
+	}
+}
