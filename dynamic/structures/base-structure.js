@@ -11,7 +11,12 @@ module.exports = function( compiled, options, globals ) {
 
     return extend({
         options: options.acf,
-        globals: globals,
+        globals: {
+            site_title: globals.site_title,
+            site_description: globals.site_description,
+            site_url: globals.site_url,
+            development: globals.development
+        },
         featured_image: function( item ) {
             return "Not Implemented";
         }

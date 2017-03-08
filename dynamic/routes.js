@@ -53,12 +53,15 @@ var events = require('./routes/generic/single.js')({
     restructure: require('./structures/restructure-events.js')
 });
 
+
 var alumniDirectory = require('./routes/generic/single.js')({
     type: "pages",
     name: "alumni-directory",
     template: "page.html",
     restructure: require('./structures/restructure-page.js')
 });
+
+var jsonAlumniByType = require('./routes/json/alumni-type.js');
 
 module.exports = function( express, app, config, globals ) {
 
@@ -93,7 +96,20 @@ module.exports = function( express, app, config, globals ) {
 
     app.get('/contact', contact( globals.wp, config, globals ) );
 
+    // /**
+    //  * Salesforce JSON Contacts Endpoint
+    //  */
+    //
+    app.get('/json/alumni/:type', jsonAlumniByType(globals.wp, config, globals) );
+
+    app.get('/json/alumni/:type/:year', jsonAlumniByType(globals.wp, config, globals) );
+
+
+    /**
+     * Generic page route handler.
+     */
     app.get('/:id', page( globals.wp, config, globals ) );
+
 
 
     /**

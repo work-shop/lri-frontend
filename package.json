@@ -27,11 +27,13 @@
     "express": "^4.14.0",
     "isotope-layout": "^3.0.1",
     "jquery": "^3.0.0",
+    "jsforce": "^1.7.1",
     "parse-json-response": "^1.0.1",
     "request": "^2.79.0",
     "request-promise": "^4.1.1",
     "slick-carousel": "^1.6.0",
     "swig": "^1.4.2",
+    "underscore": "^1.8.3",
     "util-extend": "^1.0.3",
     "wpapi": "^0.11.0"
   },
@@ -47,5 +49,6 @@
     "remote_api": "http://cms.lri.wsri.host/wp-json/wp/v2",
     "eventbrite_token": "E52QJKT37PA37P6FABPA",
     "directory_endpoint" : "http://lri.wsri.host/json/alumni"
-  }
+  },
+  "salesforce_configuration": ".salesforce.conf.json"
 }

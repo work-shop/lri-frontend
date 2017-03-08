@@ -1,12 +1,15 @@
 "use strict";
 
+var util = require('util');
 
 var request = require('request-promise');
+var jsforce = require('jsforce');
 
 var generateConfig = require('./config.js');
 var routes = require('./routes.js');
 var listen = require('./listen.js'); //listen is responsible for actually starting the server
 var Logger = require('./logging/index.js');
+
 
 module.exports = function( express, app, config ) {
     return function() {
@@ -23,11 +26,26 @@ module.exports = function( express, app, config ) {
              */
             .then( function( schema ) {
 
-                var globals = generateConfig( express, app, config, schema, log );
+                var conn = new jsforce.Connection({
+                    loginUrl: config.salesforce.endpoint
+                });
 
-                routes( express, app, config, globals );
+                conn.login(config.salesforce.username, [config.salesforce.password, config.salesforce.token].join(''), function( err ) {
 
-                listen( app, config, globals );
+                    if ( err ) {
+                        log.error( err, 'initial-salesforce-connection-error');
+                        process.exit( 1 );
+                    }
+
+                    log.log( "salesforce connection established.", "salesforce-authentication");
+
+                    var globals = generateConfig( express, app, config, schema, conn, log );
+
+                    routes( express, app, config, globals );
+
+                    listen( app, config, globals );
+
+                });
 
             })
             /**

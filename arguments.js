@@ -1,7 +1,9 @@
 "use strict";
 
+var path = require('path');
 var extend = require('util-extend');
 var config = require('./package.json');
+var salesforce = require( path.join( __dirname, config.salesforce_configuration ) );
 var ArgumentParser = require('argparse').ArgumentParser;
 
 var parser = new ArgumentParser({
@@ -30,5 +32,4 @@ parser.addArgument(
 	}
 );
 
-
-module.exports = extend( config, parser.parseArgs() );
+module.exports = extend( extend( config, {salesforce: salesforce} ), parser.parseArgs() );
