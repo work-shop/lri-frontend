@@ -32,4 +32,4 @@ parser.addArgument(
 	}
 );
 
-module.exports = extend( extend( config, {salesforce: salesforce}), parser.parseArgs() );
+module.exports = extend( extend( config, {salesforce: salesforce} ), parser.parseArgs() );

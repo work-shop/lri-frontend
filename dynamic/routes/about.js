@@ -43,10 +43,6 @@ var filterPeople = require('../transformations/filter-term-by-taxonomy.js')(['st
 
             globals.log.log( 'Successful request to about.', 'route-about:success-handler');
 
-            console.log( about );
-            console.log( people );
-            console.log( options );
-
             try {
                 res.render('page.html', urlReplace( restructureAbout( about, people, options, globals ) ) );
             } catch( e ) {

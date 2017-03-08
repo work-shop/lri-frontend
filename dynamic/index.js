@@ -41,8 +41,6 @@ module.exports = function( express, app, config ) {
 
                     var globals = generateConfig( express, app, config, schema, conn, log );
 
-                    console.log( config.port );
-
                     routes( express, app, config, globals );
 
                     listen( app, config, globals );

@@ -61,8 +61,7 @@ var alumniDirectory = require('./routes/generic/single.js')({
     restructure: require('./structures/restructure-page.js')
 });
 
-//var jsonAlumniByType = require('./routes/json/alumni-type.js');
-//var jsonAlumni = require('./routes/json/alumni-year.js');
+var jsonAlumniByType = require('./routes/json/alumni-type.js');
 
 module.exports = function( express, app, config, globals ) {
 
@@ -101,9 +100,9 @@ module.exports = function( express, app, config, globals ) {
     //  * Salesforce JSON Contacts Endpoint
     //  */
     //
-    // app.get('/json/alumni/:type', jsonAlumniByType(globals.wp, config, globals) );
-    //
-    // app.get('/json/alumni/:type/:year', jsonAlumniByType(globals.wp, config, globals) );
+    app.get('/json/alumni/:type', jsonAlumniByType(globals.wp, config, globals) );
+
+    app.get('/json/alumni/:type/:year', jsonAlumniByType(globals.wp, config, globals) );
 
 
     /**
