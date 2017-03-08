@@ -1,4 +1,4 @@
-$d-row-height: 55px;
+$d-row-height: 58px;
 
 #directory{
 
@@ -28,6 +28,23 @@ $d-row-height: 55px;
 			height: $d-row-height * 1.25;
 		}
 	}
+
+	.d-name{
+		width: 18%;
+	}
+
+	.d-year{
+		width: 12%;
+	}
+
+	.d-organization{
+		width: 35%;
+	}
+
+	.d-title{
+		width: 35%;
+	}	
+
 
 	tbody{
 
