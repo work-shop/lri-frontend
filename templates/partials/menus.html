@@ -1,7 +1,7 @@
 <div id="menu-1" class="menu-field closed">
 	<div class="menu-field-left">
 		<div class="menu-field-group">
-			<h3>Leadership Programs</h3>
+			<h3><a href="/leadership-programs">Leadership Programs</a></h3>
 			<ul>
 				<li>
 					<a href="/core-program">
@@ -16,27 +16,27 @@
 			</ul>
 		</div>
 		<div class="menu-field-group">
-			<h3>Make RI Stronger</h3>
+			<h3><a href="/make-ri-stronger">Make RI Stronger</a></h3>
 			<ul>
 				<li>
-					<a href="/make-ri-stronger">
+					<a href="/make-ri-stronger#overview">
 						About the Initiative
 					</a>
 				</li>
 				<li>
-					<a href="/make-ri-stronger">
-						Strengths Finder Assessment
+					<a href="/make-ri-stronger#services">
+						Strengths Services
 					</a>
 				</li>
 				<li>
-					<a href="/make-ri-stronger">
-						Strengths Coaching
+					<a href="/make-ri-stronger#coaches">
+						Strengths Coaches
 					</a>
 				</li>			
 			</ul>
 		</div>
 		<div class="menu-field-group">
-			<h3>Community Engagement</h3>
+			<h3><a href="/community-engagement">Community Engagement</a></h3>
 			<ul>
 				<li>
 					<a href="/events">
@@ -59,14 +59,15 @@
 	<div class="menu-field-right">
 		<div class="menu-field-call">
 			<h4 class="menu-field-call-text">
-				Apply to our award winning leadership development programs
+				{{ options.what_we_do_menu_callout }}
 			</h4>
-			<div class="menu-field-button">
-				<a href="/">Apply for Core Program</a>
-			</div>
-			<div class="menu-field-button">
-				<a href="/">Apply for College Program</a>
-			</div>
+			{% if options.what_we_do_menu_callout_links %}
+				{% for link in options.what_we_do_menu_callout_links %}
+					<div class="menu-field-button">
+						<a href="{{link.link_url}}">{{ link.link_text }}</a>
+					</div>
+				{% endfor %}
+			{% endif %}
 		</div>
 	</div>
 </div>
@@ -74,47 +75,47 @@
 <div id="menu-2" class="menu-field closed">
 	<div class="menu-field-left">
 		<div class="menu-field-group">
-			<h3>About LRI</h3>
+			<h3><a href="/about">About LRI</a></h3>
 			<ul>
 				<li>
-					<a href="/about">
+					<a href="/about#mission">
 						Our Mission
 					</a>
 				</li>
 				<li>
-					<a href="/about">
+					<a href="/about#vision">
 						Our Vision
 					</a>
 				</li>
 				<li>
-					<a href="/about">
+					<a href="/about#impact">
 						Our Impact
 					</a>
 				</li>				
 			</ul>
 		</div>
 		<div class="menu-field-group">
-			<h3>People</h3>
+			<h3><a href="/about#staff">People</a></h3>
 			<ul>
 				<li>
-					<a href="/make-ri-stronger">
-						About the Initiative
+					<a href="/about#board">
+						Board of Governors
 					</a>
 				</li>
 				<li>
-					<a href="/make-ri-stronger">
-						Strengths Finder Assessment
+					<a href="/about#staff">
+						Staff
 					</a>
 				</li>
 				<li>
-					<a href="/make-ri-stronger">
-						Strengths Coaching
+					<a href="/partners">
+						Partners and Sponsors
 					</a>
 				</li>			
 			</ul>
 		</div>
 		<div class="menu-field-group">
-			<h3>Alumni</h3>
+			<h3><a href="/alumni">Alumni</a></h3>
 			<ul>
 				<li>
 					<a href="/alumni">
@@ -122,11 +123,11 @@
 					</a>
 				</li>
 				<li>
-					<a href="/alumni-directory">
+					<a href="/alumni/alumni-directory">
 						Alumni Directory
 					</a>
 				</li>	
-				<li>
+				<li class="hidden">
 					<a href="http://salesforce.com">
 						Alumni Log In
 					</a>
@@ -153,7 +154,7 @@
 <div id="menu-3" class="menu-field closed">
 	<div class="menu-field-left">
 		<div class="menu-field-group">
-			<h3>Support</h3>
+			<h3><a href="/donate">Support</a></h3>
 			<ul>
 				<li>
 					<a href="/donate">
@@ -171,42 +172,42 @@
 			<h3>Sponsor</h3>
 			<ul>
 				<li>
-					<a href="/about/partners">
+					<a href="/partners">
 						Sponsorships
 					</a>
 				</li>
 				<li>
-					<a href="/about/partners">
+					<a href="/partners">
 						Partnerships
 					</a>
 				</li>
 				<li>
-					<a href="/about/partners">
+					<a href="/partners">
 						Employee Sponsorship
 					</a>
 				</li>	
 				<li>
-					<a href="/about/partners">
+					<a href="/partners">
 						Volunteerism
 					</a>
 				</li>							
 			</ul>
 		</div>
 		<div class="menu-field-group">
-			<h3>Join</h3>
+			<h3><a href="/join">Join</a></h3>
 			<ul>
 				<li>
-					<a href="/">
+					<a href="/core-program">
 						Apply to Core Program
 					</a>
 				</li>
 				<li>
-					<a href="/">
+					<a href="/college-program">
 						Apply to College Program
 					</a>
 				</li>	
 				<li>
-					<a href="/about/opportunities">
+					<a href="/opportunities">
 						Opportunities and Jobs
 					</a>
 				</li>
@@ -221,11 +222,15 @@
 	<div class="menu-field-right">
 		<div class="menu-field-call">
 			<h4 class="menu-field-call-text">
-				help people who otherwise wouldn't be able to enroll in our programs
+				{{ options.get_involved_menu_callout }}
 			</h4>
-			<div class="menu-field-button">
-				<a href="/donate">Support Tuition Assistance</a>
-			</div>
+			{% if options.get_involved_menu_callout_links %}
+				{% for link in options.get_involved_menu_callout_links %}
+					<div class="menu-field-button">
+						<a href="{{link.link_url}}">{{ link.link_text }}</a>
+					</div>
+				{% endfor %}
+			{% endif %}
 		</div>
 	</div>
 </div>
@@ -233,7 +238,7 @@
 <div id="menu-4" class="menu-field closed">
 	<div class="menu-field-left">
 		<div class="menu-field-group">
-			<h3>Members</h3>
+			<h3><a href="/alumni">Alumni</a></h3>
 			<ul>
 				<li>
 					<a href="/donate">
@@ -248,15 +253,15 @@
 			</ul>
 		</div>
 		<div class="menu-field-group">
-			<h3>Directory</h3>
+			<h3><a href="/alumni/alumni-directory">Directory</a></h3>
 			<ul>
 				<li>
-					<a href="/alumni-directory">
+					<a href="/alumni/alumni-directory?class=lri&year=2016">
 						Core Program Directory
 					</a>
 				</li>
 				<li>
-					<a href="/alumni-directory">
+					<a href="/alumni/alumni-directory?class=clri&year=2016">
 						College Program Directory
 					</a>
 				</li>		
@@ -266,11 +271,15 @@
 	<div class="menu-field-right">
 		<div class="menu-field-call">
 			<h4 class="menu-field-call-text">
-				Learn more about LRI through one of our program graduates
+				{{ options.alumni_menu_callout }}
 			</h4>
-			<div class="menu-field-button">
-				<a href="/meet-an-alumnus">Meet an Alumnus</a>
-			</div>
+			{% if options.alumni_menu_callout_links %}
+				{% for link in options.alumni_menu_callout_links %}
+					<div class="menu-field-button">
+						<a href="{{link.link_url}}">{{ link.link_text }}</a>
+					</div>
+				{% endfor %}
+			{% endif %}
 		</div>
 	</div>
 </div>

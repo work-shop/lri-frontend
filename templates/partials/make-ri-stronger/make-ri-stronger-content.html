@@ -80,19 +80,23 @@
 		</div>	
 		<div class="services-body">
 			{% if item.acf.strengths_services %}
-				<div class="slick-clients slick-default">
-					{% for client in item.acf.clients_body %}
-						{% if loop.index0 === 0 || loop.index0 % 6 === 0 %}
-							<div class="slide slide-clients">							
-							{% endif %}
-							<a href="{{ client.client_website }}" target="_blank" class="client-item">
-								<img src="{{ client.client_logo.sizes.xs }}">
-							</a>
-							{% if loop.index0 % 6 === 5 || loop.last %}
+				<div id="accordion" role="tablist" aria-multiselectable="true">
+					{% for service in item.acf.strengths_services %}
+						<div class="card service">
+							<div class="card-header" role="tab" id="heading-{{loop.index}}">
+								<h4>
+									<a data-toggle="collapse" data-parent="#accordian" href="#collapse-{{loop.index}}" aria-expanded="true" aria-controls="collapse-{{loop.index}}">
+										{{ service.service_title|safe }}
+									</a>
+								</h4>
 							</div>
-						{% endif %}
+							<div class="collapse" role="tabpanel" aria-labelledby="heading-{{loop.index}}" id="collapse-{{loop.index}}">
+								<div class="card-block wysiwyg">
+									{{ service.service_body|safe }}
+								</div>
+							</div>
+						</div>
 					{% endfor %}
-
 				</div>
 			{% endif %}
 		</div>			
