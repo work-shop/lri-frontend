@@ -97,7 +97,7 @@ module.exports = function( express, app, config, globals ) {
     app.get('/contact', contact( globals.wp, config, globals ) );
 
     // /**
-    //  * Salesforce JSON Contacts Endpoint
+    //  * Salesforce JSON Alumni Directory Endpoint
     //  */
     //
     app.get('/json/alumni/:type', jsonAlumniByType(globals.wp, config, globals) );

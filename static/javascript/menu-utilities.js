@@ -51,15 +51,15 @@ module.exports = function($) {
 		var $link = link;
 
 		if( $menu.hasClass('open') && $('body').hasClass('menu-open') ){
-			console.log('the targeted menu is open, so close it');
+			//console.log('the targeted menu is open, so close it');
 			closeFieldMenu( $menu );
 		} else if ( $menu.hasClass('closed') && $('body').hasClass('menu-open') ){
-			console.log('the targeted menu is closed, but another menu is open. close the other menu(s), and open the target');
+			//console.log('the targeted menu is closed, but another menu is open. close the other menu(s), and open the target');
 			$('.menu-field').removeClass('open').addClass('closed');
 			$('.menu-field-link').removeClass('active').addClass('inactive');			
 			openFieldMenu( $menu, $link );			
 		} else if ( $menu.hasClass('closed') && $('body').hasClass('menu-closed') ){
-			console.log('the targeted menu is closed, and no other menus are open. Open the target');			
+			//console.log('the targeted menu is closed, and no other menus are open. Open the target');			
 			openFieldMenu( $menu, $link );	
 		}
 
