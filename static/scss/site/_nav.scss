@@ -111,7 +111,17 @@ $text-nav: (
 
 			&.active{
 				border-bottom: 5px solid $brand-bright;
+
+				.icon:before{
+					@include transform(rotate(-180deg));
+				}
 			}
+		}
+
+		.icon:before{
+			display: inline-block;
+			@include transform(rotate(0deg));
+			@include transition(transform, .175s);
 		}
 	}	
 

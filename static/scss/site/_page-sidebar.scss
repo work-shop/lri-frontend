@@ -27,6 +27,10 @@ $page-sidebar-top: $nav-height + $page-body-section-margin;
 	float: right;
 	position: relative;
 
+	// *{
+	// 	text-align: right;
+	// }
+
 	.button{
 		display: block;
 		background: $yellow;

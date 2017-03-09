@@ -7,21 +7,30 @@ module.exports = function( $ ){
 	var stickies = {};
 	var $navTop = $('#nav-top');
 	var $navMain = $('#nav-main');
+	var $hero = $('#page-hero');
 	var sidebar = false;
 	var sidebarPadding = 100;
+	var z = mainNavHeight;
+	var h = 0;
 
 
 	function initialize(){
 
 		$( document ).ready( function() {
 
+			if( $('#page-sidebar').length > 0 ){
+				sidebar = true;
+			}				
+
 			window.requestAnimationFrame( calculatePositions );
-			//call calculate positions again with a delay to make sure its properly setup
+			window.requestAnimationFrame( checkNavPosition );
+
+			
+			//calculate and check positions again with a delay to make sure its properly setup
 			setTimeout(function() {
 				window.requestAnimationFrame( calculatePositions );
+				window.requestAnimationFrame( checkNavPosition );
 			}, 1000);
-
-			window.requestAnimationFrame( checkNavPosition );
 
 			$('body').on({ 'touchmove': function(e) { 
 				window.requestAnimationFrame( checkNavPosition ); } 
@@ -36,10 +45,6 @@ module.exports = function( $ ){
 				window.requestAnimationFrame( checkNavPosition );
 			});	
 
-			if( $('#page-sidebar').length > 0 ){
-				sidebar = true;
-			}	
-
 		});
 
 	}
@@ -52,9 +57,13 @@ module.exports = function( $ ){
 		stickies.nav = $navMain;
 
 		if( sidebar ){
+			if( $hero.length > 0){
+				h = $hero.height();
+			} else{
+				h = 0;
+			}
 			stickies.sidebar = $('#page-sidebar');
-			stickies.sidebarOffset = stickies.sidebar.offset().top;
-			stickies.sidebarTriggerPosition = stickies.sidebarOffset - mainNavHeight - sidebarPadding;			
+			stickies.sidebarTriggerPosition = h + z;	
 		}
 
 	}

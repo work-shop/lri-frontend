@@ -80,24 +80,18 @@
 		</div>	
 		<div class="services-body">
 			{% if item.acf.strengths_services %}
-				<div id="accordion" role="tablist" aria-multiselectable="true">
-					{% for service in item.acf.strengths_services %}
-						<div class="card service">
-							<div class="card-header" role="tab" id="heading-{{loop.index}}">
-								<h4>
-									<a data-toggle="collapse" data-parent="#accordian" href="#collapse-{{loop.index}}" aria-expanded="true" aria-controls="collapse-{{loop.index}}">
-										{{ service.service_title|safe }}
-									</a>
-								</h4>
-							</div>
-							<div class="collapse" role="tabpanel" aria-labelledby="heading-{{loop.index}}" id="collapse-{{loop.index}}">
-								<div class="card-block wysiwyg">
-									{{ service.service_body|safe }}
-								</div>
-							</div>
+				{% for service in item.acf.strengths_services %}
+					<div class="service accordian" data-accordian>
+						<div class="accordian-control service-header" data-control>
+							<h4>
+								{{ service.service_title|safe }}
+							</h4>
 						</div>
-					{% endfor %}
-				</div>
+						<div class="service-content wysiwyg">
+							{{ service.service_body|safe }}
+						</div>
+					</div>
+				{% endfor %}
 			{% endif %}
 		</div>			
 	</div>						

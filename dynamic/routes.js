@@ -21,7 +21,7 @@ var newsStory = require('./routes/news-story.js');
 var contact = require('./routes/generic/single.js')({
     type: "pages",
     name: "contact",
-    template: "contact.html",
+    template: "page.html",
     restructure: require('./structures/restructure-page.js')
 });
 
