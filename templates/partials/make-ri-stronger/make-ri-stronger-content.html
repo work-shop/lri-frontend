@@ -79,19 +79,28 @@
 			<p>{{ item.acf.services_introduction|safe }}</p>
 		</div>	
 		<div class="services-body">
+
 			{% if item.acf.strengths_services %}
-				{% for service in item.acf.strengths_services %}
-					<div class="service accordian" data-accordian>
-						<div class="accordian-control service-header" data-control>
-							<h4>
-								{{ service.service_title|safe }}
-							</h4>
+				
+				<div data-accordian-group>
+					
+					{% for service in item.acf.strengths_services %}
+						
+						<div class="accordion" data-accordion>
+							<div class="service-title" data-control>
+								<h4>
+									{{ service.service_title|safe }}
+								</h4>
+							</div>
+							<div class="service-body" data-content>
+								<div class="wysiwyg">
+									{{ service.service_body|safe }}
+								</div>
+							</div>
 						</div>
-						<div class="service-content wysiwyg">
-							{{ service.service_body|safe }}
-						</div>
-					</div>
-				{% endfor %}
+
+					{% endfor %}
+				</div>
 			{% endif %}
 		</div>			
 	</div>						

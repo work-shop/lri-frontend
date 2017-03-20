@@ -27,18 +27,17 @@ $page-sidebar-top: $nav-height + $page-body-section-margin;
 	float: right;
 	position: relative;
 
-	// *{
-	// 	text-align: right;
-	// }
-
 	.button{
 		display: block;
-		background: $yellow;
 		border-radius: 3px;
 		text-align: center;
 		margin-bottom: 20px;
 		@extend .bold;
 		@extend .tracked;
+
+		a{
+			width: 100%;
+		}
 	}
 	
 	.page-sidebar-title{
@@ -93,4 +92,10 @@ $page-sidebar-top: $nav-height + $page-body-section-margin;
 
 .page-sidebar-contact{
 	margin-top: 30px;
+
+	h5{
+		@include text-size($text-sidebar);
+		margin: 0;
+		line-height: 1.4 !important;
+	}
 }

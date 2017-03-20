@@ -1,8 +1,30 @@
 
+.impact-body{
+	padding-bottom: 60px;
+	padding-top: 60px;
+
+	h2{
+		color: $yellow-darker;
+		@extend .h1;
+		@extend .serif;
+		font-weight: bold;
+		text-align: center;
+		width: 80%;
+		margin: 0 auto 15px auto;
+	}
+
+	h4{
+		text-align: center;
+		width: 50%;
+		margin: 0 auto 15px auto;		
+	}
+
+}
+
 
 .clients-body{
 	margin-top: $page-body-section-margin;
-	margin-bottom: $page-body-section-margin;
+	margin-bottom: $page-body-section-margin * 1.5;
 }
 
 .client-item{
@@ -10,7 +32,6 @@
 	display: block;
 	float: left;
 	padding: 15px;
-	//outline: 1px solid $light;
 	height: 150px;
 	margin-bottom: 15px;
 
@@ -19,5 +40,47 @@
 		width: auto;
 		margin: 0 auto;
 		// -webkit-filter: saturate(0);
+	}
+}
+
+
+.accordion{
+
+	[data-control]{
+		background: darken($ultra-light, 3%);
+		padding: 10px 6px 6px 15px;	
+		h4{
+			@extend .bold;	
+		}
+
+		&:hover{
+			cursor: context-menu;
+		}
+	}
+
+	[data-content]{
+	}
+
+	.wysiwyg{
+		padding: 30px 15px 15px 15px;
+		border: 1px solid $light-blue;
+	}
+
+	&.open{
+		[data-content]{
+			background: lighten($ultra-light, 1%);
+		}		
+	}
+
+	margin-bottom: 20px;
+
+}
+
+
+.news-body{
+	.news-tile{
+		h5{
+			display: none;
+		}
 	}
 }

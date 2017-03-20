@@ -1,4 +1,13 @@
 
+$text-news-excerpt: (
+	xs: (13px, 18px),
+	sm: (14px, 20px),
+	md: (16px, 22px),
+	lg: (18px, 27px),
+	xl: (20px, 30px)
+);
+
+
 .news-tile{
 	margin-bottom: 40px;
 
@@ -39,10 +48,14 @@
 	}
 
 	h5{
-		width: 75%;
-		@include text-size($text-regular);
+		width: 80%;
+		@include text-size($text-news-excerpt);
 
-		@media screen and (max-width: $sm) {
+		@media screen and (max-width: $lg) {
+			width: 90%;
+		}
+
+		@media screen and (max-width: $md) {
 			display: none;
 		}
 	}

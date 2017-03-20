@@ -3,6 +3,27 @@
 
 $home-section-padding-top: 150px;
 
+
+.home-section-intro{
+	width: 33%;
+	float: left;
+	height: 100%;
+	padding-left: $container-fluid-padding;
+	padding-top: $home-section-padding-top;
+
+	@media screen and (max-width: $md) {
+		padding-left: $container-fluid-padding-mobile;
+	}
+}
+
+.home-section-content{
+	width: 67%;
+	float: left;
+	height: 100%;
+	position: relative;	
+}
+
+
 #home-introduction{
 	.slide{
 		background-size: cover;
@@ -31,8 +52,18 @@ $home-section-padding-top: 150px;
 
 .section-description{
 	max-width: 320px;
+	padding-right: 15px;
 	@extend .h4;
 	line-height: 1.3;
+}
+
+
+//featured content
+
+#home-featured{
+	@media screen and (max-width: $sm) {
+		height: auto;
+	}	
 }
 
 .half{
@@ -40,6 +71,17 @@ $home-section-padding-top: 150px;
 	float: left;
 	height: 100%;
 	padding: $container-fluid-padding;
+
+	@media screen and (max-width: $md) {
+		padding-left: $container-fluid-padding / 2;
+		padding-right: $container-fluid-padding / 2;
+	}
+
+	@media screen and (max-width: $sm) {
+		width: 100%;
+		float: none;
+		clear: both;
+	}
 }
 
 .feature{
@@ -63,11 +105,20 @@ $home-section-padding-top: 150px;
 	.feature-image{
 		width: 18%;
 		float: left;
+
+		@media screen and (max-width: $sm) {
+			display: none;
+		}
 	}
 	.feature-text{
 		width: 70%;
 		float: left;
 		padding-left: 5%;
+
+		@media screen and (max-width: $sm) {
+			float: none;
+			clear: both;
+		}
 	}
 
 	.button{
@@ -94,22 +145,11 @@ $home-section-padding-top: 150px;
 }
 
 
+
 #home-what-we-do{
-	
-	.home-section-intro{
-		width: 33%;
-		float: left;
-		height: 100%;
-		padding-left: $container-fluid-padding;
-		padding-top: $home-section-padding-top;
-	}
 
 	.home-section-content{
-		width: 67%;
-		float: left;
-		height: 100%;
 		background: $brand-ultra-light;
-		position: relative;
 	}
 
 }
@@ -226,10 +266,16 @@ $text-wwd: (
 
 	.home-section-intro{
 		padding-top: $home-section-padding-top;
+		width: 100%;
+		float: none;
+		clear: both;
+		height: auto;
 	}
 
 	.home-section-content{
 		padding-top: $home-section-padding-top / 2;
+		width: 100%;
+		float: none;
 	}
 
 	.section-title,.section-description{
@@ -332,7 +378,6 @@ $text-wwd: (
 
 #home-donate{
 	background: $yellow;
-	padding-top: $home-section-padding-top;
 	padding-bottom: $home-section-padding-top;	
 }
 

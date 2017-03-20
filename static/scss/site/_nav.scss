@@ -1,8 +1,8 @@
 
 
 $text-nav: (
-	xs: (13px, 9px),
-	sm: (15px, 34px),
+	xs: (16px, 53px),
+	sm: (14px, 53px),
 	md: (16px, 53px),
 	lg: (18px, 53px),
 	xl: (19px, 53px)
@@ -78,11 +78,13 @@ $text-nav: (
 
 	@media screen and (max-width: $sm) {
 		top: 0;
-		//height: $nav-height-mobile;
 	}
 
 	ul{
 		float: right;
+		@media screen and (max-width: $xs) {
+			display: none;
+		}		
 	}
 
 	li{
@@ -144,9 +146,9 @@ $text-nav: (
 		margin-top: 22px;
 	}
 
-	@media screen and (max-width: $sm) {
-		margin-top: 10px;
-	}	
+	// @media screen and (max-width: $sm) {
+	// 	margin-top: 10px;
+	// }	
 
 	svg{
 		width: 188px;

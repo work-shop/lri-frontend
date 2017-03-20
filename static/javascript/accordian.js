@@ -8,7 +8,8 @@ module.exports = function($, jqueryAccordian) {
 	function initialize() {
 
 		$( document ).ready( function() {
-			$('.accordian').accordian({
+			console.log('accordian');
+			$('.accordion').accordion({
 				"transitionSpeed": 400
 			});
 		});

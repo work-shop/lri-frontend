@@ -19,22 +19,22 @@
 					{% if feature.description %}
 						<h3>{{ feature.description|safe }}</h3>
 					{% endif %}
-					{% if feature.link_text %}
+					{% if feature.link_text %}	
 						{% if feature.featured_content_type == 'event' %}
 							{% set link = feature.eventbrite_link %}
-						{% elseif feature.featured_content_type == 'news' %}
-							{% set link = feature.news_story %}
-						{% elseif feature.featured_content_type == 'page' %}
-							{% set link = feature.page %}
-						{% endif %}												
-						<div class="button">
-							<a href="{{ link }}">
-								{{ feature.link_text }}
-							</a>
+							{% elseif feature.featured_content_type == 'news' %}
+								{% set link = feature.news_story %}
+								{% elseif feature.featured_content_type == 'page' %}
+									{% set link = feature.page %}
+									{% endif %}										
+									<div class="button">
+										<a href="{{ link }}">
+											{{ feature.link_text }}
+										</a>
+									</div>
+								{% endif %}
+							</div>
 						</div>
-					{% endif %}
-				</div>
-			</div>
-		{% endfor %}
-	</section>
-{% endif %}
+					{% endfor %}
+				</section>
+			{% endif %}
