@@ -283,61 +283,62 @@ $text-wwd: (
 		width: 33%;
 	}
 
-	.impact-slide-headshot,.impact-slide-text{
-		float: left;
+}
+
+.impact-slide-headshot,.impact-slide-text{
+	float: left;
+}
+
+.slick-impact{
+	width: 66%;
+	margin: 0 auto;
+
+	.slick-prev{
+		&:after{
+			display: none;
+		}
 	}
 
-	.slick-impact{
-		width: 66%;
-		margin: 0 auto;
-
-		.slick-prev{
-			&:after{
-				display: none;
-			}
+	.slick-arrow{
+		&:after{
+			color: $yellow-darker;
+			font-size: 90px;
 		}
+	}
 
-		.slick-arrow{
-			&:after{
-				color: $yellow-darker;
-				font-size: 90px;
-			}
+	.slick-dots{
+
+		button{
+			background: #B2B5B7;
+			border: 0;
 		}
-
-		.slick-dots{
-
+		.slick-active{
 			button{
-				background: #B2B5B7;
-				border: 0;
-			}
-			.slick-active{
-				button{
-					background: $yellow-darker;
-				}
+				background: $yellow-darker;
 			}
 		}
 	}
+}
 
-	.impact-slide-headshot{
-		width: 15%;
-		border-radius: 300px;
+.impact-slide-headshot{
+	width: 15%;
+	border-radius: 300px;
+}
+.impact-slide-text{
+	width: 80%;
+	padding-left: 8%;
+	padding-right: 8%;
+
+	.impact-quote{
+		@include text-size($text-large);
 	}
-	.impact-slide-text{
-		width: 80%;
-		padding-left: 8%;
-		padding-right: 8%;
 
-		.impact-quote{
-			@include text-size($text-large);
-		}
-
-		.impact-credit{
-			@include text-size($text-regular);
-		}
-
+	.impact-credit{
+		@include text-size($text-regular);
 	}
 
 }
+
 
 #home-statistics{
 	

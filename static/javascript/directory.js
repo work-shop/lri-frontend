@@ -3,10 +3,12 @@
 
 module.exports = function($, configuration) {
 
-	var base = getUrl();
+	var base = getBaseUrl();
 	var route = configuration.directory_endpoint;
 	var $directoryContainer = $('#directory_container');
 	var $dCount = $('#d-count');
+	var $typeInput = $('#d-class-type');
+	var $yearInput = $('#d-class-year');
 	var m1 = '<tr class="d-item"><td class="d-name">';
 	var m3 = '</td><td class="d-year">';
 	var m5 = '</td><td class="d-organization">';
@@ -102,13 +104,8 @@ module.exports = function($, configuration) {
 
 
 	function renderMeta( items ){
-		
 		var count = items.length;
-
 		$dCount.text( count );
-		
-
-
 	}	
 
 
@@ -118,7 +115,7 @@ module.exports = function($, configuration) {
 	}
 
 
-	function getUrl(){
+	function getBaseUrl(){
 		var url = window.location.origin;
 		return url;
 	}
@@ -126,19 +123,28 @@ module.exports = function($, configuration) {
 
 	function setupAlumni(){
 		$( ".d-select" ).change(function() {
-			var ct = $('#d-class-type').val();
-			var cy = $('#d-class-year').val();
+			var ct = $typeInput.val();
+			var cy = $yearInput.val();
 			getAlumni( ct, cy );
 		});
 
-	}
-
+	}	
 
 	//setup this process
 	function initialize() {
 
 		$( document ).ready( function() {
-			getAlumni( initialType, initialYear);	
+
+			if ( $.urlParam('class') === 'lri' || $.urlParam('class') === 'clri' || $.urlParam('class') === 'lcf' ){
+				initialType = $.urlParam('class');
+				initialYear = $.urlParam('year');
+				$typeInput.val( initialType );
+				$yearInput.val( initialYear );				
+				getAlumni( initialType, initialYear);
+			} else{
+				getAlumni( initialType, initialYear);	
+			}
+
 			setupAlumni();	
 		});
 
