@@ -10,6 +10,7 @@ var filterAlumniNews = require('../transformations/filter-term-by-taxonomy.js')(
  module.exports = function( wp, config, globals ) {
 
     var urlReplace = require('../utilities/resource-map.js')( config );
+    var getContactForPage = require('../transformations/get-contact-for-page.js')( wp );
 
     return base.route(
         /**
@@ -27,7 +28,7 @@ var filterAlumniNews = require('../transformations/filter-term-by-taxonomy.js')(
          */
          [
              passOptions,
-             filterPage,
+             function( options, page, news, callback )  { try{ getContactForPage( page[0], callback ); } catch( e ) { callback(e); } },
              function( options, page, news, callback ) { filterAlumniNews( news, callback ); }
          ],
         /**
