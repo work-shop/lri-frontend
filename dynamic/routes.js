@@ -68,7 +68,6 @@ module.exports = function( express, app, config, globals ) {
     /**
     * Routes
     */
-
     app.get('/', index( globals.wp, config, globals ) );
 
     app.get('/about', about( globals.wp, config, globals ) );
@@ -96,10 +95,23 @@ module.exports = function( express, app, config, globals ) {
 
     app.get('/contact', contact( globals.wp, config, globals ) );
 
-    // /**
-    //  * Salesforce JSON Alumni Directory Endpoint
-    //  */
-    //
+    /**
+     * Salesforce JSON Alumni Directory Endpoint
+     */
+    /**
+     * Note on 'LCF'
+     * =============
+     * There's an issue in which class type "LCF" is not being returned
+     * from this endpoint at all. The reason for this is that the 'Class_Year__c'
+     * relation in salesforce is null for the 'LCF' Class_Name. This may be because
+     * the LCF class only occured during a single year.
+     *
+     * The best way to fix this is definitely to add the year back into these
+     * records on the salesforce end. That means we won't have to change anything here,
+     * or make any weird special accomodations that will break things later.
+     *
+     * Recommend changing the years in the production and sandbox environment.
+     */
     app.get('/json/alumni/:type', jsonAlumniByType(globals.wp, config, globals) );
 
     app.get('/json/alumni/:type/:year', jsonAlumniByType(globals.wp, config, globals) );
