@@ -12,6 +12,7 @@ var filterCoaches = require('../transformations/filter-term-by-taxonomy.js')('co
  module.exports = function( wp, config, globals ) {
 
     var urlReplace = require('../utilities/resource-map.js')( config );
+    var getContactForPage = require('../transformations/get-contact-for-page.js')( wp );
 
     return base.route(
         /**
@@ -30,7 +31,7 @@ var filterCoaches = require('../transformations/filter-term-by-taxonomy.js')('co
          */
          [
              passOptions,
-             filterPage,
+             function( options, page, people, news, callback )   { try{ getContactForPage( page[0], callback ); } catch( e ) { callback(e); } },
              function( options, page, people, news, callback ) { filterCoaches( people, callback ); },
              function( options, page, people, news, callback ) { filterMakeRIStrongerNews( news, callback ); }
          ],
