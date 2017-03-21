@@ -53,6 +53,23 @@ var events = require('./routes/generic/single.js')({
     restructure: require('./structures/restructure-events.js')
 });
 
+/**
+ * TODO: Uncomment the two constructors below to define route handlers
+ * for /donate and /about/history, respectively.
+ */
+// var donate = require('./routes/generic/single.js')({
+//     type: "pages",
+//     name: "donate",
+//     template: "donate.html",
+//     restructure: require('./structures/restructure-page.js')
+// });
+
+// var history = require('./routes/generic/single.js')({
+//     type: "pages",
+//     name: "history",
+//     template: "history.html",
+//     restructure: require('./structures/restructure-page.js')
+// });
 
 var alumniDirectory = require('./routes/generic/single.js')({
     type: "pages",
@@ -75,6 +92,11 @@ module.exports = function( express, app, config, globals ) {
     app.get('/about/opportunities', opportunities( globals.wp, config, globals ) );
 
     app.get('/about/partners', partners( globals.wp, config, globals ) );
+    
+    /**
+     * TODO: Uncomment the route below to define '/about/history'
+     */
+    //app.get('/about/history', history( globals.wp, config, globals ) );
 
     app.get('/college-program/college-current-class', collegeCurrentClass( globals.wp, config, globals ) );
 
@@ -94,6 +116,11 @@ module.exports = function( express, app, config, globals ) {
     app.get('/news/:id', newsStory( globals.wp, config, globals ) );
 
     app.get('/contact', contact( globals.wp, config, globals ) );
+
+    /**
+     * TODO: Uncomment the route below to define '/donate'
+     */
+    // app.get('/donate', donate( globals.wp, config, globals ) );
 
     /**
      * Salesforce JSON Alumni Directory Endpoint
