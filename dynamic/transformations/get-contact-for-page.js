@@ -7,16 +7,16 @@
  *
  */
 module.exports = function( wp ) {
-    return function( about, callback ) {
+    return function( page, callback ) {
 
-        if ( about.acf.page_contact ) {
+        if ( page.acf.page_contact ) {
 
-            wp.people().id( about.acf.page_contact.ID ).embed()
+            wp.people().id( page.acf.page_contact.ID ).embed()
               .then( function( person ) {
 
-                  about.acf.page_contact = person;
+                  page.acf.page_contact = person;
 
-                  callback( null, about );
+                  callback( null, page );
 
               })
               .catch( function( e ) {
@@ -25,7 +25,7 @@ module.exports = function( wp ) {
 
         } else {
 
-            callback( null, about[0] );
+            callback( null, page );
 
         }
 

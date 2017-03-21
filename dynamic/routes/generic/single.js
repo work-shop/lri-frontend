@@ -17,12 +17,18 @@ var identity = function( x ) { return x; };
 
      return function( wp, config, globals ) {
 
+         var getContactForPage = require('../../transformations/get-contact-for-page.js')( wp );
          var urlReplace = require('../../utilities/resource-map.js')( config );
 
          return base.route(
              [
                  wp.namespace( 'acf/v2' ).options().embed(),
                  routeOptions.resolvePost || resolveRequestedPost
+             ],
+
+             [
+                 function( options, post, callback ) { callback( null, options ); },
+                 function( options, post, callback ) { getContactForPage( post, callback ); }
              ],
              /**
               * Success Handler
