@@ -11,7 +11,7 @@ $text-menu-link: (
 //dropdowns
 .menu-field{
 	position: fixed;
-	overflow: scroll;
+	overflow: auto;
 	top: $nav-drop;
 	right: 0;
 	width: 50%;	

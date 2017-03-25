@@ -9,7 +9,7 @@ $text-sidebar: (
 	xl: (17px, 36px)
 	);
 
-$sidebar-link-height: 36px;
+$sidebar-link-height: 29px;
 $page-sidebar-top: $nav-height + $page-body-section-margin;
 
 
@@ -20,7 +20,7 @@ $page-sidebar-top: $nav-height + $page-body-section-margin;
 		top: $page-sidebar-top;
 		right: $container-fluid-padding;
 		height: calc(100vh - #{$page-sidebar-top});
-		overflow: scroll;
+		overflow-y: auto;
 
 		@media screen and (max-width: $md) {
 			right: $container-fluid-padding-mobile;
@@ -48,20 +48,19 @@ $page-sidebar-top: $nav-height + $page-body-section-margin;
 	.button{
 		display: block;
 		border-radius: 3px;
-		text-align: center;
-		margin-bottom: 20px;
+		margin-bottom: 23px;
 		@extend .bold;
 		@extend .tracked;
 
 		a{
-			width: 100%;
+			margin: 0;
 		}
 	}
 	
 	.page-sidebar-title{
 		@extend .bold;
 		@extend .uppercase;
-		margin-bottom: 20px;
+		margin-bottom: 12px;
 		@extend .tracked;
 		color: $yellow-darker;
 	}

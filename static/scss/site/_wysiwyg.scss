@@ -65,4 +65,15 @@
 		margin-bottom: .75em;
 	}
 
+	// p + ul{
+	// 	margin-bottom: 0 !important;
+	// 	outline: 1px solid red;
+	// }
+
+	p ~ ul{
+		margin-top: -20px;
+		margin-bottom: 40px;
+	}
+
+
 }

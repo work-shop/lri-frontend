@@ -14,7 +14,7 @@ $text-nav: (
 	background: #001A39;
 	top: 0;
 	left: 0;
-	width: 100vw;
+	width: 100%;
 	overflow: hidden;
 	z-index: 7;
 
@@ -70,7 +70,7 @@ $text-nav: (
 
 #nav-main{
 	height: $nav-height;
-	width: 100vw;
+	width: 100%;
 	overflow: hidden;
 	left: 0;
 	top: 0;

@@ -47,7 +47,7 @@ $page-body-section-margin: 100px;
 }
 
 $text-hero: (
-	xs: (13px, 17px),
+	xs: (12px, 15px),
 	sm: (18px, 24px),
 	md: (20px, 24px),
 	lg: (22px, 35px),
@@ -57,8 +57,6 @@ $text-hero: (
 
 //page hero
 #page-hero{
-
-	//padding-bottom: $page-body-section-margin;
 
 	img{
 		-webkit-filter: saturate(80%);
@@ -75,7 +73,7 @@ $text-hero: (
 
 		@media screen and (max-width: $sm) {
 			width: 90%;
-			padding: 1.2em;
+			padding: 1em 1em .5em 1em;
 		}
 
 	}
@@ -88,8 +86,11 @@ $text-hero: (
 	.page-hero-scrolly{
 		display: block;
 		text-align: center;
-		//opacity: .75;
 		@include animation(bounce 2.7s ease-in-out infinite);
+
+		@media screen and (max-width: $sm) {
+			height: 30px;
+		}
 	}
 
 	.icon:before{
@@ -97,7 +98,7 @@ $text-hero: (
 		font-size: 90px;
 
 		@media screen and (max-width: $md) {
-			font-size: 40px;
+			font-size: 35px;
 		}
 	}
 }
@@ -123,6 +124,10 @@ $text-hero: (
 
 #page-content{
 	padding-top: $page-body-section-margin;
+
+	@media screen and (max-width: $sm) {
+		padding-top: $page-body-section-margin / 2;		
+	}
 }
 
 
@@ -131,10 +136,15 @@ $text-hero: (
 .page-feature{
 	margin-bottom: $page-body-section-margin;
 
-	&.page-feature-announcement{
+	&.page-feature-announcement,&.page-feature-news{
 		background: lighten($ultra-light, 2%);
 		border-bottom: 4px solid $yellow;
 		padding: 2em;
+
+		h5{
+			text-transform: uppercase;
+			@extend .tracked;
+		}
 
 		h3{
 			color: $brand-bright;
@@ -191,6 +201,7 @@ $text-hero: (
 	.button{
 		display: inline-block;
 		margin-right: 15px;
+		margin-bottom: 1em;
 	}
 }
 

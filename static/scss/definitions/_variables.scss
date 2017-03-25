@@ -25,7 +25,7 @@ $error: #ff4a4a;
 $nav-top-height: 50px;
 $nav-height: 75px;
 $nav-drop: $nav-top-height + $nav-height;
-$nav-drop-after: $nav-height;
+$nav-drop-after: $nav-height - 1px;
 $nav-height-mobile: 50px;
 $container-fluid-max-width: none;
 $container-fluid-padding: 50px;
