@@ -125,10 +125,18 @@ module.exports = function($, configuration) {
 		$( ".d-select" ).change(function() {
 			var ct = $typeInput.val();
 			var cy = $yearInput.val();
+			setBodyClass( ct );
 			getAlumni( ct, cy );
 		});
 
 	}	
+
+
+	function setBodyClass( ct ){
+		$('body').removeClass('directory-class-lri').removeClass('directory-class-clri').removeClass('directory-class-lcf');
+		var bodyClass = 'directory-class-' + ct;
+		$('body').addClass( bodyClass );
+	}
 
 	//setup this process
 	function initialize() {
@@ -139,11 +147,10 @@ module.exports = function($, configuration) {
 				initialType = $.urlParam('class');
 				initialYear = $.urlParam('year');
 				$typeInput.val( initialType );
-				$yearInput.val( initialYear );				
-				getAlumni( initialType, initialYear);
-			} else{
-				getAlumni( initialType, initialYear);	
-			}
+				$yearInput.val( initialYear );		
+			} 
+
+			getAlumni( initialType, initialYear);
 
 			setupAlumni();	
 		});

@@ -14,7 +14,8 @@ $text-nav: (
 	background: #001A39;
 	top: 0;
 	left: 0;
-	width: 100%;
+	width: 100vw;
+	overflow: hidden;
 	z-index: 7;
 
 	ul{
@@ -69,7 +70,8 @@ $text-nav: (
 
 #nav-main{
 	height: $nav-height;
-	width: 100%;
+	width: 100vw;
+	overflow: hidden;
 	left: 0;
 	top: 0;
 	z-index: 7;

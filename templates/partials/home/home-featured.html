@@ -28,7 +28,7 @@
 									{% set link = feature.page %}
 									{% endif %}										
 									<div class="button">
-										<a href="{{ link }}">
+										<a href="{{ link }}" {% if feature.featured_content_type == 'event' %} target="_blank" {% endif %}>
 											{{ feature.link_text }}
 										</a>
 									</div>

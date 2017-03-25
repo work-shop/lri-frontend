@@ -11,6 +11,10 @@ $text-news-excerpt: (
 .news-tile{
 	margin-bottom: 40px;
 
+	@media screen and (max-width: $sm) {
+		margin-bottom: 30px;
+	}
+
 	a{
 		display: block;
 		background: $ultra-light;
@@ -37,6 +41,10 @@ $text-news-excerpt: (
 				padding: 3px 4px;
 				font-size: 9px;
 			}
+
+			@media screen and (max-width: $sm) {
+				font-size: 5px;
+			}
 		}
 
 		margin-bottom: 1.25em;
@@ -60,10 +68,9 @@ $text-news-excerpt: (
 		}
 	}
 
-
 }
 
-.page-news{
+// .page-news{
 
 	.news-tile{
 		margin-bottom: 40px;
@@ -87,5 +94,12 @@ $text-news-excerpt: (
 			@include text-size($text-medium-small);
 		}
 
+	}
+// }
+
+
+.page-make-ri-stronger{
+	.news-tile a{
+		height: 200px;
 	}
 }

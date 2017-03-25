@@ -4,7 +4,6 @@
 #footer{
 	background: $light-blue;
 
-
 	background: $brand;
 	*{
 		color: white;
@@ -20,9 +19,12 @@
 		@extend .h4;
 	}
 
-
 }
 
+
+.footer-col{
+	margin-bottom: 2em;
+}
 
 
 address,.phone-number{

@@ -21,11 +21,29 @@ $page-sidebar-top: $nav-height + $page-body-section-margin;
 		right: $container-fluid-padding;
 		height: calc(100vh - #{$page-sidebar-top});
 		overflow: scroll;
+
+		@media screen and (max-width: $md) {
+			right: $container-fluid-padding-mobile;
+			padding-left: 15px;
+		}
+
 	}
+
 
 	width: 290px;
 	float: right;
 	position: relative;
+	//outline: 1px solid $brand;
+
+	@media screen and (max-width: $md) {
+		width: 200px;
+	}
+
+	@media screen and (max-width: $sm) {
+		width: 100%;
+		height: 50px;
+		background: $yellow-darker;
+	}
 
 	.button{
 		display: block;
@@ -98,4 +116,11 @@ $page-sidebar-top: $nav-height + $page-body-section-margin;
 		margin: 0;
 		line-height: 1.4 !important;
 	}
+}
+
+
+//page sidebar mobile
+
+#page-sidebar-mobile{
+	display: none;
 }

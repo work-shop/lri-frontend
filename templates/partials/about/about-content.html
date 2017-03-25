@@ -61,11 +61,13 @@
 		</div>					
 	</div>	
 	<div class="page-body-section-links">
-		<div class="button section-link-button">
-			<a href="/history" target="_blank">
-				{{ item.acf.history_link_text }}
-			</a>
-		</div>			
+		{% if item.acf.history_link_text %}
+			<div class="button section-link-button">
+				<a href="/history" target="_blank">
+					{{ item.acf.history_link_text }}
+				</a>
+			</div>	
+		{% endif %}		
 	</div>							
 </div>
 <div class="page-body-section" id="board">

@@ -82,7 +82,7 @@
 
 			{% if item.acf.strengths_services %}
 				
-				<div data-accordian-group>
+				<div data-accordion-group>
 					
 					{% for service in item.acf.strengths_services %}
 						
@@ -138,7 +138,9 @@
 			{% if news %}
 				<div class="row">
 					{% for story in news %}
-						{% include "../news/news-tile.html" %}
+						{% if loop.index < 5 %}
+							{% include "../news/news-tile.html" %}
+						{% endif %}
 					{% endfor %}						
 				</div>
 			{% endif %}	
