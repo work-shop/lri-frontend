@@ -3,7 +3,6 @@
 var base = require('./generic/base-route.js')();
 var restructureOpportunities = require('../structures/restructure-opportunities.js');
 var pass = require('../transformations/pass.js');
-var filterFirst = require('../transformations/filter-first-result.js');
 /**
  *
  *
@@ -11,6 +10,7 @@ var filterFirst = require('../transformations/filter-first-result.js');
  module.exports = function( wp, config, globals ) {
 
     var urlReplace = require('../utilities/resource-map.js')( config );
+    var getContactForPage = require('../transformations/get-contact-for-page.js')( wp );
 
     return base.route(
         /**
@@ -28,7 +28,7 @@ var filterFirst = require('../transformations/filter-first-result.js');
          */
          [
              function( options, opportunities, jobs, callback ) { pass( options, callback ); },
-             function( options, opportunities, jobs, callback ) { filterFirst( opportunities, callback ); },
+             function(  options, opportunities, jobs, callback )   { try{ getContactForPage( opportunities[0], callback ); } catch( e ) { callback(e); } },
              function( options, opportunities, jobs, callback ) { pass( jobs, callback ); },
          ],
         /**

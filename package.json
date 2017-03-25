@@ -24,6 +24,7 @@
     "bootstrap": "^4.0.0-alpha.5",
     "bourbon": "^4.3.2",
     "colors": "^1.1.2",
+    "dnscache": "^1.0.1",
     "express": "^4.14.0",
     "isotope-layout": "^3.0.1",
     "jquery": "^3.0.0",
@@ -31,6 +32,7 @@
     "parse-json-response": "^1.0.1",
     "request": "^2.79.0",
     "request-promise": "^4.1.1",
+    "requestretry": "^1.12.0",
     "slick-carousel": "^1.6.0",
     "swig": "^1.4.2",
     "underscore": "^1.8.3",
@@ -42,13 +44,17 @@
   },
   "homepage": "http://github.com/work-shop/lri.workshopdesignstudio.org#readme",
   "socket": "lri.workshopdesignstudio.org.sock",
+  "retries": {
+    "attempts": 5,
+    "delay": 5000
+  },
   "external_api": "http://cms.lri.wsri.host/wp-json",
-  "internal_api": "http://cms.lri.wsri.hostwp-json",
+  "internal_api": "http://cms.lri.wsri.host/wp-json",
   "frontend": {
     "local_api": "http://localhost/lri/wp-json/wp/v2",
     "remote_api": "http://cms.lri.wsri.host/wp-json/wp/v2",
     "eventbrite_token": "E52QJKT37PA37P6FABPA",
-    "directory_endpoint" : "/json/alumni"
+    "directory_endpoint": "/json/alumni"
   },
   "salesforce_configuration": ".salesforce.conf.json"
 }

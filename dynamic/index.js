@@ -1,8 +1,7 @@
 "use strict";
 
-var util = require('util');
 
-var request = require('request-promise');
+var request = require('requestretry');
 var jsforce = require('jsforce');
 
 var generateConfig = require('./config.js');
@@ -14,21 +13,32 @@ var Logger = require('./logging/index.js');
 module.exports = function( express, app, config ) {
     return function() {
 
+        require('dnscache')({
+            'enable': true,
+            'ttl': 300,
+            'cachesize': 1000
+        });
+
         var log = new Logger( config );
 
-        request({ uri: config.external_api, json: true, })
+        request({
+                url: config.external_api,
+                json: true,
+                maxAttempts: config.retries.attempts,
+                retryDelay: config.retries.delay,
+                retryStrategy: request.RetryStrategies.HTTPOrNetworkError,
+                fullResponse: false
+            })
             /**
              * The initial API request should result in the set of available namespaces
              * Installed on WordPress' rest endpoint. We request this schema to instantiate
-             * the `wp-api` library.
+             * the `wp-api` library. This request will retry 5 times in case of a dns resolution issue.
              *
              * @param schema JSON
              */
             .then( function( schema ) {
 
-                var conn = new jsforce.Connection({
-                    loginUrl: config.salesforce.endpoint
-                });
+                var conn = new jsforce.Connection({ loginUrl: config.salesforce.endpoint });
 
                 conn.login(config.salesforce.username, [config.salesforce.password, config.salesforce.token].join(''), function( err ) {
 
