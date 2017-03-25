@@ -215,6 +215,34 @@ $home-section-padding-top: 150px;
 
 }
 
+.wwd-sm{
+	display: none;
+	background: white;
+
+	.wwd-sm-item{
+		margin-bottom: 30px;
+
+		*{
+			text-align:center;
+		}
+	}
+
+	h2{
+		font-family: $font-medium;
+		color: $brand-bright;
+	}
+
+	@media screen and (max-width: $sm) {
+		display: block;	
+	}
+}
+
+.wwd-lg{
+	@media screen and (max-width: $sm) {
+		display: none;	
+	}
+}
+
 $wwd-image: 55%;
 $wwd-nav: 100px;
 $wwd-text: 100% - $wwd-image;
@@ -254,6 +282,10 @@ $text-wwd: (
 	background-position: center center;
 	background-size: cover;
 	background-repeat: no-repeat;
+
+	@media screen and (max-width: $sm) {
+		display: none;
+	}
 }
 
 .wwd-text{

@@ -1,41 +1,69 @@
 <section class="block home-section vhfull" id="home-what-we-do">
 	<div class="home-section-intro bg-white">
 		<h2 class="section-title">
-			<span class="underlined">{{ item.what_we_do_title }}</span>
+			<span class="underlined">{{ item.what_we_do_title|safe }}</span>
 		</h2>
 		<h3 class="section-description">
-			{{ item.what_we_do_introduction }}
+			{{ item.what_we_do_introduction|safe }}
 		</h3>
 	</div>
 	<div class="home-section-content bg-brand-ultra-light">
 		{% if item.what_we_do_sections %}
-			{% for section in item.what_we_do_sections %}
-				<div class="wwd-tab {% if loop.first %}active{% endif %}" id="wwd-{{ loop.index }}">
-					<div class="wwd-image" style="background-image: url('{{ section.image.sizes.lg }}')">
+			<div class="wwd-lg">
+				{% for section in item.what_we_do_sections %}
+					<div class="wwd-tab {% if loop.first %}active{% endif %}" id="wwd-{{ loop.index }}">
+						<div class="wwd-image" style="background-image: url('{{ section.image.sizes.lg }}')">
+						</div>
+						<div class="wwd-text">
+							<h4 class="serif">
+								{{ section.description|safe }}
+							</h4>
+							{% if section.links %}
+								<div class="wwd-links">
+									{% for link in section.links %}					
+										<div class="button wwd-button">
+											<a href="{{ link.link_url }}">
+												{{ link.link_text|safe }}
+											</a>
+										</div>
+									{% endfor %}
+								</div>
+							{% endif %}
+						</div>
 					</div>
-					<div class="wwd-text">
-						<h4 class="serif">
-							{{ section.description }}
-						</h4>
-						{% if section.links %}
-							<div class="wwd-links">
-								{% for link in section.links %}					
-									<div class="button wwd-button">
-										<a href="{{ link.link_url }}">
-											{{ link.link_text }}
-										</a>
+				{% endfor %}
+				<ul class="wwd-nav">
+					{% for section in item.what_we_do_sections %}
+						<li><a href="#wwd-{{loop.index}}" class="wwd-tab-link {% if loop.first %}active{% endif %}">{{section.title|safe}}</a></li>
+					{% endfor %}			
+				</ul>
+			</div>
+			<div class="wwd-sm">
+				<div class="container-fluid">
+					<div class="row">
+						{% for section in item.what_we_do_sections %}
+							<div class="wwd-sm-item col-xs-12">
+								<h2>
+									{{ section.title|safe }}
+								</h2>
+								<h4 class="serif">
+									{{ section.description|safe }}
+								</h4>
+								{% if section.links %}
+									<div class="wwd-links">
+										{% for link in section.links %}					
+											<div class="button wwd-button">
+												<a href="{{ link.link_ur|safe }}">
+													{{ link.link_text|safe }}
+												</a>
+											</div>
+										{% endfor %}
 									</div>
-								{% endfor %}
+								{% endif %}
 							</div>
-						{% endif %}
+						{% endfor %}
 					</div>
 				</div>
-			{% endfor %}
-			<ul class="wwd-nav">
-				{% for section in item.what_we_do_sections %}
-					<li><a href="#wwd-{{loop.index}}" class="wwd-tab-link {% if loop.first %}active{% endif %}">{{section.title}}</a></li>
-				{% endfor %}			
-			</ul>
-		{% endif %}
-	</div>
-</section>
+			{% endif %}		
+		</div>
+	</section>
