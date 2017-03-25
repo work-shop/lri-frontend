@@ -12,13 +12,19 @@
 		{% endif %}
 		{% if item.acf.featured_content[0].acf_fc_layout === 'announcement' %}
 			<div class="page-feature-announcement-container">
-				<h3>{{ item.acf.featured_content[0].announcement_title|safe }}</h3>
-				<h4>{{ item.acf.featured_content[0].announcement_text|safe }}</h4>
+				{% if item.acf.featured_content[0].announcement_link %}
+					<a href="{{ item.acf.featured_content[0].announcement_link }}" target="_blank">
+					{% endif %}
+					<h3>{{ item.acf.featured_content[0].announcement_title|safe }}</h3>
+					<h4>{{ item.acf.featured_content[0].announcement_text|safe }}</h4>
+					{% if item.acf.featured_content[0].announcement_link %}
+					</a>
+				{% endif %}				
 			</div>
 		{% endif %}
 		{% if item.acf.featured_content[0].acf_fc_layout === 'news' %}
 			<div class="page-feature-news-container">
-				<a href="{{ item.acf.featured_content[0].news_item.guid|safe }}">
+				<a href="{{ item.acf.featured_content[0].news_item.guid|safe }}" target="_blank">
 					<h5>Featured News</h5>
 					<h3>{{ item.acf.featured_content[0].news_item.post_title|safe }}</h3>
 					{% if item.acf.featured_content[0].additional_text %}
