@@ -42,15 +42,23 @@
 	}
 
 	.event-date{
-		@extend .bold;
+		font-family: $font-medium;
 		@extend .tracked;
 		@extend .uppercase;
 		font-size: 16px;
 		margin-bottom: 0;
+
+		@media screen and (max-width: $md) {
+			font-size: 14px;
+		}
+
+		@media screen and (max-width: $sm) {
+			font-size: 12px;
+		}
 	}
 
 	.event-title{
-		font-family: $font-medium;
+		@extend .bold;
 		line-height: 1.2;
 		margin-bottom: 0;
 		margin-top: 0;
@@ -58,3 +66,4 @@
 		color: $brand;
 	}
 }
+

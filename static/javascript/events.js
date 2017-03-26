@@ -3,6 +3,7 @@
 
 module.exports = function($, configuration) {
 
+	var activated = false;
 	var base = 'https://www.eventbriteapi.com/v3/events/';
 	var token = '/?token=' + configuration.eventbrite_token;
 
@@ -62,11 +63,7 @@ module.exports = function($, configuration) {
 
 
 	function renderEvent( response, upcoming ){
-
-		console.log(response);
-
-		var eventMarkup = generateMarkup( response, upcoming );
-		
+		generateMarkup( response, upcoming );
 	}
 
 
@@ -78,7 +75,6 @@ module.exports = function($, configuration) {
 		m4 = event.logo.url;
 
 		var d = new Date(event.start.local);
-		//m4 = d.format('dddd, mmmm dS, yyyy, h:MM tt');
 		m6 = formatDate(d);	
 		
 		m8 = event.name.text;
@@ -91,6 +87,13 @@ module.exports = function($, configuration) {
 		else{
 			$pastEventsContainer.append( markup );			
 		}
+
+		if( activated === false ){
+			activated = true;
+			$('.loader-icon.active').removeClass('active');
+		}
+
+
 	}	
 
 
