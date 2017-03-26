@@ -99,6 +99,7 @@ module.exports = function($, configuration) {
 		var markup = m1+m2+m3+m4+m5+m6+m7+m8+m9;
 
 		$directoryContainer.append( markup );
+		$('.loader-icon').removeClass('active');		
 
 	}	
 
@@ -112,6 +113,7 @@ module.exports = function($, configuration) {
 	//remove all items from the directory
 	function emptyDirectory(){
 		$('.d-item').remove();
+		$('.loader-icon').addClass('active');
 	}
 
 
