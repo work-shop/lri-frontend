@@ -19,6 +19,8 @@ var slideshows = require('./slideshows.js')($, slick);
 var modals = require('./modals.js')($);
 var stickies = require('./stickies.js')($);
 var jqueryAccordian = require('./jquery-accordian.js');
+var accordian = require('./accordian.js')($);
+
 
 
 //setup utilities
@@ -28,6 +30,8 @@ slideshows.setupSlideshows();
 menuUtilities.setupMenus();
 modals.setupModals();
 stickies.initialize();
+accordian.initialize();
+
 
 
 $.urlParam = function(name){
@@ -71,8 +75,6 @@ if($('body').hasClass('page-alumni-directory')){
 }
 
 if($('body').hasClass('page-make-ri-stronger')){
-	var accordian = require('./accordian.js')($);
-	accordian.initialize();
 }
 
 
