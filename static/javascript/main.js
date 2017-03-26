@@ -60,6 +60,8 @@ if( $('body').hasClass('archive-events') || $('body').hasClass('page-make-ri-str
 
 if($('body').hasClass('page-home')){
 	var wwd = require('./wwd.js')($);
+	var homeDonate = require('./home-donate.js')($);
+	homeDonate.initialize();	
 	wwd.initialize();
 }
 

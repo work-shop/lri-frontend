@@ -1,4 +1,4 @@
-<section class="block vh60" id="home-donate">
+<section class="block vhmin60" id="home-donate">
 	<div class="container-fluid">
 		<div class="home-section-intro">
 			<h2 class="section-title">
@@ -9,7 +9,24 @@
 			</h3>
 		</div>
 		<div class="home-section-content">
-			
+			<div class="donate-section-options">
+				{% if item.donate_options %}
+					{% for amount in item.donate_options %}
+						<div class="donate-option {% if loop.index == 1 %} active{% endif %}" data-amount="{{ amount.donation_amount }}">
+							<h3>${{ amount.donation_amount }}</h3>
+						</div>
+					{% endfor %}
+				{% endif %}
+			</div>
+			<div class="donate-section-link">
+				<a href="#" id="donate-section-link">
+					{% if item.donate_button_text %} 
+						{{ item.donate_button_text }}
+					{% else %}
+						Donate Now
+					{% endif %}
+				</a>
+			</div>
 		</div>
 	</div>
 </section>

@@ -19,6 +19,10 @@
 		@extend .h4;
 	}
 
+	@media screen and (max-width: $sm) {
+		text-align: center;
+	}
+
 }
 
 
