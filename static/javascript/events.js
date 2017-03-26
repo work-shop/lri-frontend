@@ -20,9 +20,9 @@ module.exports = function($, configuration) {
 
 	var m1 = '<div class="col-xs-6 event event-tile"><a href="';
 	var m3 = '" target="_blank"><div class="event-image"><img src="';
-	var m5 = '"></div><div class="event-text"><h5>';
-	var m7 = '</h5><h4>';
-	var m9 = '</h4></div></a></div>';
+	var m5 = '"></div><div class="event-text"><h5 class="event-date">';
+	var m7 = '</h5><h3 class="event-title">';
+	var m9 = '</h3></div></a></div>';
 
 
 	function getEvents(){
@@ -32,7 +32,6 @@ module.exports = function($, configuration) {
 			}
 		}
 		if( typeof pastEvents !== 'undefined' ){
-			console.log('pastEvents');
 			for( var i = 0; i < pastEvents.length; i++ ){
 				requestEvent( pastEvents[i].eventbrite_id, false );
 			}
@@ -63,6 +62,8 @@ module.exports = function($, configuration) {
 
 
 	function renderEvent( response, upcoming ){
+
+		console.log(response);
 
 		var eventMarkup = generateMarkup( response, upcoming );
 		

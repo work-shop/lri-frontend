@@ -1,46 +1,83 @@
 
-.impact-body{
-	padding-bottom: 60px;
-	padding-top: 60px;
 
-	h2{
-		color: $yellow-darker;
-		@extend .h1;
-		@extend .serif;
-		font-weight: bold;
-		text-align: center;
+.page-make-ri-stronger{
+
+	.slick-impact{
 		width: 80%;
-		margin: 0 auto 15px auto;
+
+		@media screen and (max-width: $sm) {
+			width: 100%;
+		}
 	}
 
-	h4{
-		text-align: center;
-		width: 50%;
-		margin: 0 auto 15px auto;		
+	.impact-body{
+		padding-bottom: 90px;
+		padding-top: 40px;
+
+		h2{
+			color: $yellow-darker;
+			@extend .h1;
+			@extend .serif;
+			font-weight: bold;
+			text-align: center;
+			width: 92%;
+			margin: 0 auto 15px auto;
+		}
+
+		h4{
+			text-align: center;
+			width: 75%;
+			margin: 0 auto 15px auto;
+			@extend .bold;
+			color: $medium;
+			color: $brand;
+			@extend .h3;
+
+			@media screen and (max-width: $sm) {
+				width: 90%;
+			}
+		}
+
 	}
 
 }
 
 
 .clients-body{
-	margin-top: $page-body-section-margin;
+	margin-top: $page-body-section-margin / 1.5;
 	margin-bottom: $page-body-section-margin * 1.5;
+}
+
+.slick-clients{
+	width: 90%;
+	margin: 0 auto;
+
+	@media screen and (max-width: $md) {
+		width: 100%;	
+	}
 }
 
 .client-item{
 	width: 33%;
 	display: block;
 	float: left;
-	padding: 15px;
-	height: 150px;
+	padding: 0px 30px;
+	height: 130px;
 	margin-bottom: 15px;
 
-	img{
-		max-height: 100%;
-		width: auto;
+	.client-image{
+		background-size: contain;
+		height: 100%;
+		width: 80%;
 		margin: 0 auto;
-		// -webkit-filter: saturate(0);
+		background-repeat: no-repeat;
+		background-position: center center;
+
+		@media screen and (max-width: $md) {
+			width: 100%;
+		}
 	}
+
 }
 
 

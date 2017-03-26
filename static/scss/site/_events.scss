@@ -4,12 +4,30 @@
 
 	a{
 		display: block;
-		
+		width: 85%;
+		height: 400px;
+		border-bottom: 3px solid transparent;
+
 		&:hover{
+
 			.event-text{
 				border-bottom: 3px solid $yellow;
 			}
 		}
+
+		@media screen and (max-width: $lg) {
+			width: 90%;
+			height: 350px;
+		}
+
+		@media screen and (max-width: $md) {
+			height: 300px;
+		}
+
+		@media screen and (max-width: $sm) {
+			height: 250px;
+		}
+
 	}
 
 	img{
@@ -17,18 +35,26 @@
 	}
 
 	.event-text{
-		background: $ultra-light;
-		padding: 15px;
-		border-bottom: 3px solid $ultra-light;
-		height: 150px;
+		padding: 15px 0;
 		margin-top: 0;
-		@include transition(border, .125s);
+		width: 87%;
+		border-bottom: 3px solid transparent;
 	}
 
-	h4{
+	.event-date{
 		@extend .bold;
-		line-height: 1.1;
+		@extend .tracked;
+		@extend .uppercase;
+		font-size: 16px;
+		margin-bottom: 0;
+	}
+
+	.event-title{
+		font-family: $font-medium;
+		line-height: 1.2;
 		margin-bottom: 0;
 		margin-top: 0;
+		@extend .h4;
+		color: $brand;
 	}
 }
