@@ -1,9 +1,6 @@
 
 .page-people-body{
-	margin-top: 80px;
-	//margin-bottom: 80px;
-	clear: both;
-	//outline: 1px solid $light;
+	margin-top: 50px;
 	@extend .clearfix;
 }
 
@@ -12,11 +9,19 @@
 	width: 32%;
 	float: left;
 	margin-bottom: 20px;
-	height: 400px;
+	height: 450px;
+
+	*{
+		text-align: center;
+	}
 
 	@media screen and (max-width: $sm) {
-		height: 275px;
+		height: 350px;
 	}
+
+	@media screen and (max-width: $xs) {
+		height: 275px;
+	}	
 
 	@media screen and (max-width: $md) {
 		width: 46%;
@@ -35,14 +40,16 @@
 
 	}
 
-	//outline: 1px solid $light;
-
 	img{
 		width: 63%;
-		margin-bottom: 20px;
+		margin: 0 auto 20px auto;	
 		display: block;
-		border-radius: 1000px;
-		-webkit-filter: saturate(85%);		
+		border-radius: 50%;
+		-webkit-filter: saturate(85%);	
+
+		@media screen and (max-width: $sm) {
+			width: 55%;
+		}
 	}
 
 	h4{
@@ -57,20 +64,21 @@
 
 	.person-name{
 		@extend .bold;
-		margin-bottom: 5px;
+		margin-bottom: 0px;
 	}
 
 	.person-email, .person-phone_number{
 		color: $brand;
-		letter-spacing: .02em;
+		letter-spacing: .03em;
 		a{
 			color: $brand;
+			letter-spacing: .03em;
 		}
 	}
 
 	h5{
 		width: 80%;
-		margin-top: 15px;
+		margin: 15px auto 0 auto;
 		font-size: 17px;
 		font-family: $font-main !important;
 		line-height: 1.27;
