@@ -31,7 +31,28 @@
 							{% endif %}
 						{% endif %}		
 					</div>
-
+					{% if item.acf.page_contact %}
+						<div class="page-sidebar-contact">
+							<h4 class="page-sidebar-title">
+								Contact
+							</h4>		
+							<h5 class="page-sidebar-contact-name">
+								{{ item.acf.page_contact.post_title|safe }}
+							</h5>
+							<h5 class="page-sidebar-contact-title">
+								Title
+								{{ item.acf.page_contact.post_title|safe }}
+							</h5>
+							<h5 class="page-sidebar-contact-email brand">
+								email@domain.com
+								{# {{ item.acf.page_contact.post_title|safe }} #}
+							</h5>
+							<h5 class="page-sidebar-contact-phone brand">
+								401.555.1234
+								{# {{ item.acf.page_contact.post_title|safe }} #}
+							</h5>						
+						</div>
+					{% endif %}
 				</div>
 			</div>
 		</div>

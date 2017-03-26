@@ -127,7 +127,11 @@ $page-sidebar-top: $nav-height + $page-body-section-margin;
 		display: block;
 	}
 
-	.page-sidebar-mobile-control{
+	.accordion{
+		margin-bottom: 15px;
+	}
+
+	[data-control]{
 		padding: 10px 6px 1px 15px;
 		border: 1px solid $light-blue;
 
@@ -142,6 +146,15 @@ $page-sidebar-top: $nav-height + $page-body-section-margin;
 		h4{
 			font-size: 15px;
 		}
+	}
+
+	.page-sidebar-mobile-button{
+		a{
+			width: 100%;
+		}
+
+		margin-top: 10px;
+		margin-bottom: 40px;
 	}
 
 }
