@@ -54,15 +54,16 @@
 						{% if item.acf.page_contact.acf.email %}
 							<a href="mailto:{{ item.acf.page_contact.acf.email|safe }}" target="_blank">
 								{{ item.acf.page_contact.acf.email|safe }}
-							{% endif %}
-						</h5>
-						<h5 class="page-sidebar-contact-phone brand">
-							{% if item.acf.page_contact.acf.phone_number %}
-								{{ item.acf.page_contact.acf.phone_number|safe }}
-							{% endif %}
-						</h5>						
-					</div>
-				{% endif %}
+							</a>
+						{% endif %}
+					</h5>
+					<h5 class="page-sidebar-contact-phone brand">
+						{% if item.acf.page_contact.acf.phone_number %}
+							{{ item.acf.page_contact.acf.phone_number|safe }}
+						{% endif %}
+					</h5>						
+				</div>
 			{% endif %}
-		</nav>
-	{% endif %}
+		{% endif %}
+	</nav>
+{% endif %}

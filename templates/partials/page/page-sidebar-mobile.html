@@ -39,32 +39,36 @@
 									Contact
 								</h4>		
 								<h5 class="page-sidebar-contact-name">
-									{{ item.acf.page_contact.post_title|safe }}
+									{{ item.acf.page_contact.title.rendered|safe }}
 								</h5>
 								<h5 class="page-sidebar-contact-title">
-									Title
-									{{ item.acf.page_contact.post_title|safe }}
+									{% if item.acf.page_contact.acf.job_title %}
+										{{ item.acf.page_contact.acf.job_title|safe }}
+									{% endif %}
 								</h5>
 								<h5 class="page-sidebar-contact-email brand">
-									email@domain.com
-									{# {{ item.acf.page_contact.post_title|safe }} #}
+									{% if item.acf.page_contact.acf.email %}
+										<a href="mailto:{{ item.acf.page_contact.acf.email|safe }}" target="_blank">
+											{{ item.acf.page_contact.acf.email|safe }}
+										</a>
+									{% endif %}
 								</h5>
 								<h5 class="page-sidebar-contact-phone brand">
-									401.555.1234
-									{# {{ item.acf.page_contact.post_title|safe }} #}
+									{% if item.acf.page_contact.acf.phone_number %}
+										{{ item.acf.page_contact.acf.phone_number|safe }}
+									{% endif %}
 								</h5>						
 							</div>
 						{% endif %}
 					</div>
 				</div>
-			</div>
-			{% if item.acf.sidebar_button %}
-				<div class="button page-sidebar-mobile-button">
-					<a href="{{ item.acf.sidebar_button_link }}" class="">
-						{{ item.acf.sidebar_button_text }}
-					</a>
-				</div>
-			{% endif %}	
-		{% endif %}		
-	</nav>
-{% endif %}
+				{% if item.acf.sidebar_button %}
+					<div class="button page-sidebar-mobile-button">
+						<a href="{{ item.acf.sidebar_button_link }}" class="">
+							{{ item.acf.sidebar_button_text }}
+						</a>
+					</div>
+				{% endif %}	
+			{% endif %}		
+		</nav>
+	{% endif %}

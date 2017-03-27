@@ -129,21 +129,21 @@ $page-sidebar-top: $nav-height + $page-body-section-margin;
 
 	.accordion{
 		margin-bottom: 15px;
+
+		&.open{
+			[data-control]{
+				.icon{
+					@include transform( rotate(180deg) translate(0, 2px));
+				}
+			}
+		}
+
 	}
 
 	[data-control]{
 		padding: 10px 6px 1px 15px;
 		border: 1px solid $light-blue;
 		background: $light-blue;
-
-
-		.icon{
-			float: right;
-			margin-right: 10px;
-			&:before{
-				top: -2px;
-			}
-		}
 
 		h4{
 			font-size: 15px;
