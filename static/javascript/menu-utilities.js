@@ -31,12 +31,12 @@ module.exports = function($) {
 	function menuToggle(){
 
 		if($('body').hasClass('menu-closed')){
-			$('#menu').removeClass('closed').addClass('open');
+			$('#mobile-nav').removeClass('closed').addClass('open');
 			$('#blanket').removeClass('off').addClass('on');						
 			$('body').removeClass('menu-closed').addClass('menu-open');
 		}
 		else if($('body').hasClass('menu-open')){
-			$('#menu').removeClass('open').addClass('closed');
+			$('#mobile-nav').removeClass('open').addClass('closed');
 			$('#blanket').removeClass('on').addClass('off');			
 			$('body').removeClass('menu-open').addClass('menu-closed');
 		}

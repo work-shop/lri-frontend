@@ -80,11 +80,13 @@ $text-nav: (
 
 	@media screen and (max-width: $sm) {
 		top: 0;
+		position: fixed;
+		height: $nav-height-mobile;
 	}
 
 	ul{
 		float: right;
-		@media screen and (max-width: $xs) {
+		@media screen and (max-width: $sm) {
 			display: none;
 		}		
 	}
@@ -148,9 +150,9 @@ $text-nav: (
 		margin-top: 22px;
 	}
 
-	// @media screen and (max-width: $sm) {
-	// 	margin-top: 10px;
-	// }	
+	@media screen and (max-width: $sm) {
+		margin-top: 10px;
+	}	
 
 	svg{
 		width: 188px;
@@ -160,7 +162,7 @@ $text-nav: (
 		}
 
 		@media screen and (max-width: $sm) {
-			width: 130px;
+			width: 125px;
 		}
 
 	}
@@ -174,15 +176,71 @@ $text-nav: (
 
 /* mobile nav */
 
-.mobile-nav-items{
+#mobile-nav{
+	@include transform( translate(150%,0%) );
+	background: $brand-bright;
+	position: fixed;
+	z-index: 6;
+	top: $nav-height-mobile;
+	left: 0;
+	width: 100%;
+	height: calc(100vh - #{$nav-height-mobile});
+	@include transition( transform, .25s );
+	padding-top: 25px;
+	padding-bottom: 75px;
+	overflow: scroll;
 
+	&.open{
+		@include transform( translate( 0%,0%) );
+	}
+
+	*{
+		color: white;
+	}
+
+	h4{
+		font-size: 14px;
+		@extend .uppercase;
+		@extend .bold;
+		margin-bottom: 4px;
+	}
+
+	ul{
+		margin-bottom: 20px;
+	}
+
+	li a{
+		font-size: 16px;
+	}
+
+	address{
+		line-height: 1.4;
+	}
 }
 
 .hamburger{
 	display: none;
+	position: fixed;
+	right: 15px;
+	top: 17px;
+	z-index: 8;
+	@extend .uppercase;
+	font-family: $font-medium;
+	@extend .tracked;
+	font-size: 14px;
+	color: $brand;
 
 	@media screen and (max-width: $sm) {
 		display: block;
+	}
+}
+
+.menu-open{
+	.hamburger{
+		.icon:before{
+			content: 'x';
+			font-size: 21px;
+		}
 	}
 }
 
