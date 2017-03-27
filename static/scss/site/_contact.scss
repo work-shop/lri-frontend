@@ -1,0 +1,18 @@
+
+
+.contact-item{
+	padding: 0px 0 50px 0;
+	
+	&:before{
+		width: calc(100% - 40px);
+		margin: 0 auto 25px auto;
+		height: 1px;
+		display: block;
+		content: '';
+		border-top: 2px solid $yellow;
+	}
+	
+	h4{
+		line-height: 1.1;
+	}
+}

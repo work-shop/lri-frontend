@@ -16,6 +16,8 @@
 						{% include "../alumni-directory/alumni-directory-content.html" %}
 					{% elseif pageTitle === 'Make RI Stronger' %}
 						{% include "../make-ri-stronger/make-ri-stronger-content.html" %}
+					{% elseif pageTitle === 'Contact' %}
+						{% include "../contact/contact-content.html" %}						
 					{% else %}
 						{# default page content #}
 						{% if item.acf.page_body_sections %}

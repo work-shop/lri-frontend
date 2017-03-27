@@ -1,64 +1,68 @@
 {% if item.acf.hide_sidebar == false %}
 	<nav class="page-sidebar static" id="page-sidebar">
-		{% if item.acf.sidebar_button %}
-			<div class="button page-sidebar-button">
-				<a href="{{ item.acf.sidebar_button_link }}" class="">
-					{{ item.acf.sidebar_button_text }}
-				</a>
-			</div>
-		{% endif %}
-		<div class="page-sidebar-outline">
-			<h4 class="page-sidebar-title">
-				{{ item.title.rendered|safe }}
-			</h4>
-			{% if pageTitle === 'About' %}
-				{% include "../about/about-sidebar.html" %}
-			{% elseif pageTitle === 'Make RI Stronger' %}
-				{% include "../make-ri-stronger/make-ri-stronger-sidebar.html" %}
-			{% else %}		
-				{% if item.acf.page_body_sections || item.acf.sidebar_additional_links %}
-					<ul>
-						{% if item.acf.page_body_sections %}
-							{% for section in item.acf.page_body_sections %}
-								<li>
-									<a href="#page-section-{{ loop.index }}" class="spy-link sidebar-jump">
-										{{ section.section_title|safe }}
-									</a>
-								</li>
-							{% endfor %}
-						{% endif %}
-						{% if item.acf.sidebar_additional_links %}
-							{% include "../page/page-sidebar-additional-links.html" %}
-						{% endif %}		
-					</ul>
-				{% endif %}
-			{% endif %}		
-		</div>
-		{% if item.acf.page_contact %}
-			<div class="page-sidebar-contact">
+		{% if pageTitle === 'Contact' %}
+			{% include "../contact/contact-sidebar.html" %}
+		{% else %}		
+			{% if item.acf.sidebar_button %}
+				<div class="button page-sidebar-button">
+					<a href="{{ item.acf.sidebar_button_link }}" class="">
+						{{ item.acf.sidebar_button_text }}
+					</a>
+				</div>
+			{% endif %}
+			<div class="page-sidebar-outline">
 				<h4 class="page-sidebar-title">
-					Contact
-				</h4>		
-				<h5 class="page-sidebar-contact-name">
-					{{ item.acf.page_contact.title.rendered|safe }}
-				</h5>
-				<h5 class="page-sidebar-contact-title">
-					{% if item.acf.page_contact.acf.job_title %}
-						{{ item.acf.page_contact.acf.job_title|safe }}
+					{{ item.title.rendered|safe }}
+				</h4>
+				{% if pageTitle === 'About' %}
+					{% include "../about/about-sidebar.html" %}
+				{% elseif pageTitle === 'Make RI Stronger' %}
+					{% include "../make-ri-stronger/make-ri-stronger-sidebar.html" %}
+				{% else %}		
+					{% if item.acf.page_body_sections || item.acf.sidebar_additional_links %}
+						<ul>
+							{% if item.acf.page_body_sections %}
+								{% for section in item.acf.page_body_sections %}
+									<li>
+										<a href="#page-section-{{ loop.index }}" class="spy-link sidebar-jump">
+											{{ section.section_title|safe }}
+										</a>
+									</li>
+								{% endfor %}
+							{% endif %}
+							{% if item.acf.sidebar_additional_links %}
+								{% include "../page/page-sidebar-additional-links.html" %}
+							{% endif %}		
+						</ul>
 					{% endif %}
-				</h5>
-				<h5 class="page-sidebar-contact-email brand">
-					{% if item.acf.page_contact.acf.email %}
-						<a href="mailto:{{ item.acf.page_contact.acf.email|safe }}" target="_blank">
-							{{ item.acf.page_contact.acf.email|safe }}
+				{% endif %}		
+			</div>
+			{% if item.acf.page_contact %}
+				<div class="page-sidebar-contact">
+					<h4 class="page-sidebar-title">
+						Contact
+					</h4>		
+					<h5 class="page-sidebar-contact-name">
+						{{ item.acf.page_contact.title.rendered|safe }}
+					</h5>
+					<h5 class="page-sidebar-contact-title">
+						{% if item.acf.page_contact.acf.job_title %}
+							{{ item.acf.page_contact.acf.job_title|safe }}
 						{% endif %}
 					</h5>
-					<h5 class="page-sidebar-contact-phone brand">
-						{% if item.acf.page_contact.acf.phone_number %}
-							{{ item.acf.page_contact.acf.phone_number|safe }}
-						{% endif %}
-					</h5>						
-				</div>
+					<h5 class="page-sidebar-contact-email brand">
+						{% if item.acf.page_contact.acf.email %}
+							<a href="mailto:{{ item.acf.page_contact.acf.email|safe }}" target="_blank">
+								{{ item.acf.page_contact.acf.email|safe }}
+							{% endif %}
+						</h5>
+						<h5 class="page-sidebar-contact-phone brand">
+							{% if item.acf.page_contact.acf.phone_number %}
+								{{ item.acf.page_contact.acf.phone_number|safe }}
+							{% endif %}
+						</h5>						
+					</div>
+				{% endif %}
 			{% endif %}
 		</nav>
 	{% endif %}
