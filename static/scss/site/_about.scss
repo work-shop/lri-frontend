@@ -5,10 +5,28 @@
 
 	.slick-impact{
 		width: 100%;
+	}
 
-		h4,h5{
-			//text-align: center;
+	@media screen and (max-width: $sm) {
+
+
+		.slick-impact{
+			h4,h5{
+				text-align: center;
+			}		
 		}
+
+		.impact-slide-text{
+			padding: 0;
+			width: 86%;
+		}
+
+		.slick-next{
+			&:after{
+				font-size: 60px;
+			}
+		}
+
 	}
 
 }

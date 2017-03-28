@@ -33,7 +33,11 @@ body{
 	}
 
 	@media screen and (max-width: $sm) {
-		//padding-top: $nav-height-mobile;
+		padding-top: $nav-height-mobile;
+
+		&.after{
+			padding-top: $nav-height-mobile;
+		}		
 	}
 }
 

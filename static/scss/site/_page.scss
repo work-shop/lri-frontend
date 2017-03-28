@@ -47,7 +47,7 @@ $page-body-section-margin: 100px;
 }
 
 $text-hero: (
-	xs: (12px, 15px),
+	xs: (13px, 15px),
 	sm: (18px, 24px),
 	md: (20px, 24px),
 	lg: (22px, 35px),
@@ -72,7 +72,7 @@ $text-hero: (
 		box-shadow: 0px 0px 3px $dark;
 
 		@media screen and (max-width: $sm) {
-			width: 90%;
+			width: 95%;
 			padding: 1em 1em .5em 1em;
 		}
 
@@ -178,11 +178,19 @@ $text-hero: (
 	margin-bottom: $page-body-section-margin;
 	clear: both;
 
+	@media screen and (max-width: $sm) {
+		margin-bottom: $page-body-section-margin / 2;
+	}
+
 	h3{
 		color: $brand;
 		margin-bottom: 1em;
 		@extend .tracked-less;
 		margin-top: 0;
+
+		@media screen and (max-width: $sm) {
+			margin-bottom: .4em;
+		}
 	}
 
 	p{

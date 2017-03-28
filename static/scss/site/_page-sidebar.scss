@@ -122,6 +122,12 @@ $page-sidebar-top: $nav-height + $page-body-section-margin;
 	display: none;
 	position: relative;
 	z-index: 2;
+	margin-bottom: 50px;
+	width: 100%;
+	width: calc( 100% + 20px);
+	margin-left: -10px;
+
+
 
 	@media screen and (max-width: $sm) {
 		display: block;
@@ -146,7 +152,9 @@ $page-sidebar-top: $nav-height + $page-body-section-margin;
 		background: $light-blue;
 
 		h4{
-			font-size: 15px;
+			font-size: 14px;
+			@extend .uppercase;
+			@extend .tracked;
 		}
 	}
 
@@ -168,5 +176,9 @@ $page-sidebar-top: $nav-height + $page-body-section-margin;
 
 	li{
 		height: 25px;
+
+		a{
+			font-size: 15px;
+		}
 	}
 }

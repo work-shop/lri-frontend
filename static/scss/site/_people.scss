@@ -15,27 +15,48 @@
 		text-align: center;
 	}
 
-	@media screen and (max-width: $sm) {
-		height: 350px;
-	}
-
-	@media screen and (max-width: $xs) {
-		height: 275px;
+	@media screen and (max-width: $lg) {
+		height: 375px;
+		width: 46%;
+		margin-right: 4%;
 	}	
 
 	@media screen and (max-width: $md) {
+		height: 350px;
 		width: 46%;
 		margin-right: 4%;
+	}	
+
+	@media screen and (max-width: $sm) {
+		height: 250px;
+		margin-bottom: 5px;
 	}
+
+	@media screen and (max-width: $xs) {
+		height: 215px;
+
+		*{
+			word-wrap: break-word;
+		}
+	}	
 
 	&.person-staff{
 		width: 45%;
 		margin-right: 5%;
 		height: 480px;
 
+		@media screen and (max-width: $lg) {
+			height: 400px;
+		}
+
 		@media screen and (max-width: $md) {
 			width: 46%;
 			margin-right: 4%;
+			height: 380px;
+		}
+
+		@media screen and (max-width: $sm) {
+			height: 260px;
 		}
 
 	}
@@ -49,6 +70,10 @@
 
 		@media screen and (max-width: $sm) {
 			width: 55%;
+		}
+
+		@media screen and (max-width: $sm) {
+			width: 40%;
 		}
 	}
 
@@ -78,22 +103,19 @@
 
 	h5{
 		width: 80%;
-		margin: 15px auto 0 auto;
+		margin: 10px auto 0 auto;
 		font-size: 17px;
 		font-family: $font-main !important;
 		line-height: 1.27;
 
 		@media screen and (max-width: $sm) {
 			font-size: 13px;
+			margin-bottom: 0;
 		}
 
 		@media screen and (max-width: $lg) {
 			width: 94%;
 		}
 	}
-
-	// .person-info{
-	// 	min-height: 180px;
-	// }
 
 }

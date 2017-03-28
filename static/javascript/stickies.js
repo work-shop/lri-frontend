@@ -71,7 +71,7 @@ module.exports = function( $ ){
 
 	function checkNavPosition(){
 
-		if( $(window).width() > 768){
+		if( $(window).width() > 767){
 			
 			//nav
 			if ( $('body').scrollTop() >= stickies.navTriggerPosition && stickies.nav.hasClass('static') ){
