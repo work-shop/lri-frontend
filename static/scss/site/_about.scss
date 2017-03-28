@@ -9,6 +9,9 @@
 
 	@media screen and (max-width: $sm) {
 
+		.impact-slide-headshot-container{
+			display: none;
+		}
 
 		.slick-impact{
 			h4,h5{

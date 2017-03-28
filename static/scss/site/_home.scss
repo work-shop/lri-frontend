@@ -430,13 +430,33 @@ $text-wwd: (
 				background: $yellow-darker;
 			}
 		}
+
+		@media screen and (max-width: $sm) {
+			width: 100%;
+			text-align: center;
+		}
 	}
 }
 
-.impact-slide-headshot{
+.impact-slide-headshot-container{
 	width: 15%;
-	border-radius: 300px;
+	padding-bottom: 15%;
+	overflow:hidden;
+	position:relative;
+	background-size: cover;
+	background-position: center center;
+	border-radius: 50%;
+	float: left;
 }
+
+// .impact-slide-headshot{
+// 	position:absolute;
+// 	width:auto;
+// 	min-width:100%;
+// 	min-height:100%;
+// 	height: auto;
+// }
+
 .impact-slide-text{
 	width: 80%;
 	padding-left: 8%;
@@ -524,7 +544,7 @@ $text-wwd: (
 
 	@media screen and (max-width: $sm) {
 		height: auto;
-	padding-bottom: $home-section-padding-top / 3;	
+		padding-bottom: $home-section-padding-top / 3;	
 	}
 
 	.home-section-content{

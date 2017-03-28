@@ -3,7 +3,9 @@
 	{% for slide in options.impact_slideshow %}
 		<div class="slide impact-slide">
 			{% if slide.headshot.sizes.person %}
-				<img class="impact-slide-headshot" src="{{ slide.headshot.sizes.person }}" />
+				<div class="impact-slide-headshot-container" style="background-image: url('{{ slide.headshot.sizes.person }}')">
+					{# <img class="impact-slide-headshot" src="{{ slide.headshot.sizes.person }}" /> #}
+				</div>
 			{% endif %}
 			<div class="impact-slide-text">
 				<h4 class="impact-quote serif">
