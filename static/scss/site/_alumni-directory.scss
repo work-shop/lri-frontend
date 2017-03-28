@@ -14,7 +14,14 @@ $d-row-height: 58px;
 		margin: 0;
 		border: 0;
 		outline: 0;	
-		padding: 10px;			
+		padding: 10px;	
+
+		@media screen and (max-width: $sm) {
+			padding: 2px;
+			font-size: 12px;
+			white-space: normal;
+			word-wrap: break-word;
+		}		
 	}
 
 	th{
