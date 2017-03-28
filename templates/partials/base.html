@@ -10,36 +10,137 @@
 <!DOCTYPE html>
 <html class="no-js">
 <head>
+    
+    {% if pageType === 'single' || pageType === 'page' || pageType === 'archive' %}
+
+        {% if pageTitle %}
+            {% set page_title = pageTitle %}
+            {% set page_suffix = globals.site_title %}
+        {% else %}
+            {% set page_title = globals.site_title %}
+            {% set page_suffix = globals.site_description %}
+        {% endif %}
+        
+        {% if item.acf.social_title %}
+            {% set social_title = item.acf.social_media_title %}
+        {% else %}
+            {% set social_title = page_title %}
+        {% endif %}
+
+        {% if item.acf.social_description %}
+            {% set social_description = item.acf.social_media_description %}
+        {% else %}
+            {% set social_description = globals.site_description  %}
+        {% endif %}
+
+        {% if item.acf.social_image %}
+            {% set social_image = item.acf.social_media_image %}
+        {% else %}
+            {% set social_image = '/public/images/social-card-default.png' %}
+        {% endif %}
+
+        {% set social_url =  globals.site_url %} 
+
+{#     {% elseif pageType === 'archive' %}
+        
+        {% set page_title = globals.site_title %}
+        {% set page_suffix =  globals.site_description %}
+        
+        {% if social_title %}
+            {% set social_title =  item.social_media_title %}
+        {% else %}
+            {% set social_title = globals.site_title %}
+        {% endif %}
+
+        {% if social_description %}
+            {% set social_description =  item.social_media_description %}
+        {% else %}
+            {% set social_description = globals.site_description  %}
+        {% endif %}
+
+        {% if social_image %}
+            {% set social_image =  item.social_media_image %}
+        {% else %}
+            {% set social_image =  '/public/images/social-card-default.png' %}
+        {% endif %}
+
+        {% set social_url =  {{ globals.site_url }} %}    #}
+
+{#     {% elseif pageType === 'home' || pageType === 'options' %}
+        
+        {% set page_title = globals.site_title %}
+        {% set page_suffix =  globals.site_description %}
+        
+        {% if social_title %}
+            {% set social_title =  item.social_media_title %}
+        {% else %}
+            {% set social_title = globals.site_title %}
+        {% endif %}
+
+        {% if social_description %}
+            {% set social_description =  item.social_media_description %}
+        {% else %}
+            {% set social_description = globals.site_description  %}
+        {% endif %}
+
+        {% if social_image %}
+            {% set social_image =  item.social_media_image %}
+        {% else %}
+            {% set social_image =  '/public/images/social-card-default.png' %}
+        {% endif %}
+
+        {% set social_url =  globals.site_url %}    #}                 
+        
+    {% else %}
+
+        {% if pageTitle %}
+            {% set page_title = pageTitle %}
+            {% set page_suffix = globals.site_title %}
+        {% else %}
+            {% set page_title = globals.site_title %}
+            {% set page_suffix = globals.site_description %}
+        {% endif %}
+        
+        {% if item.social_media_title %}
+            {% set social_title = item.social_media_title %}
+        {% else %}
+            {% set social_title = globals.site_title %}
+        {% endif %}
+
+        {% if item.social_media_description %}
+            {% set social_description = item.social_media_description %}
+        {% else %}
+            {% set social_description = globals.site_description  %}
+        {% endif %}
+
+        {% if item.social_media_image %}
+            {% set social_image = item.social_media_image.sizes.facebook %}
+        {% else %}
+            {% set social_image =  '/public/images/social-card-default.png' %}
+        {% endif %}
+
+        {% set social_url =  globals.site_url %}    
+
+    {% endif %} 
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width">
-    <meta name="description" content="{% block description %} {{ globals.site_description }} {% endblock %}">
+    <meta name="description" content="{% block description %}  {{ page_title|safe }} | {{ globals.site_description|safe }} {% endblock %}">
 
     <title>
-        {% if pageType === 'home' %}
-            {{ globals.site_title|safe }} | {{ globals.site_description|safe }}
-        {% elseif pageType === 'single' %}
-            {{ pageTitle|safe }} | {{ globals.site_title|safe }}
-        {% elseif pageType === 'archive' %}
-            {{ pageTitle|safe }} | {{ globals.site_title|safe }}
-        {% elseif pageType === 'page' %}
-            {{ pageTitle|safe }} | {{ globals.site_title|safe }}
-        {% elseif pageType === 'options' %}
-            {{ pageTitle|safe }} | {{ globals.site_title|safe }}
-        {% else %}
-            {{ globals.site_title|safe }} | {{ options.site_description|safe }}
-        {% endif %}          
+        {{ page_title|safe }} | {{ page_suffix |safe }}
     </title>
 
     <!-- Facebook Open Graph data -->
-    <meta property="og:title" content="{{social_title}}" />
-    <meta property="og:description" content="{{social_description}}" />
-    <meta property="og:image" content="{{social_image}}" />
-    <meta property="og:url" content="{{globals.site_url}}" />
+    <meta property="og:title" content="{{ social_title|safe }}" />
+    <meta property="og:description" content="{{ social_description|safe }}" />
+    <meta property="og:image" content="{{ social_image|safe }}" />
+    <meta property="og:url" content="{{ globals.site_url|safe }}" />
     <meta property="og:type" content="website" />
 
     <!-- Twitter Card data -->
-    <meta name="twitter:card" value="{{social_description}}">
+    <meta name="twitter:card" value="{{ social_description|safe }}">
 
     <link rel="icon" type="image/png" sizes="16x16" href="/public/images/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/public/images/favicon-32x32.png">
@@ -74,57 +175,57 @@
                 <script>
                     console.log( '===== JSON CONTEXT =====' );
                     {% if options %} 
-                        console.log( 'options:' );
-                        console.log( {{ options|json|safe }});
-                        console.log( '========================' );
+                    console.log( 'options:' );
+                    console.log( {{ options|json|safe }});
+                    console.log( '========================' );
                     {% endif %} 
                     {% if globals %}
-                        console.log( 'globals:' );
-                        console.log( {{ globals|json|safe }});
-                        console.log( '========================' );
+                    console.log( 'globals:' );
+                    console.log( {{ globals|json|safe }});
+                    console.log( '========================' );
                     {% endif %} 
                     {% if item %}
-                        console.log( 'item:' );
-                        console.log( {{ item|json|safe }});
-                        console.log( '========================' );
+                    console.log( 'item:' );
+                    console.log( {{ item|json|safe }});
+                    console.log( '========================' );
                     {% endif %}  
                     {% if items %}
-                        console.log( 'items:' );
-                        console.log( {{ items|json|safe }});
-                        console.log( '========================' );
+                    console.log( 'items:' );
+                    console.log( {{ items|json|safe }});
+                    console.log( '========================' );
                     {% endif %}  
                     {% if categories %}
-                        console.log( 'categories:' );
-                        console.log( {{ categories|json|safe }});
-                        console.log( '========================' );
+                    console.log( 'categories:' );
+                    console.log( {{ categories|json|safe }});
+                    console.log( '========================' );
                     {% endif %}  
                     {% if news %}
-                        console.log( 'news:' );
-                        console.log( {{ news|json|safe }});
-                        console.log( '========================' );
+                    console.log( 'news:' );
+                    console.log( {{ news|json|safe }});
+                    console.log( '========================' );
                     {% endif %}  
                     {% if jobs %}
-                        console.log( 'jobs:' );
-                        console.log( {{ jobs|json|safe }});
-                        console.log( '========================' );
+                    console.log( 'jobs:' );
+                    console.log( {{ jobs|json|safe }});
+                    console.log( '========================' );
                     {% endif %}     
                     {% if coaches %}
-                        console.log( 'coaches:' );
-                        console.log( {{ coaches|json|safe }});
-                        console.log( '========================' );
+                    console.log( 'coaches:' );
+                    console.log( {{ coaches|json|safe }});
+                    console.log( '========================' );
                     {% endif %}     
                     {% if staff %}
-                        console.log( 'staff:' );
-                        console.log( {{ staff|json|safe }});
-                        console.log( '========================' );
+                    console.log( 'staff:' );
+                    console.log( {{ staff|json|safe }});
+                    console.log( '========================' );
                     {% endif %}        
                     {% if board %}
-                        console.log( 'board:' );
-                        console.log( {{ board|json|safe }});
-                        console.log( '========================' );
+                    console.log( 'board:' );
+                    console.log( {{ board|json|safe }});
+                    console.log( '========================' );
                     {% endif %} 
-            </script>
-        {% endif %}
+                </script>
+            {% endif %}
 
         <!--<script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
