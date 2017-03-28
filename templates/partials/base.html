@@ -36,7 +36,7 @@
         {% if item.acf.social_image %}
             {% set social_image = item.acf.social_media_image %}
         {% else %}
-            {% set social_image = '/public/images/social-card-default.png' %}
+            {% set social_image = globals.site_url + '/public/images/social-card-default.png' %}
         {% endif %}
 
         {% set social_url = item.link %} 
@@ -116,7 +116,7 @@
         {% if item.social_media_image %}
             {% set social_image = item.social_media_image.sizes.facebook %}
         {% else %}
-            {% set social_image =  '/public/images/social-card-default.png' %}
+            {% set social_image =  globals.site_url + '/public/images/social-card-default.png' %}
         {% endif %}
 
         {% set social_url =  globals.site_url %}    
