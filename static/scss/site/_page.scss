@@ -136,6 +136,10 @@ $text-hero: (
 .page-feature{
 	margin-bottom: $page-body-section-margin;
 
+	@media screen and (max-width: $sm) {
+		margin-bottom: $page-body-section-margin / 3; 
+	}
+
 	&.page-feature-announcement,&.page-feature-news{
 		background: lighten($ultra-light, 2%);
 		border-bottom: 4px solid $yellow;
