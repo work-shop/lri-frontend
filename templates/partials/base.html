@@ -39,7 +39,7 @@
             {% set social_image = '/public/images/social-card-default.png' %}
         {% endif %}
 
-        {% set social_url =  globals.site_url %} 
+        {% set social_url = item.link %} 
 
 {#     {% elseif pageType === 'archive' %}
         
@@ -128,15 +128,13 @@
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="{% block description %}  {{ page_title|safe }} | {{ globals.site_description|safe }} {% endblock %}">
 
-    <title>
-        {{ page_title|safe }} | {{ page_suffix |safe }}
-    </title>
+    <title>{{ page_title|safe }} | {{ page_suffix |safe }}</title>
 
     <!-- Facebook Open Graph data -->
     <meta property="og:title" content="{{ social_title|safe }}" />
     <meta property="og:description" content="{{ social_description|safe }}" />
     <meta property="og:image" content="{{ social_image|safe }}" />
-    <meta property="og:url" content="{{ globals.site_url|safe }}" />
+    <meta property="og:url" content="{{ social_url|safe }}" />
     <meta property="og:type" content="website" />
 
     <!-- Twitter Card data -->
