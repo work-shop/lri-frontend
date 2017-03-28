@@ -10,9 +10,42 @@
 
 
 .story-intro{
-	width: 50%;
+	width: 61%;
+	margin-bottom: 110px;
+
+	@media screen and (max-width: $sm) {
+		width: 90%;
+		margin-bottom: 40px;
+	}
+
+	.story-title{
+		line-height: 1;
+	}
+
+	.story-subtitle{
+		margin: 1em 0;
+		line-height: 1.1;
+	}
+
+	.story-metadata{
+		@extend .uppercase;
+		font-size: 16px;
+		@extend .tracked;
+
+		@media screen and (max-width: $sm) {
+			font-size: 12px;
+		}
+	}
 }
+
+
 
 .story-main{
 	padding-bottom: 150px;
+	padding-top: 40px;
+	border-top: 2px solid $yellow-darker;
+
+	p{
+		margin-bottom: 2em;
+	}
 }
