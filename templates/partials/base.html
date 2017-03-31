@@ -21,20 +21,20 @@
             {% set page_suffix = globals.site_description %}
         {% endif %}
         
-        {% if item.acf.social_title %}
+        {% if item.acf.social_media_title %}
             {% set social_title = item.acf.social_media_title %}
         {% else %}
             {% set social_title = page_title %}
         {% endif %}
 
-        {% if item.acf.social_description %}
+        {% if item.acf.social_media_description %}
             {% set social_description = item.acf.social_media_description %}
         {% else %}
             {% set social_description = globals.site_description  %}
         {% endif %}
 
-        {% if item.acf.social_image %}
-            {% set social_image = item.acf.social_media_image %}
+        {% if item.acf.social_media_image %}
+            {% set social_image = item.acf.social_media_image.sizes.facebook %}
         {% else %}
             {% set social_image = globals.site_url + '/public/images/social-card-default.png' %}
         {% endif %}
