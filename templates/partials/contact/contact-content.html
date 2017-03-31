@@ -7,7 +7,7 @@
 				</div>
 				<div class="col-xs-12 col-sm-4">
 					{% if contact_item.contact_email %}
-						<a href="mailto:contact_item.contact_email" target="_blank">
+						<a href="mailto:{{contact_item.contact_email}}" target="_blank">
 						{% endif %}
 						<h4>{{ contact_item.contact_email }}</h4>
 						{% if contact_item.contact_email %}
