@@ -51,4 +51,4 @@ public/*.js
 *.tgz
 
 # Credentials
-.salesforce.conf.json
+*.salesforce.conf.json

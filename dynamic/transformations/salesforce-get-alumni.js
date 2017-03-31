@@ -37,7 +37,7 @@ function buildQueryString( type, year ) {
         "WHERE Program_Status__c = 'Graduated' ",
         makeClassNameQuery( type ),
         makeClassYearQuery( year ),
-        "ORDER BY Class_Year__c ASC NULLS FIRST"
+        "ORDER BY Name ASC NULLS FIRST"
     ].join('');
 }
 
