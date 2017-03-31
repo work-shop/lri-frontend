@@ -124,6 +124,7 @@ $text-hero: (
 
 #page-content{
 	padding-top: $page-body-section-margin;
+	padding-bottom: $page-body-section-margin;
 
 	@media screen and (max-width: $sm) {
 		padding-top: $page-body-section-margin / 2;		

@@ -3,17 +3,15 @@
 
 #footer{
 	background: $light-blue;
+	padding-top: 4em;
+	padding-bottom: 3em;
 
 	background: $brand;
 	*{
 		color: white;
 	}
 
-	h4{
-		@extend .bold;
-		@extend .uppercase;
-		@extend .tracked;
-	}
+
 
 	address{
 		@extend .h4;
@@ -28,6 +26,12 @@
 
 .footer-col{
 	margin-bottom: 2em;
+
+	h4{
+		@extend .bold;
+		@extend .uppercase;
+		@extend .tracked;
+	}
 }
 
 
@@ -65,6 +69,23 @@ address,.phone-number{
 
 	@media screen and (max-width: $xs) {
 		width: 13px;
+	}
+}
+
+.site-credit{
+	//text-align: center;
+	width: 33%;
+
+	@media screen and (max-width: $sm) {
+		width: 100%;
+	}
+	margin-top: 1em;
+	h4{
+		font-size: 15px;
+	}
+
+	a:hover{
+		text-decoration: underline;
 	}
 }
 
