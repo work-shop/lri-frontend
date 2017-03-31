@@ -56,7 +56,7 @@
 		}
 
 		@media screen and (max-width: $sm) {
-			height: 260px;
+			height: 250px;
 		}
 
 	}
@@ -85,6 +85,10 @@
 		@media screen and (max-width: $md) {
 			font-size: 14px;
 		}
+
+		@media screen and (max-width: $sm) {
+			font-size: 12px;
+		}
 	}
 
 	.person-name{
@@ -109,7 +113,7 @@
 		line-height: 1.27;
 
 		@media screen and (max-width: $sm) {
-			font-size: 13px;
+			font-size: 11px;
 			margin-bottom: 0;
 		}
 
