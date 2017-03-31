@@ -21,7 +21,6 @@
 					{% elseif pageTitle === 'Contact' %}
 						{% include "../contact/contact-content.html" %}						
 					{% else %}
-						<h1>other page content</h1>
 						{# default page content #}
 						{% if item.acf.page_body_sections %}
 							{% for section in item.acf.page_body_sections %}
