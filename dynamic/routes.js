@@ -112,6 +112,9 @@ module.exports = function( express, app, config, globals ) {
     app.get('/alumni', alumni( globals.wp, config, globals ) );
 
     app.get('/alumni/alumni-directory', alumniDirectory( globals.wp, config, globals ) );
+    app.get('/alumni/directory', alumniDirectory( globals.wp, config, globals ) );
+    app.get('/directory', alumniDirectory( globals.wp, config, globals ) );
+
 
     app.get('/alumni/pay-dues', alumniPayDues( globals.wp, config, globals ) );
 
