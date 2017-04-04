@@ -1,0 +1,26 @@
+
+<section class="block pb6" id="news-pagination">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-9">
+				{% if paging.totalPages > 1 %}
+					<div class="pagination-container">
+						<ul class="pagination centered">
+							{% set pageCount = arrayOfLength( paging.totalPages ) %}
+								{% for i in pageCount %}
+									<li class="{% if pageNumber === loop.index %}active{% endif %}">
+										{% if pageNumber === loop.index %}
+											<span class="page-item">{{ loop.index }}</span>
+										{% else %}
+											<a href="/news/{{ loop.index }}" class="page-item">{{ loop.index }}</a>
+										{% endif %}
+									</li>
+								{% endfor %}
+							</ul>
+						</div>	
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</section>

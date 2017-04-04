@@ -8,15 +8,25 @@ var baseStructure = require('./base-structure.js');
  *
  *
  */
-module.exports = function( news, news_categories, options, globals ) {
+ module.exports = function( news, news_categories, options, globals ) {
 
-    return baseStructure({
+ 	return baseStructure({
 
  		pageType: 'archive', 
  		pageTitle: 'News',   
-        items: news,
-        categories: news_categories,
+ 		items: news,
+ 		paging: news._paging,
+ 		// pageNumber: pageNumber,
+ 		categories: news_categories,
+ 		arrayOfLength: function( n ) {
+ 			try {
+ 				if(typeof n === 'string') n = parseInt(n);
+ 				return Array.apply( Array, new Array( n )  );
+ 			} catch( err ) {
+ 				globals.log.error( err, 'news.html' );
+ 			}
+ 		}        
 
-    }, options, globals);
+ 	}, options, globals);
 
-};
+ };

@@ -1,0 +1,21 @@
+
+{% set message_404 = "Oops! looks like that page doesn't exist.<br> Try heading back to our <span class='underlined'>Home Page</span>"  %}
+{% set message_default = "Oops! Something went wrong. Try heading back to our Home Page"  %}
+
+<section class="block p9">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 col-lg-8 offset-lg-2">
+				<a href="/">
+					<h2 class="brand centered error-message">
+						{% if error_code === 404 %}
+							{{ message_404|safe }}
+						{% else %}
+							{{ message_default|safe }}
+						{% endif %}
+					</h2>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>

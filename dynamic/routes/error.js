@@ -15,11 +15,23 @@ module.exports = function( errorNumber ) {
 
             if ( typeof response === "function" ) {
 
-                res.render('error.html',  {error_code: errorNumber, description: response( req ) });
+                res.render('error.html',  {
+                    error_code: errorNumber, 
+                    description: response( req ),
+                    pageTitle: 'Error',
+                    pageType: 'error',
+                    globals: globals
+                });
 
             } else {
 
-                res.render('error.html', {error_code: errorNumber, description: response} );
+                res.render('error.html', {
+                    error_code: errorNumber, 
+                    description: response,
+                    pageTitle: 'Error',
+                    pageType: 'error',
+                    globals: globals                    
+                } );
 
             }
 

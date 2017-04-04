@@ -49,13 +49,13 @@ module.exports = function($, configuration) {
 			dataType: 'json'
 		})
 		.done(function( data ) {
-			console.log("success loading alumni");
-			if( data.length > 0 ){
+			console.log(data);
+
+			if( data.content.records.length > 0 ){
 				parse( data );		
 			} else{
-				throwError();		
+				throwError();	
 			}
-			parse( data );
 		})
 		.fail(function() {
 			console.log("error loading alumni");
@@ -68,6 +68,7 @@ module.exports = function($, configuration) {
 
 
 	function throwError(){
+		console.log('throwError');
 		$('.loader-icon').removeClass('active');
 		$('.d-error-message').removeClass('hidden');	
 	}
