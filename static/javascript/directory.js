@@ -50,16 +50,26 @@ module.exports = function($, configuration) {
 		})
 		.done(function( data ) {
 			console.log("success loading alumni");
+			if( data.length > 0 ){
+				parse( data );		
+			} else{
+				throwError();		
+			}
 			parse( data );
 		})
 		.fail(function() {
 			console.log("error loading alumni");
-			$('.loader-icon').removeClass('active');
-			$('.d-error-message').removeClass('hidden');		
+			throwError();
 		})
 		.always(function() {
 			//console.log("completed request for alumni");
 		});
+	}
+
+
+	function throwError(){
+		$('.loader-icon').removeClass('active');
+		$('.d-error-message').removeClass('hidden');	
 	}
 
 
