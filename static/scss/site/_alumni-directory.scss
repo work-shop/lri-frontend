@@ -106,4 +106,13 @@ $d-row-height: 58px;
 
 }
 
+.d-error-message{
+	margin-top: 30px;
+	padding: 15px 10px 10px 10px;
+	background: lighten(red,43%);
+	color: red;
+	text-align: center;
+	font-family: $font-medium;
+}
+
 

@@ -54,6 +54,8 @@ module.exports = function($, configuration) {
 		})
 		.fail(function() {
 			console.log("error loading alumni");
+			$('.loader-icon').removeClass('active');
+			$('.d-error-message').removeClass('hidden');		
 		})
 		.always(function() {
 			//console.log("completed request for alumni");
@@ -118,6 +120,7 @@ module.exports = function($, configuration) {
 	//remove all items from the directory
 	function emptyDirectory(){
 		$('.d-item').remove();
+		$('.d-error-message').addClass('hidden');
 		$('.loader-icon').addClass('active');
 	}
 
@@ -137,7 +140,7 @@ module.exports = function($, configuration) {
 			setTimeout(function() {
 				var cy = $('.d-select-year.active').val();
 				getAlumni( ct, cy );
-			}, 250);
+			}, 50);
 
 		});
 
@@ -188,10 +191,10 @@ module.exports = function($, configuration) {
 				initialType = $.urlParam('class');
 				initialYear = $.urlParam('year');
 				$typeInput.val( initialType );
-				$('d-select-year.active').val( initialYear );		
+				toggleType( initialType );
+				$('.d-select-year.active').val( initialYear );		
 			} 
 
-			toggleType( initialType );
 			getAlumni( initialType, initialYear);
 			setupAlumni();	
 
