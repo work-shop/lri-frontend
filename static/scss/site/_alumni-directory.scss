@@ -71,7 +71,7 @@ $d-row-height: 58px;
 		display: inline-block;
 		//height: 30px;
 
-		&.select-style{
+		&.d-options{
 			// border: 1px solid #ccc;
 			// width: 120px;
 			// border-radius: 3px;
@@ -80,6 +80,14 @@ $d-row-height: 58px;
 			// padding: 2px;	
 		}
 
+	}
+
+	.d-options-year{
+		display: none;
+
+		&.active{
+			display: inline-block;
+		}
 	}
 
 	select{
@@ -95,10 +103,6 @@ $d-row-height: 58px;
 		font-size: 16px;
 		width: 100px;
 	}
-
-	// option[value="2016"]{
-	// 	display: none;
-	// }
 
 }
 

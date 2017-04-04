@@ -18,7 +18,25 @@ module.exports = function( page, options, globals ) {
  		
  		pageType: 'page', 
  		pageTitle: page.title.rendered,   
-        item: page
+        item: page,
+        createArray: function( length ){
+        	var arr = new Array( length );
+        	return arr;
+        },
+        createArraySpan: function( start, end ){
+
+        	var length = end - start;
+        	var upperBound =  end;
+        	var arr = new Array(length);
+        	var j = 0;
+
+        	for (var i = start; i <= upperBound; i++) {
+        		arr[j] = i;
+        		j++;
+        	}
+
+        	return arr;
+        }        
 
     }, options, globals);
 

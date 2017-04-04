@@ -8,7 +8,12 @@ module.exports = function($, configuration) {
 	var $directoryContainer = $('#directory_container');
 	var $dCount = $('#d-count');
 	var $typeInput = $('#d-class-type');
-	var $yearInput = $('#d-class-year');
+	var $lriYearInput = $('#d-class-year-lri');
+	var $clriYearInput = $('#d-class-year-clri');
+	var $lcfYearInput = $('#d-class-year-lcf');
+	var $lriOptions = $('#d-options-lri');
+	var $clriOptions = $('#d-options-clri');
+	var $lcfOptions = $('#d-options-lcf');	
 	var m1 = '<tr class="d-item"><td class="d-name">';
 	var m3 = '</td><td class="d-year">';
 	var m5 = '</td><td class="d-organization">';
@@ -124,14 +129,48 @@ module.exports = function($, configuration) {
 
 
 	function setupAlumni(){
-		$( ".d-select" ).change(function() {
+		
+		$( ".d-select-class" ).change(function() {
 			var ct = $typeInput.val();
-			var cy = $yearInput.val();
-			setBodyClass( ct );
+			toggleType( ct );
+
+			setTimeout(function() {
+				var cy = $('.d-select-year.active').val();
+				getAlumni( ct, cy );
+			}, 250);
+
+		});
+
+		//toggle the class year selections
+		$( ".d-select-year" ).change(function() {
+			var ct = $typeInput.val();
+			var cy = $(this).val();
 			getAlumni( ct, cy );
 		});
 
 	}	
+
+
+	function toggleType( ct ){
+
+		$('.d-options-year').removeClass('active');
+		$('.d-select-year').removeClass('active');
+
+		if( ct === 'lri' ){
+			$lriOptions.addClass('active');
+			$lriYearInput.addClass('active');
+		} else if( ct === 'clri' ){
+			$clriOptions.addClass('active');
+			$clriYearInput.addClass('active');
+		}
+		else if( ct === 'lcf' ){
+			$lcfOptions.addClass('active');
+			$lcfYearInput.addClass('active');
+		}  
+
+		setBodyClass( ct );
+
+	}
 
 
 	function setBodyClass( ct ){
@@ -149,12 +188,13 @@ module.exports = function($, configuration) {
 				initialType = $.urlParam('class');
 				initialYear = $.urlParam('year');
 				$typeInput.val( initialType );
-				$yearInput.val( initialYear );		
+				$('d-select-year.active').val( initialYear );		
 			} 
 
+			toggleType( initialType );
 			getAlumni( initialType, initialYear);
-
 			setupAlumni();	
+
 		});
 
 	}
