@@ -6,6 +6,7 @@
 * for the application server.
 *
 */
+var isNormalInteger = require('./utilities/is-normal-integer.js');
 
 var index = require('./routes/index.js');
 var error404 = require('./routes/error.js')( 404 );
@@ -99,7 +100,7 @@ module.exports = function( express, app, config, globals ) {
     app.get('/about/opportunities', opportunities( globals.wp, config, globals ) );
 
     app.get('/about/partners', partners( globals.wp, config, globals ) );
-    
+
     /**
      * TODO: Uncomment the route below to define '/about/history'
      */
@@ -126,26 +127,26 @@ module.exports = function( express, app, config, globals ) {
     //existing news archive route
     app.get('/news', news( globals.wp, config, globals ) );
 
-    // app.get( '/news/:id', function(req, res){
-    //     if( isNormalInteger(req.params.id)  ){
+    app.get( '/news/:id', function(req, res){
+        if( isNormalInteger(req.params.id)  ){
 
-    //         news( globals.wp, config, globals );
+            news( globals.wp, config, globals )( req, res);
 
-    //         //from dbvw
-    //         //require('./routes/news.js')( wp, config, globals )(req, res);
+            //from dbvw
+            //require('./routes/news.js')( wp, config, globals )(req, res);
 
-    //     } else{
+        } else{
 
-    //         newsStory( globals.wp, config, globals )
-           
-    //         //from dbvw
-    //         //require('./routes/news-item.js')( wp, config, globals )(req, res);
+            newsStory( globals.wp, config, globals )( req, res )
 
-    //     }
-    // });    
+            //from dbvw
+            //require('./routes/news-item.js')( wp, config, globals )(req, res);
+
+        }
+    });
 
     //existing news story single route
-    app.get('/news/:id', newsStory( globals.wp, config, globals ) );
+    //app.get('/news/:id', newsStory( globals.wp, config, globals ) );
 
     app.get('/contact', contact( globals.wp, config, globals ) );
 
@@ -184,9 +185,3 @@ module.exports = function( express, app, config, globals ) {
     */
 
 };
-
-
-function isNormalInteger(str) {
-    var n = Math.floor(Number(str));
-    return String(n) === str && n >= 0;
-}

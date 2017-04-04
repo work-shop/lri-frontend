@@ -8,56 +8,71 @@ var restructureNews = require('../structures/restructure-news.js');
  */
  module.exports = function( wp, config, globals ) {
 
-    var urlReplace = require('../utilities/resource-map.js')( config );
+     var urlReplace = require('../utilities/resource-map.js')( config );
 
-    return base.route(
-        /**
-         * Get initial set of resources we need to render the page.
-         */
+     return base.route(
          [
              wp.namespace( 'acf/v2' ).options().embed(),
-             wp.news().embed(),
+             resolveRequestedArchivePage,
              wp.news_categories().embed()
          ],
-        /**
-         * Success Case. All of the needed resources were properly resolved,
-         * And the data is available for use immediately in the callback, along
-         * with the request and the response.
-         *
-         * @param req the Express Request Object
-         * @param res the Express Response Object
-         * @param options JSON, the requested options data
-         */
+         /**
+          * Success Handler
+          * ===============
+          * Receives the resolved post object, and calls the appropriate
+          * success handler, rendering the passed template.
+          */
          function( req, res, options, news, news_categories ) {
 
+             globals.log.log( 'successful request to news archive', 'route-news-archive:success-handler');
 
-            globals.log.log( 'Successful request to about.', 'route-about:success-handler');
+             res.render( 'news.html', urlReplace( restructureNews( news, news_categories, options, globals ) ) );
 
-            try {
-                res.render('news.html', urlReplace( restructureNews( news, news_categories, options, globals ) ) );
-            } catch( e ) {
-                globals.log.error( e, 'route-index:error-handler');
-                res.render('error.html', {error_code: 500, description: e.message });
-            }
-
-
-
-        },
-        /**
-         * Error Case. Something went wrong reconciling one or all of the
-         * requested resources. The error is supplied to the callback
-         * and *you* handle the problem.
-         *
-         * @param req the Express Request Object
-         * @param res the Express Response Object
-         * @param err Error the reason for failure.
-         */
+         },
+         /**
+          * Error Handler
+          * ===============
+          * Receives the caught error object, and calls the
+          * error handler, rendering the generic error template.
+          */
          function( req, res, err ) {
 
-            globals.log.error( err, 'route-index:error-handler');
+            globals.log.error( err, 'route-generic-paginated-archive:error-handler');
 
-            res.render('error.html', {error_code: 500, description: err.message });
+            res.render('error.html', {error_code: err.code, description: err.message });
 
-        });
+         }
+     );
+
+
+    /**
+    *
+    *
+    *
+    */
+    function resolveRequestedArchivePage( callback, req ) {
+
+        wp.news().perPage( 10 )
+            .page( req.params.id || 1 ).embed()
+            .then( function( data ) {
+
+                if ( data.length === 0 ) {
+
+                    var e404 = new Error("404: couldn't find the requested archive page");
+
+                    e404.code = 404;
+
+                    callback( e404 );
+
+                } else {
+
+                    callback( null, data );
+
+                }
+
+            })
+            .catch( callback );
+
+    }
 
 };
