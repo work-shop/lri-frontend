@@ -40,7 +40,7 @@ var restructureNews = require('../structures/restructure-news.js');
 
             globals.log.error( err, 'route-generic-paginated-archive:error-handler');
 
-            error( 500, err.message )( wp, config, globals )( req, res );
+            error( err.code || 500, err.message )( wp, config, globals )( req, res );
 
          }
      );
