@@ -1,6 +1,7 @@
 "use strict";
 
 var base = require('./generic/base-route.js')();
+var error = require('./error.js');
 var async = require('async');
 
 var restructureIndex = require('../structures/restructure-index.js');
@@ -52,7 +53,7 @@ var restructureIndex = require('../structures/restructure-index.js');
 
             globals.log.error( err, 'route-index:error-handler');
 
-            res.render('error.html', {error_code: 500, description: err.message });
+            error( 500, err.message )( wp, config, globals )( req, res );
 
         });
 

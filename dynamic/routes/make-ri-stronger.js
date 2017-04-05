@@ -1,6 +1,7 @@
 "use strict";
 
 var base = require('./generic/base-route.js')();
+var error = require('./error.js');
 var restructurePage = require('../structures/restructure-make-ri-stronger.js');
 var filterMakeRIStrongerNews = require('../transformations/filter-term-by-taxonomy.js')('make-ri-stronger-news', 'news_categories');
 var filterCoaches = require('../transformations/filter-term-by-taxonomy.js')('coach', 'people_categories');
@@ -52,7 +53,7 @@ var filterCoaches = require('../transformations/filter-term-by-taxonomy.js')('co
                 res.render('page.html', urlReplace( restructurePage( page, people, news, options, globals ) ) );
             } catch( e ) {
                 globals.log.error( e, 'route-index:error-handler');
-                res.render('error.html', {error_code: 500, description: e.message });
+                error( 500, e.message )( wp, config, globals )( req, res );
             }
 
         },
@@ -69,7 +70,7 @@ var filterCoaches = require('../transformations/filter-term-by-taxonomy.js')('co
 
             globals.log.error( err, 'route-index:error-handler');
 
-            res.render('error.html', {error_code: 500, description: err.message });
+            error( 500, err.message )( wp, config, globals )( req, res );
 
         });
 

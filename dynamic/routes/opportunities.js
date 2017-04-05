@@ -1,6 +1,7 @@
 "use strict";
 
 var base = require('./generic/base-route.js')();
+var error = require('./error.js');
 var restructureOpportunities = require('../structures/restructure-opportunities.js');
 var pass = require('../transformations/pass.js');
 /**
@@ -50,7 +51,7 @@ var pass = require('../transformations/pass.js');
                 res.render('page.html', urlReplace( restructureOpportunities( opportunities, jobs, options, globals ) ) );
             } catch( e ) {
                 globals.log.error( e, 'route-index:error-handler');
-                res.render('error.html', {error_code: 500, description: e.message });
+                error( 500, e.message )( wp, config, globals )( req, res );
             }
 
 
@@ -68,7 +69,7 @@ var pass = require('../transformations/pass.js');
 
             globals.log.error( err, 'route-index:error-handler');
 
-            res.render('error.html', {error_code: 500, description: err.message });
+            error( 500, err.message )( wp, config, globals )( req, res );
 
         });
 

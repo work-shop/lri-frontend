@@ -1,6 +1,7 @@
 "use strict";
 
 var base = require('./generic/base-route.js')();
+var error = require('./error.js');
 var restructureNews = require('../structures/restructure-news.js');
 /**
  *
@@ -39,7 +40,7 @@ var restructureNews = require('../structures/restructure-news.js');
 
             globals.log.error( err, 'route-generic-paginated-archive:error-handler');
 
-            res.render('error.html', {error_code: err.code, description: err.message });
+            error( 500, err.message )( wp, config, globals )( req, res );
 
          }
      );

@@ -2,6 +2,7 @@
 
 
 var base = require('./base-route.js')();
+var error = require('../error.js');
 var identity = function( x ) { return x; };
 /**
  * Gets a single object from a single wordpress post-type.
@@ -53,7 +54,7 @@ var identity = function( x ) { return x; };
 
                 globals.log.error( err, 'route-generic-single:error-handler');
 
-                res.render('error.html', {error_code: err.code, description: err.message });
+                error( err.code || 500, err.message )( wp, config, globals )( req, res );
 
              }
          );

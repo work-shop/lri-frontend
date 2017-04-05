@@ -1,6 +1,7 @@
 "use strict";
 
 var base = require('./generic/base-route.js')();
+var error = require('./error.js');
 var restructurePage = require('../structures/restructure-alumni.js');
 var filterAlumniNews = require('../transformations/filter-term-by-taxonomy.js')('alumni-news', 'news_categories');
 /**
@@ -48,7 +49,7 @@ var filterAlumniNews = require('../transformations/filter-term-by-taxonomy.js')(
                 res.render('page.html', urlReplace( restructurePage( page, news, options, globals ) ) );
             } catch( e ) {
                 globals.log.error( e, 'route-index:error-handler');
-                res.render('error.html', {error_code: 500, description: e.message });
+                error( 500, e.message )( wp, config, globals )( req, res );
             }
 
         },
@@ -65,7 +66,7 @@ var filterAlumniNews = require('../transformations/filter-term-by-taxonomy.js')(
 
             globals.log.error( err, 'route-index:error-handler');
 
-            res.render('error.html', {error_code: 500, description: err.message });
+            error( 500, err.message )( wp, config, globals )( req, res );
 
         });
 
@@ -77,13 +78,3 @@ var filterAlumniNews = require('../transformations/filter-term-by-taxonomy.js')(
  * next processing step.
  */
 var passOptions = function( options, page, people, callback ) { callback( null, options ); };
-
-
-/**
- * This routine simply filters the returned set of pages we've filtered (a set which is always
- * of length 1) down to the the element contained in that set.
- */
-var filterPage = function( options, page, people, callback ) {
-    try { callback( null, page[0] ); }
-    catch ( e ) { callback( e ); }
-};

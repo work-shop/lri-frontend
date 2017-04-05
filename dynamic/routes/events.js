@@ -1,6 +1,7 @@
 "use strict";
 
 var base = require('./generic/base-route.js')();
+var error = require('./error.js');
 var async = require('async');
 
 var restructureEvents = require('../structures/restructure-events.js');
@@ -52,30 +53,8 @@ var restructureEvents = require('../structures/restructure-events.js');
 
             globals.log.error( err, 'route-index:error-handler');
 
-            res.render('error.html', {error_code: 500, description: err.message });
+            error( 500, err.message )( wp, config, globals )( req, res );
 
         });
-
-
-    // function getEvents( options, callback ) {
-
-
-
-    //     async.map(( options.acf.featured_news || []), function( story, next ){
-    //         wp.news().param('_embed', true).filter( 'name', story.news_story.post_name )
-    //         .then( function( data ) {
-    //             next( null, data[0] );
-    //         }).catch( function( err ) {
-    //            next( err );
-    //        });
-
-    //     },
-    //     function( err, result ) {
-
-    //         options.acf.featured_news = result;
-    //         callback( err, options );
-
-    //     });
-    // }
 
 };

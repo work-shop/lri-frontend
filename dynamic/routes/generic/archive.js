@@ -2,6 +2,7 @@
 
 
 var base = require('./base-route.js')();
+var error = require('../error.js');
 
 var async = require('async');
 
@@ -20,7 +21,7 @@ var async = require('async');
      return function( wp, config, globals ) {
 
          var urlReplace = require('../../utilities/resource-map.js')( config );
-                 
+
          return base.route(
              [
                  wp.namespace( 'acf/v2' ).options().embed(),
@@ -49,7 +50,7 @@ var async = require('async');
 
                 globals.log.error( err, 'route-generic-unpaginated-archive:error-handler');
 
-                res.render('error.html', {error_code: err.code, description: err.message });
+                error( 500, err.message )( wp, config, globals )( req, res );
 
              }
          );

@@ -2,6 +2,7 @@
 
 
 var base = require('./base-route.js')();
+var error = require('../error.js');
 
 /**
  * This route implements a generic paginated archive page view
@@ -50,7 +51,7 @@ var base = require('./base-route.js')();
 
                 globals.log.error( err, 'route-generic-paginated-archive:error-handler');
 
-                res.render('error.html', {error_code: err.code, description: err.message });
+                error( err.code || 500, err.message )( wp, config, globals )( req, res );
 
              }
          );
