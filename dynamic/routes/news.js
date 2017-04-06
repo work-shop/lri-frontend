@@ -11,6 +11,8 @@ var restructureNews = require('../structures/restructure-news.js');
 
      var urlReplace = require('../utilities/resource-map.js')( config );
 
+     var paginationNumber;
+
      return base.route(
          [
              wp.namespace( 'acf/v2' ).options().embed(),
@@ -27,7 +29,7 @@ var restructureNews = require('../structures/restructure-news.js');
 
              globals.log.log( 'successful request to news archive', 'route-news-archive:success-handler');
 
-             res.render( 'news.html', urlReplace( restructureNews( news, news_categories, options, globals ) ) );
+             res.render( 'news.html', urlReplace( restructureNews( news, news_categories, options, globals, paginationNumber ) ) );
 
          },
          /**
@@ -53,8 +55,14 @@ var restructureNews = require('../structures/restructure-news.js');
     */
     function resolveRequestedArchivePage( callback, req ) {
 
+        if ( req.params.id > 1 ){
+            paginationNumber = req.params.id;
+        }else{
+            paginationNumber = 1;
+        }
+
         wp.news().perPage( 10 )
-            .page( req.params.id || 1 ).embed()
+            .page( paginationNumber ).embed()
             .then( function( data ) {
 
                 if ( data.length === 0 ) {

@@ -8,7 +8,7 @@ var baseStructure = require('./base-structure.js');
  *
  *
  */
- module.exports = function( news, news_categories, options, globals ) {
+ module.exports = function( news, news_categories, options, globals, paginationNumber ) {
 
  	return baseStructure({
 
@@ -16,7 +16,7 @@ var baseStructure = require('./base-structure.js');
  		pageTitle: 'News',   
  		items: news,
  		paging: news._paging,
- 		// pageNumber: pageNumber,
+ 		paginationNumber: paginationNumber,
  		categories: news_categories,
  		arrayOfLength: function( n ) {
  			try {

@@ -8,8 +8,8 @@
 						<ul class="pagination centered">
 							{% set pageCount = arrayOfLength( paging.totalPages ) %}
 								{% for i in pageCount %}
-									<li class="{% if pageNumber === loop.index %}active{% endif %}">
-										{% if pageNumber === loop.index %}
+									<li class="{% if paginationNumber == loop.index %}active{% endif %}">
+										{% if paginationNumber == loop.index %}
 											<span class="page-item">{{ loop.index }}</span>
 										{% else %}
 											<a href="/news/{{ loop.index }}" class="page-item">{{ loop.index }}</a>
