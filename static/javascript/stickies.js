@@ -8,6 +8,7 @@ module.exports = function( $ ){
 	var $navTop = $('#nav-top');
 	var $navMain = $('#nav-main');
 	var $hero = $('#page-hero');
+	var $footer = $('#footer');
 	var sidebar = false;
 	var sidebarPadding = 100;
 	var z = mainNavHeight;
@@ -55,6 +56,8 @@ module.exports = function( $ ){
 
 		stickies.navTriggerPosition = topNavHeight;
 		stickies.nav = $navMain;
+		stickies.footerHeight = $footer.height();
+		stickies.documentHeight = $(document).height();
 
 		if( sidebar ){
 			if( $hero.length > 0){
@@ -64,6 +67,7 @@ module.exports = function( $ ){
 			}
 			stickies.sidebar = $('#page-sidebar');
 			stickies.sidebarTriggerPosition = h + z;	
+			stickies.sidebarFooterTrigger = stickies.documentHeight - stickies.footerHeight - $(window).height();
 		}
 
 	}
@@ -82,10 +86,13 @@ module.exports = function( $ ){
 
 			//sidebar
 			if( sidebar ){
-				if ( $('body').scrollTop() >= stickies.sidebarTriggerPosition && stickies.sidebar.hasClass('static') ){
+				if ( $('body').scrollTop() >= stickies.sidebarTriggerPosition && stickies.sidebar.hasClass('static') && $('body').scrollTop() < stickies.sidebarFooterTrigger ){
 					toggleSidebar();
-				}else if($('body').scrollTop() < stickies.sidebarTriggerPosition && stickies.sidebar.hasClass('fixed') ){
-					toggleSidebar();
+					console.log('first condition');
+				}else if( $('body').scrollTop() < stickies.sidebarTriggerPosition || $('body').scrollTop() >= stickies.sidebarFooterTrigger ){
+					if( stickies.sidebar.hasClass('fixed') ){
+						toggleSidebar();
+					}
 				}	
 			}					
 		}
