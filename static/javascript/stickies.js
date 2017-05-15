@@ -56,7 +56,7 @@ module.exports = function( $ ){
 
 		stickies.navTriggerPosition = topNavHeight;
 		stickies.nav = $navMain;
-		stickies.footerHeight = $footer.height();
+		stickies.footerHeight = $footer.outerHeight();
 		stickies.documentHeight = $(document).height();
 
 		if( sidebar ){
@@ -67,7 +67,7 @@ module.exports = function( $ ){
 			}
 			stickies.sidebar = $('#page-sidebar');
 			stickies.sidebarTriggerPosition = h + z;	
-			stickies.sidebarFooterTrigger = stickies.documentHeight - stickies.footerHeight - $(window).height();
+			stickies.sidebarFooterTrigger = stickies.documentHeight - stickies.footerHeight - $(window).height() - topNavHeight;
 		}
 
 	}

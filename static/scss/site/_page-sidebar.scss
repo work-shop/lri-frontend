@@ -33,6 +33,7 @@ $page-sidebar-top: $nav-height + $page-body-section-margin;
 	width: 290px;
 	float: right;
 	position: relative;
+	top: 0;
 	//outline: 1px solid $brand;
 
 	@media screen and (max-width: $md) {
