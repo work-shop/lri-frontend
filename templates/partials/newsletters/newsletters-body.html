@@ -1,0 +1,81 @@
+
+<section id="page-content" class="block">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-12">
+				<h2 class="section-title">
+					<span class="underlined">Newsletter Archive</span>
+				</h2>
+			</div>
+		</div>
+
+		{% for newsletter in items %}
+			<article class="newsletter row">
+				<div class="col-sm-6">
+					<a href="{{ newsletter.acf.newsletter_file.url }}" target="_blank">
+						<h4 class="newsletter-title">
+							{{ newsletter.title.rendered }}
+						</h4>
+					</a>
+				</div>
+			</article>
+		{% endfor %}
+		
+				{% for newsletter in items %}
+			<article class="newsletter row">
+				<div class="col-sm-6">
+					<a href="{{ newsletter.acf.newsletter_file.url }}" target="_blank">
+						<h4 class="newsletter-title">
+							{{ newsletter.title.rendered }}
+						</h4>
+					</a>
+				</div>
+			</article>
+		{% endfor %}
+				{% for newsletter in items %}
+			<article class="newsletter row">
+				<div class="col-sm-6">
+					<a href="{{ newsletter.acf.newsletter_file.url }}" target="_blank">
+						<h4 class="newsletter-title">
+							{{ newsletter.title.rendered }}
+						</h4>
+					</a>
+				</div>
+			</article>
+		{% endfor %}
+				{% for newsletter in items %}
+			<article class="newsletter row">
+				<div class="col-sm-6">
+					<a href="{{ newsletter.acf.newsletter_file.url }}" target="_blank">
+						<h4 class="newsletter-title">
+							{{ newsletter.title.rendered }}
+						</h4>
+					</a>
+				</div>
+			</article>
+		{% endfor %}
+				{% for newsletter in items %}
+			<article class="newsletter row">
+				<div class="col-sm-6">
+					<a href="{{ newsletter.acf.newsletter_file.url }}" target="_blank">
+						<h4 class="newsletter-title">
+							{{ newsletter.title.rendered }}
+						</h4>
+					</a>
+				</div>
+			</article>
+		{% endfor %}
+				{% for newsletter in items %}
+			<article class="newsletter row">
+				<div class="col-sm-6">
+					<a href="{{ newsletter.acf.newsletter_file.url }}" target="_blank">
+						<h4 class="newsletter-title">
+							{{ newsletter.title.rendered }}
+						</h4>
+					</a>
+				</div>
+			</article>
+		{% endfor %}
+		
+	</div>
+</section>

@@ -17,6 +17,8 @@ var makeRiStronger = require('./routes/make-ri-stronger.js');
 var opportunities = require('./routes/opportunities.js');
 var news = require('./routes/news.js');
 var newsStory = require('./routes/news-story.js');
+var newsletters = require('./routes/newsletters.js');
+
 
 
 var contact = require('./routes/generic/single.js')({
@@ -101,22 +103,17 @@ module.exports = function( express, app, config, globals ) {
 
     app.get('/about/partners', partners( globals.wp, config, globals ) );
 
-    /**
-     * TODO: Uncomment the route below to define '/about/history'
-     */
-    //app.get('/about/history', history( globals.wp, config, globals ) );
-
     app.get('/college-program/college-current-class', collegeCurrentClass( globals.wp, config, globals ) );
 
     app.get('/core-program/core-current-class', coreCurrentClass( globals.wp, config, globals ) );
 
     app.get('/alumni', alumni( globals.wp, config, globals ) );
 
+    app.get('/contact', contact( globals.wp, config, globals ) );    
+
     app.get('/alumni/alumni-directory', alumniDirectory( globals.wp, config, globals ) );
     app.get('/alumni/directory', alumniDirectory( globals.wp, config, globals ) );
     app.get('/directory', alumniDirectory( globals.wp, config, globals ) );
-
-
     app.get('/alumni/pay-dues', alumniPayDues( globals.wp, config, globals ) );
 
     app.get('/make-ri-stronger', makeRiStronger( globals.wp, config, globals ) );
@@ -129,31 +126,25 @@ module.exports = function( express, app, config, globals ) {
 
     app.get( '/news/:id', function(req, res){
         if( isNormalInteger(req.params.id)  ){
-
             news( globals.wp, config, globals )( req, res);
-
-            //from dbvw
-            //require('./routes/news.js')( wp, config, globals )(req, res);
-
         } else{
-
-            newsStory( globals.wp, config, globals )( req, res )
-
-            //from dbvw
-            //require('./routes/news-item.js')( wp, config, globals )(req, res);
-
+            newsStory( globals.wp, config, globals )( req, res );
         }
     });
 
-    //existing news story single route
-    //app.get('/news/:id', newsStory( globals.wp, config, globals ) );
+    app.get('/newsletters', newsletters( globals.wp, config, globals ) );
 
-    app.get('/contact', contact( globals.wp, config, globals ) );
+
+    /**
+     * TODO: Uncomment the route below to define '/about/history'
+     */
+    //app.get('/about/history', history( globals.wp, config, globals ) );
 
     /**
      * TODO: Uncomment the route below to define '/donate'
      */
     // app.get('/donate', donate( globals.wp, config, globals ) );
+
 
     /**
      * Salesforce JSON Alumni Directory Endpoint
