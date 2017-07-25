@@ -1,0 +1,110 @@
+
+
+.gform_wrapper{
+	
+	.gfield{
+		margin-bottom: 20px;
+	}
+	
+	.gfield.gform_validation_container{
+		display: none;
+	}	
+	
+	.validation_error{
+		font-size: 18px;
+		padding: 15px 0;
+		border-bottom: 3px solid $error;
+		margin-bottom: 15px;
+	}
+	
+	.gfield_error{
+		border-bottom: 2px solid $error;
+	}
+	
+	.validation_message{
+		font-weight: bold;
+		font-size: 11px;
+		padding: 5px 0;
+	}
+	
+	.gfield_checkbox{
+		label{
+			display: inline;
+			max-width: none;
+		}
+		
+		li{
+			margin-bottom: 5px;
+		}
+	}	
+	
+	.gfield_required{
+		color: $brand;
+		margin-left: 5px;
+	}
+	
+	
+}
+
+.gform_confirmation_message{
+	h1{
+		font-size: 30px;
+		color: $brand;
+		padding: 5px;
+	}
+	
+	font-size: 30px;
+}
+
+img.gform_ajax_spinner {
+    display: none !important;
+}
+
+input,textarea{
+	@include transition(all,.125s);
+	padding: 5px;
+	border: 1px solid $brand;
+	outline: none;
+	width: 100%;
+	max-width: 300px;
+	opacity: .8;
+
+
+	&:focus{
+		outline: none;
+		border: 2px solid $brand;
+		opacity: 1;
+		background: $brand-ultra-light;
+	}
+	
+	&[type="submit"]{
+		@extend .button;
+		
+		// background: $yellow-darker;
+		// padding: 10px 15px;
+		// width: auto;
+		text-align: center;
+		display: block;
+		max-width: 180px;
+
+	}
+	
+	&[type="checkbox"]{
+		max-width: 30px;
+		display: inline;
+	}	
+	
+}
+
+
+label{
+	@extend .h4;
+	display: block;
+	margin-bottom: 4px; 
+}
+
+
+.gfield_visibility_{
+	display: none;
+}
+
