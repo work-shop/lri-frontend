@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html class="no-js">
 <head>
-    
+
     {% if pageType === 'single' || pageType === 'page' || pageType === 'archive' %}
 
         {% if pageTitle %}
@@ -20,7 +20,7 @@
             {% set page_title = globals.site_title %}
             {% set page_suffix = globals.site_description %}
         {% endif %}
-        
+
         {% if item.acf.social_media_title %}
             {% set social_title = item.acf.social_media_title %}
         {% else %}
@@ -39,13 +39,13 @@
             {% set social_image = globals.site_url + '/public/images/social-card-default.png' %}
         {% endif %}
 
-        {% set social_url = item.link %} 
+        {% set social_url = item.link %}
 
 {#     {% elseif pageType === 'archive' %}
-        
+
         {% set page_title = globals.site_title %}
         {% set page_suffix =  globals.site_description %}
-        
+
         {% if social_title %}
             {% set social_title =  item.social_media_title %}
         {% else %}
@@ -67,10 +67,10 @@
         {% set social_url =  {{ globals.site_url }} %}    #}
 
 {#     {% elseif pageType === 'home' || pageType === 'options' %}
-        
+
         {% set page_title = globals.site_title %}
         {% set page_suffix =  globals.site_description %}
-        
+
         {% if social_title %}
             {% set social_title =  item.social_media_title %}
         {% else %}
@@ -89,10 +89,10 @@
             {% set social_image =  '/public/images/social-card-default.png' %}
         {% endif %}
 
-        {% set social_url =  globals.site_url %}    #}                 
-        
+        {% set social_url =  globals.site_url %}    #}
+
     {% else %}
-        
+
         {% if pageTitle %}
             {% set page_title = pageTitle %}
             {% set page_suffix = globals.site_title %}
@@ -100,7 +100,7 @@
             {% set page_title = globals.site_title %}
             {% set page_suffix = globals.site_description %}
         {% endif %}
-        
+
         {% if item.social_media_title %}
             {% set social_title = item.social_media_title %}
         {% else %}
@@ -119,9 +119,9 @@
             {% set social_image =  globals.site_url + '/public/images/social-card-default.png' %}
         {% endif %}
 
-        {% set social_url =  globals.site_url %}    
+        {% set social_url =  globals.site_url %}
 
-    {% endif %} 
+    {% endif %}
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -148,6 +148,8 @@
     <link rel="stylesheet" type="text/css" href="/public/fonts/fonts.css"/>
     <link rel="stylesheet" type="text/css" href="/public/bundle.css"/>
 
+    <script type="text/javascript" src="/public/bundle.js"></script>
+
     {% block head_extra %}{% endblock %}
 
     </head>
@@ -163,65 +165,63 @@
             {% include "footer.html" %}
             {% include "modals.html" %}
 
-            <script type="text/javascript" src="/public/bundle.js"></script>
-
             <script src="https://use.typekit.net/uxi1vbd.js"></script>
-            <script>try{Typekit.load({ async: true });}catch(e){}</script>        
+            <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
             {% if globals.development %}
                 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
                 <script>
                     console.log( '===== JSON CONTEXT =====' );
-                    {% if options %} 
+                    {% if options %}
                     console.log( 'options:' );
                     console.log( {{ options|json|safe }});
                     console.log( '========================' );
-                    {% endif %} 
+                    {% endif %}
                     {% if globals %}
                     console.log( 'globals:' );
                     console.log( {{ globals|json|safe }});
                     console.log( '========================' );
-                    {% endif %} 
+                    {% endif %}
                     {% if item %}
                     console.log( 'item:' );
                     console.log( {{ item|json|safe }});
                     console.log( '========================' );
-                    {% endif %}  
+                    {% endif %}
                     {% if items %}
                     console.log( 'items:' );
                     console.log( {{ items|json|safe }});
                     console.log( '========================' );
-                    {% endif %}  
+                    {% endif %}
                     {% if categories %}
                     console.log( 'categories:' );
                     console.log( {{ categories|json|safe }});
                     console.log( '========================' );
-                    {% endif %}  
+                    {% endif %}
                     {% if news %}
                     console.log( 'news:' );
                     console.log( {{ news|json|safe }});
                     console.log( '========================' );
-                    {% endif %}  
+                    {% endif %}
                     {% if jobs %}
                     console.log( 'jobs:' );
                     console.log( {{ jobs|json|safe }});
                     console.log( '========================' );
-                    {% endif %}     
+                    {% endif %}
                     {% if coaches %}
                     console.log( 'coaches:' );
                     console.log( {{ coaches|json|safe }});
                     console.log( '========================' );
-                    {% endif %}     
+                    {% endif %}
                     {% if staff %}
                     console.log( 'staff:' );
                     console.log( {{ staff|json|safe }});
                     console.log( '========================' );
-                    {% endif %}        
+                    {% endif %}
                     {% if board %}
                     console.log( 'board:' );
                     console.log( {{ board|json|safe }});
                     console.log( '========================' );
-                    {% endif %} 
+                    {% endif %}
                 </script>
             {% endif %}
 
