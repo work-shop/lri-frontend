@@ -79,10 +79,10 @@ input,textarea{
 	
 	&[type="submit"]{
 		@extend .button;
-		
+
 		// background: $yellow-darker;
 		// padding: 10px 15px;
-		// width: auto;
+		width: auto;
 		text-align: center;
 		display: block;
 		max-width: 180px;
