@@ -18,7 +18,7 @@ var opportunities = require('./routes/opportunities.js');
 var news = require('./routes/news.js');
 var newsStory = require('./routes/news-story.js');
 var newsletters = require('./routes/newsletters.js');
-
+var formPage = require('./routes/form-page.js');
 
 
 var contact = require('./routes/generic/single.js')({
@@ -134,6 +134,35 @@ module.exports = function( express, app, config, globals ) {
 
     app.get('/newsletters', newsletters( globals.wp, config, globals ) );
 
+    app.get( '/forms/:id', function(req, res){
+        formPage( globals.wp, config, globals )( req, res );
+    });
+
+
+
+    /**
+     * Salesforce JSON Alumni Directory Endpoint
+     */
+    /**
+     */
+     app.get('/json/alumni/:type', jsonAlumniByType(globals.wp, config, globals) );
+     app.get('/json/alumni/:type/:year', jsonAlumniByType(globals.wp, config, globals) );
+
+
+    /**
+     * Generic page route handler.
+     */
+     app.get('/:id', page( globals.wp, config, globals ) );
+
+
+    /**
+     * TODO: We need a way to differentiate the sub-pages from the parent pages.
+     * Right now, this matches ALL slugs, including slugs that should really be subpages of other slugs.
+     * We'll want to get this under control in some way.
+     */
+
+     app.get('*', error404( globals.wp, config, globals ) );
+
 
     /**
      * TODO: Uncomment the route below to define '/about/history'
@@ -145,31 +174,6 @@ module.exports = function( express, app, config, globals ) {
      */
     // app.get('/donate', donate( globals.wp, config, globals ) );
 
-
-    /**
-     * Salesforce JSON Alumni Directory Endpoint
-     */
-    /**
-     */
-     app.get('/json/alumni/:type', jsonAlumniByType(globals.wp, config, globals) );
-
-     app.get('/json/alumni/:type/:year', jsonAlumniByType(globals.wp, config, globals) );
-
-
-    /**
-     * Generic page route handler.
-     */
-     app.get('/:id', page( globals.wp, config, globals ) );
-
-
-
-    /**
-     * TODO: We need a way to differentiate the sub-pages from the parent pages.
-     * Right now, this matches ALL slugs, including slugs that should really be subpages of other slugs.
-     * We'll want to get this under control in some way.
-     */
-
-     app.get('*', error404( globals.wp, config, globals ) );
 
     /**
     * Redirects
