@@ -14,6 +14,8 @@ module.exports = function($){
 
 		$(window).on("load", function() {		
 
+			console.log('scrollspy');
+
 			scrollSpy.targets = $(targetElements);
 			scrollSpy.links = $(linkElements);
 			scrollSpy.offset = offset;

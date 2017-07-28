@@ -2,13 +2,12 @@
 
 module.exports = function($) {
 
-	var $hero = $('.page-hero-text');
-	var heroShiftRatio = .61;
-	var heroShiftRatioMobile = .4;
-
 
 	//move the hero text a certain amount, using margin top
 	function heroShift(){
+		var $hero = $('.page-hero-text');
+		var heroShiftRatio = 0.61;
+		var heroShiftRatioMobile = 0.4;
 		var heroHeight = $hero.outerHeight();
 		var shift = heroShiftRatio;
 
