@@ -93,6 +93,15 @@ var jsonAlumniByType = require('./routes/json/alumni-type.js');
 module.exports = function( express, app, config, globals ) {
 
     /**
+     * Universal CORS setting.
+     */
+    app.all('/', function(req, res, next) {
+      res.header("Access-Control-Allow-Origin", "*");
+      res.header("Access-Control-Allow-Headers", "X-Requested-With");
+      next();
+    });
+
+    /**
     * Routes
     */
     app.get('/', index( globals.wp, config, globals ) );
@@ -109,7 +118,7 @@ module.exports = function( express, app, config, globals ) {
 
     app.get('/alumni', alumni( globals.wp, config, globals ) );
 
-    app.get('/contact', contact( globals.wp, config, globals ) );    
+    app.get('/contact', contact( globals.wp, config, globals ) );
 
     app.get('/alumni/alumni-directory', alumniDirectory( globals.wp, config, globals ) );
     app.get('/alumni/directory', alumniDirectory( globals.wp, config, globals ) );

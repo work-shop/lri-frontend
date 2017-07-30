@@ -1,5 +1,7 @@
 "use strict";
 
+var async = require('async');
+var cheerio = require('cheerio');
 
 var request = require('requestretry');
 var single = require('./generic/single.js');
@@ -39,29 +41,68 @@ module.exports = function( wp, config, globals ){
 
                   } else {
 
-                      console.log( post[0].acf.form.id );
+                      console.log( post[0].guid.rendered );
 
                       var formid = (typeof post[0].acf.form === "number") ? post[0].acf.form : post[0].acf.form.id;
 
-                      request({
-                              url: config.external_api + '/custom/forms?form=' + formid,
-                              json: false,
-                              maxAttempts: config.retries.attempts,
-                              retryDelay: config.retries.delay,
-                              retryStrategy: request.RetryStrategies.HTTPOrNetworkError,
-                              fullResponse: false
-                          }).then( function( formHtml ) {
+                      async.parallel({
+                        form: function( next ) {
 
-                              post[0].formhtml = formHtml;
+                            request({
+                                    url: config.external_api + '/custom/forms?form=' + formid,
+                                    json: true,
+                                    maxAttempts: config.retries.attempts,
+                                    retryDelay: config.retries.delay,
+                                    retryStrategy: request.RetryStrategies.HTTPOrNetworkError,
+                                    fullResponse: false
+                                }).then( function( formHtml ) {
 
-                              callback( null, post[0] );
+                                    console.log ( formHtml );
 
-                          })
-                          .catch( function( err ) {
+                                    next( null, formHtml );
 
-                              callback( err );
+                                })
+                                .catch( function( err ) {
 
-                          });
+                                    next( err );
+
+                                });
+
+                        },
+                        scripts: function( next ) {
+
+                            request({
+                                    url: config.external_api + '/custom/form-scripts?form=' + formid,
+                                    json: true,
+                                    maxAttempts: config.retries.attempts,
+                                    retryDelay: config.retries.delay,
+                                    retryStrategy: request.RetryStrategies.HTTPOrNetworkError,
+                                    fullResponse: false
+                                }).then( function( formScripts ) {
+
+                                    console.log ( formScripts );
+
+                                    next( null, formScripts );
+
+                                })
+                                .catch( function( err ) {
+
+                                    next( err );
+
+                                });
+                        }
+                      },
+                      function( err, results ) {
+                          if ( err ) callback( err );
+                          
+                          var form = cheerio.load(results.form);
+                          post[0].formscripts = results.scripts;
+                          post[0].formhtml = form.html();
+
+                          callback( null, post[0]);
+
+                      }
+                  );
 
                   }
 

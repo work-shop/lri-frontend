@@ -2,6 +2,7 @@
 
 {% block definitions %} {% endblock %}
 {% block body_classes %} form-page page {% endblock %}
+{% block head_extra %}{{ item.formscripts|safe }}{% endblock %}
 
 {% block content %}
 

@@ -8,8 +8,14 @@ var $ = require('jquery');
 var slick = require('slick-carousel');
 
 //assign jquery to the window, so it can be accessed in the console
-window.$ = $;
-window.jQuery = $;
+
+
+
+    window.$ = $;
+    window.jQuery = $;
+
+
+
 
 //get utilities
 var jumpUtilities = require('./jump-utilities.js')($);
@@ -44,13 +50,13 @@ $.urlParam = function(name){
 	else{
 		return results[1] || 0;
 	}
-};	
+};
 
 
 //site
 if( $('#page-hero') ){
 	var heroShift = require('./hero-shift.js')($);
-	jumpUtilities.setupJumpEvents('.page-hero-scrolly', 75, 567, 50, true);		
+	jumpUtilities.setupJumpEvents('.page-hero-scrolly', 75, 567, 50, true);
 	heroShift.initialize();
 }
 
@@ -67,7 +73,7 @@ if( $('body').hasClass('archiv|e-events') | $('body').hasClass('page-make-ri-str
 if($('body').hasClass('page-home')){
 	var wwd = require('./wwd.js')($);
 	var homeDonate = require('./home-donate.js')($);
-	homeDonate.initialize();	
+	homeDonate.initialize();
 	wwd.initialize();
 }
 
@@ -76,7 +82,9 @@ if($('body').hasClass('page-alumni-directory')){
 	directory.initialize();
 }
 
-if($('body').hasClass('page-make-ri-stronger')){
+if($('body').hasClass('page-form')){
+
 }
 
-
+if($('body').hasClass('page-make-ri-stronger')){
+}

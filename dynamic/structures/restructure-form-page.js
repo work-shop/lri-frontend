@@ -15,8 +15,6 @@ var baseStructure = require('./base-structure.js');
 //module.exports = function( story, options, globals ) {
 module.exports = function( form, options, globals ) {
 
-    console.log("restructured form page");
-    console.log( form );
 
     return baseStructure({
 

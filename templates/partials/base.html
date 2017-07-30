@@ -147,6 +147,7 @@
 
     <link rel="stylesheet" type="text/css" href="/public/fonts/fonts.css"/>
     <link rel="stylesheet" type="text/css" href="/public/bundle.css"/>
+    <script type="text/javascript">try{document.domain = "leadershipri.org";}catch(e){console.log("domain: couldn't override the domain to match the remote. Don't forget to set up a development host that mimics the live environment.")}</script>
 
     {% block head_extra %}{% endblock %}
 
@@ -182,12 +183,12 @@
                     {% endif %}
                     {% if item %}
                     console.log( 'item:' );
-                    console.log( {{ item|json|safe }});
+                    console.log( {% if pageType != "form-page" %}{{ item|json|safe }}{% else %}"Truncated due to unsafe unescaped HTML in item."{% endif %} );
                     console.log( '========================' );
                     {% endif %}
                     {% if items %}
                     console.log( 'items:' );
-                    console.log( {{ items|json|safe }});
+                    console.log( {{ items|json|safe }} );
                     console.log( '========================' );
                     {% endif %}
                     {% if categories %}
