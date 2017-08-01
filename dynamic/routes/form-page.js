@@ -57,8 +57,6 @@ module.exports = function( wp, config, globals ){
                                     fullResponse: false
                                 }).then( function( formHtml ) {
 
-                                    console.log ( formHtml );
-
                                     next( null, formHtml );
 
                                 })
@@ -80,8 +78,6 @@ module.exports = function( wp, config, globals ){
                                     fullResponse: false
                                 }).then( function( formScripts ) {
 
-                                    console.log ( formScripts );
-
                                     next( null, formScripts );
 
                                 })
@@ -94,7 +90,7 @@ module.exports = function( wp, config, globals ){
                       },
                       function( err, results ) {
                           if ( err ) callback( err );
-                          
+
                           var form = cheerio.load(results.form);
                           post[0].formscripts = results.scripts;
                           post[0].formhtml = form.html();

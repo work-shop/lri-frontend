@@ -183,7 +183,7 @@
                     {% endif %}
                     {% if item %}
                     console.log( 'item:' );
-                    console.log( {% if pageType != "form-page" %}{{ item|json|safe }}{% else %}"Truncated due to unsafe unescaped HTML in item."{% endif %} );
+                    console.log( {% if pageType != "form-page" %}{{ item|json|safe }}{% else %}"Redacted due to unsafe unescaped HTML in item."{% endif %} );
                     console.log( '========================' );
                     {% endif %}
                     {% if items %}
