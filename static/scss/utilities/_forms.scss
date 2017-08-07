@@ -42,51 +42,66 @@
 		color: $brand;
 		margin-left: 5px;
 	}
+
+	.medium{
+		color: $dark;
+	}
 	
 	
 }
 
 .gform_confirmation_message{
-	h1{
-		font-size: 30px;
-		color: $brand;
-		padding: 5px;
-	}
-	
-	font-size: 30px;
+	@extend .h1;
+	color: $brand;
+	padding: 15px;
+	background: $light;
+	border-bottom: 3px solid $yellow-darker;
 }
 
 img.gform_ajax_spinner {
-    display: none !important;
+	display: none !important;
 }
 
 input,textarea{
 	@include transition(all,.125s);
-	padding: 5px;
-	border: 1px solid $brand;
+	padding: 7px;
+	border: 1px solid $light;
+	border-radius: 4px;
 	outline: none;
 	width: 100%;
 	max-width: 300px;
-	opacity: .8;
+	color: $dark;
 
 
 	&:focus{
 		outline: none;
 		border: 2px solid $brand;
-		opacity: 1;
-		background: $brand-ultra-light;
 	}
 	
 	&[type="submit"]{
-		@extend .button;
-
-		// background: $yellow-darker;
-		// padding: 10px 15px;
-		width: auto;
-		text-align: center;
+		@include text-size($text-button);	
+		background: $yellow;
+		padding: 10px 10px;
+		font-family: $font-medium;
+		color: $dark;
+		@extend .uppercase;	
+		border-radius: 2px;
+		letter-spacing: .13em;
 		display: block;
+		width: 100%;
 		max-width: 180px;
+		text-align: center;
+		border: 2px solid $yellow;
+		@include transition(background .125s);
 
+		&:hover{
+			background: white;
+			cursor: pointer;
+		}
+
+		@media screen and (max-width: $sm) {
+			padding: 3px 8px;
+		}
 	}
 	
 	&[type="checkbox"]{

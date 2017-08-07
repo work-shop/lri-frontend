@@ -20,12 +20,12 @@
 @import "utilities/helpers";
 @import "utilities/type-size-mixin/type-size__mixin";
 @import "utilities/jquery-accordian";
-@import "utilities/forms";
 
 
 //site components
 @import "site/typography";
 @import "site/general";
+@import "utilities/forms";
 @import "site/nav";
 @import "site/menus";
 @import "site/footer";
