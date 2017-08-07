@@ -51,10 +51,10 @@
 }
 
 .gform_confirmation_message{
-	@extend .h1;
-	color: $brand;
-	padding: 15px;
-	background: $light;
+	@extend .h2;
+	color: $dark;
+	padding: 25px;
+	background: $ultra-light;
 	border-bottom: 3px solid $yellow-darker;
 }
 
