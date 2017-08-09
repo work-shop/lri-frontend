@@ -3,7 +3,7 @@
 .gform_wrapper{
 	
 	.gfield{
-		margin-bottom: 20px;
+		margin-bottom: 30px;
 	}
 	
 	.gfield.gform_validation_container{
@@ -46,7 +46,16 @@
 	.medium{
 		color: $dark;
 	}
-	
+
+	.field_description_below .gfield_description{
+		padding-top: 2px !important;
+		@extend .italic;
+		font-style: italic;
+	}
+
+	.gfield_visibility_{
+		display: none;
+	}
 	
 }
 
@@ -61,6 +70,8 @@
 img.gform_ajax_spinner {
 	display: none !important;
 }
+
+
 
 input,textarea{
 	@include transition(all,.125s);
@@ -119,7 +130,5 @@ label{
 }
 
 
-.gfield_visibility_{
-	display: none;
-}
+
 
