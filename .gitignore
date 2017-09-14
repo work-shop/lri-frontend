@@ -34,9 +34,9 @@ node_modules
 jspm_packages
 static/scss/bourbon
 static/scss/neat
-public/*.css
-public/*.css.map
-public/*.js
+public/**/*.css
+public/**/*.css.map
+public/**/*.js
 
 # Optional npm cache directory
 .npm
