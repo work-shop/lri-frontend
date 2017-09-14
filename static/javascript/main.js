@@ -2,6 +2,8 @@
 
 var configuration = require('../../package.json').frontend;
 
+console.log("hi");
+
 
 //get third party libraries
 var $ = require('jquery');
@@ -65,7 +67,7 @@ if( $('#page-sidebar').length > 0 ){
 	jumpUtilities.setupJumpEvents('.sidebar-jump', 175, 567, 100, true);
 }
 
-if( $('body').hasClass('archiv|e-events') | $('body').hasClass('page-make-ri-stronger')  ){
+if( $('body').hasClass('archive-events') | $('body').hasClass('page-make-ri-stronger')  ){
 	var events = require('./events.js')($, configuration);
 	events.initialize();
 }

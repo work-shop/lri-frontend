@@ -3,6 +3,8 @@
 
 module.exports = function($, configuration) {
 
+    console.log("hi");
+
 	var activated = false;
 	var base = 'https://www.eventbriteapi.com/v3/events/';
 	var token = '/?token=' + configuration.eventbrite_token;
@@ -13,7 +15,7 @@ module.exports = function($, configuration) {
 		upcomingEvents = _makeRiStrongerEvents;
 	}else{
 		upcomingEvents = _itemUpcomingEvents;
-		pastEvents = _itemPastEvents;		
+		pastEvents = _itemPastEvents;
 	}
 
 	var $upcomingEventsContainer = $('#events-upcoming');
@@ -53,11 +55,11 @@ module.exports = function($, configuration) {
 			//console.log("success loading events");
 			renderEvent( data, upcoming );
 		})
-		.fail(function() {
+		.fail(function( ) {
 			console.log("error loading events");
 		})
 		.always(function() {
-			//console.log("completed request for events");
+
 		});
 	}
 
@@ -69,23 +71,23 @@ module.exports = function($, configuration) {
 
 	function generateMarkup( event, upcoming ){
 		var m2,m4,m6,m8;
-		
+
 		m2 = event.url;
-		
+
 		m4 = event.logo.url;
 
 		var d = new Date(event.start.local);
-		m6 = formatDate(d);	
-		
+		m6 = formatDate(d);
+
 		m8 = event.name.text;
 
 		var markup = m1+m2+m3+m4+m5+m6+m7+m8+m9;
 
 		if( upcoming ){
-			$upcomingEventsContainer.append( markup );			
+			$upcomingEventsContainer.append( markup );
 		}
 		else{
-			$pastEventsContainer.append( markup );			
+			$pastEventsContainer.append( markup );
 		}
 
 		if( activated === false ){
@@ -94,7 +96,7 @@ module.exports = function($, configuration) {
 		}
 
 
-	}	
+	}
 
 
 	function formatDate( d ){
@@ -102,7 +104,7 @@ module.exports = function($, configuration) {
 		var months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
 		var month = d.getMonth();
 		var date = months[month] + ' ' + d.getDate() + ', ' + d.getFullYear();
-		return date; 
+		return date;
 	}
 
 
@@ -110,7 +112,7 @@ module.exports = function($, configuration) {
 	function initialize() {
 
 		$( document ).ready( function() {
-			window.requestAnimationFrame( getEvents );	
+			window.requestAnimationFrame( getEvents );
 		});
 
 	}
