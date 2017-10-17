@@ -19,6 +19,8 @@ module.exports = function( $ ){
 
 		$( document ).ready( function() {
 
+			console.log('stickies.js');
+
 			if( $('#page-sidebar').length > 0 ){
 				sidebar = true;
 			}				
@@ -54,6 +56,9 @@ module.exports = function( $ ){
 
 	function calculatePositions(){
 
+									console.log('calculatePositions');
+
+
 		stickies.navTriggerPosition = topNavHeight;
 		stickies.nav = $navMain;
 		stickies.footerHeight = $footer.outerHeight();
@@ -75,21 +80,24 @@ module.exports = function( $ ){
 
 	function checkNavPosition(){
 
+					console.log('checknavpositions');
+
+
 		if( $(window).width() > 767){
 			
 			//nav
-			if ( $('body').scrollTop() >= stickies.navTriggerPosition && stickies.nav.hasClass('static') ){
+			if ( $(window).scrollTop() >= stickies.navTriggerPosition && stickies.nav.hasClass('static') ){
 				toggleNav();
-			}else if($('body').scrollTop() < stickies.navTriggerPosition && stickies.nav.hasClass('fixed') ){
+			}else if($(window).scrollTop() < stickies.navTriggerPosition && stickies.nav.hasClass('fixed') ){
 				toggleNav();
 			}
 
 			//sidebar
 			if( sidebar ){
-				if ( $('body').scrollTop() >= stickies.sidebarTriggerPosition && stickies.sidebar.hasClass('static') && $('body').scrollTop() < stickies.sidebarFooterTrigger ){
+				if ( $(window).scrollTop() >= stickies.sidebarTriggerPosition && stickies.sidebar.hasClass('static') && $(window).scrollTop() < stickies.sidebarFooterTrigger ){
 					toggleSidebar();
 					console.log('first condition');
-				}else if( $('body').scrollTop() < stickies.sidebarTriggerPosition || $('body').scrollTop() >= stickies.sidebarFooterTrigger ){
+				}else if( $(window).scrollTop() < stickies.sidebarTriggerPosition || $(window).scrollTop() >= stickies.sidebarFooterTrigger ){
 					if( stickies.sidebar.hasClass('fixed') ){
 						toggleSidebar();
 					}
@@ -101,6 +109,9 @@ module.exports = function( $ ){
 
 
 	function toggleNav(){
+
+							console.log('togglenav');
+
 
 		if ( stickies.nav.hasClass('static') ){
 			stickies.nav.removeClass('static').addClass('fixed');
@@ -114,6 +125,9 @@ module.exports = function( $ ){
 
 
 	function toggleSidebar(){
+
+									console.log('togglesidebar');
+
 
 		if ( stickies.sidebar.hasClass('static') ){
 			stickies.sidebar.removeClass('static').addClass('fixed');
