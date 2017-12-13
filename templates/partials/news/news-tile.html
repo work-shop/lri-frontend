@@ -1,8 +1,10 @@
 <div class="col-xs-6 news-tile jank">
 	<a href="{% if story.acf.external %} {{ story.acf.external_news_story_link }}{% else %}{{ story.link }}{% endif %}" {% if story.acf.external %} target="_blank"{% endif %}>
 		<div class="news-tile-label">
-			{% if story._embedded['wp:term'][0][0].name %}
-				<span>{{ story._embedded['wp:term'][0][0].name }}</span>
+			{% if story._embedded['wp:term'] %}
+				{% if story._embedded['wp:term'][0][0].name %}
+					<span>{{ story._embedded['wp:term'][0][0].name }}</span>
+				{% endif %}
 			{% endif %}
 		</div>
 		{% if story.acf.external %}
@@ -18,3 +20,4 @@
 		</h5>
 	</a>
 </div>
+
