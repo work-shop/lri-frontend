@@ -11,7 +11,7 @@
 
 .story-intro{
 	width: 61%;
-	margin-bottom: 110px;
+	// margin-bottom: 110px;
 
 	@media screen and (max-width: $sm) {
 		width: 90%;
@@ -36,6 +36,11 @@
 			font-size: 12px;
 		}
 	}
+}
+
+.story-hero{
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
 
 

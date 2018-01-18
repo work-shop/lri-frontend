@@ -1,17 +1,21 @@
 <div class="news-story-body" id="news-story-body">
 	<div class="story-intro">
 		<h5 class="story-metadata">
-			By {{ item.acf.story_byline }} | {{ item.acf.news_story_date }}
-		</h5>
-		<h1 class="brand story-title">
-			{{ item.title.rendered|safe }}
-		</h1>
-		<h4 class="story-subtitle bold">
-			{{ item.acf.story_subtitle|safe }}
-		</h4>
-
+			{% if item.acf.story_byline %} By {{ item.acf.story_byline }} | {% endif %} {{ item.acf.news_story_date }}
+			</h5>
+			<h1 class="brand story-title">
+				{{ item.title.rendered|safe }}
+			</h1>
+			<h4 class="story-subtitle bold">
+				{{ item.acf.story_subtitle|safe }}
+			</h4>
+		</div>
+		<div class="story-hero">
+			{% if item.acf.hero_image %}
+				<img src="{{ item.acf.hero_image.sizes.newshero }}" />
+			{% endif %}
+		</div>
+		<div class="story-main wysiwyg">
+			{{ item.acf.story_body|safe }}
+		</div>
 	</div>
-	<div class="story-main wysiwyg">
-		{{ item.acf.story_body|safe }}
-	</div>
-</div>
