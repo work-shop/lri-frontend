@@ -19,7 +19,7 @@ module.exports = function( $ ){
 
 		$( document ).ready( function() {
 
-			console.log('stickies.js');
+			//console.log('stickies.js');
 
 			if( $('#page-sidebar').length > 0 ){
 				sidebar = true;
@@ -56,7 +56,7 @@ module.exports = function( $ ){
 
 	function calculatePositions(){
 
-									console.log('calculatePositions');
+		//console.log('calculatePositions');
 
 
 		stickies.navTriggerPosition = topNavHeight;
@@ -80,7 +80,7 @@ module.exports = function( $ ){
 
 	function checkNavPosition(){
 
-					console.log('checknavpositions');
+		//console.log('checknavpositions');
 
 
 		if( $(window).width() > 767){
@@ -96,7 +96,7 @@ module.exports = function( $ ){
 			if( sidebar ){
 				if ( $(window).scrollTop() >= stickies.sidebarTriggerPosition && stickies.sidebar.hasClass('static') && $(window).scrollTop() < stickies.sidebarFooterTrigger ){
 					toggleSidebar();
-					console.log('first condition');
+					//console.log('first condition');
 				}else if( $(window).scrollTop() < stickies.sidebarTriggerPosition || $(window).scrollTop() >= stickies.sidebarFooterTrigger ){
 					if( stickies.sidebar.hasClass('fixed') ){
 						toggleSidebar();
@@ -110,7 +110,7 @@ module.exports = function( $ ){
 
 	function toggleNav(){
 
-							console.log('togglenav');
+		//console.log('togglenav');
 
 
 		if ( stickies.nav.hasClass('static') ){
@@ -126,7 +126,7 @@ module.exports = function( $ ){
 
 	function toggleSidebar(){
 
-									console.log('togglesidebar');
+		//console.log('togglesidebar');
 
 
 		if ( stickies.sidebar.hasClass('static') ){

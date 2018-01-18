@@ -2,7 +2,7 @@
 
 var configuration = require('../../package.json').frontend;
 
-console.log("hi");
+//console.log("main.js");
 
 
 //get third party libraries
