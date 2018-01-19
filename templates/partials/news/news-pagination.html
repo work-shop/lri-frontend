@@ -6,16 +6,41 @@
 				{% if paging.totalPages > 1 %}
 					<div class="pagination-container">
 						<ul class="pagination centered">
+							{% if paginationNumber != 1 %}
+								{% set paginationPrevious = parseInt(paginationNumber) - 1 %}
+								<li class="pagination-first pagination-limit">
+									<a class="page-item" href="/news/"><span class="icon" data-icon="‘"></span><span class="icon" data-icon="‘"></span></a>
+								</li>
+								<li class="pagination-previous pagination-limit">
+									<a class="page-item" href="/news/{{paginationPrevious}}"><span class="icon" data-icon="‘"></span></a>
+								</li>
+							{% endif %}	
 							{% set pageCount = arrayOfLength( paging.totalPages ) %}
-								{% for i in pageCount %}
-									<li class="{% if paginationNumber == loop.index %}active{% endif %}">
-										{% if paginationNumber == loop.index %}
-											<span class="page-item">{{ loop.index }}</span>
-										{% else %}
-											<a href="/news/{{ loop.index }}" class="page-item">{{ loop.index }}</a>
-										{% endif %}
-									</li>
-								{% endfor %}
+							{% set pageUpperBound = paging.totalPages - 4 %}
+							{% set paginationSize = arrayOfLength( 5 ) %}
+							{% for i in paginationSize %}
+								{% if paginationNumber >= pageUpperBound  %}
+									{% set paginationCurrent = parseInt(pageUpperBound) + parseInt(loop.index0) %}
+								{% else %}	
+									{% set paginationCurrent = parseInt(paginationNumber) + parseInt(loop.index0) %}
+								{% endif %}	
+								<li class="{% if paginationNumber == paginationCurrent %}active{% endif %}">
+									{% if paginationNumber == paginationCurrent %}
+										<span class="page-item">{{ paginationCurrent }}</span>
+									{% else %}
+										<a href="/news/{{ paginationCurrent }}" class="page-item">{{ paginationCurrent }}</a>
+									{% endif %}
+								</li>
+							{% endfor %}
+							{% if paginationNumber != paging.totalPages %}
+								{% set paginationNext = parseInt(paginationNumber) + 1 %}								
+								<li class="pagination-next pagination-limit">
+									<a class="page-item" href="/news/{{paginationNext}}"><span class="icon" data-icon="—"></span></a>
+								</li>
+								<li class="pagination-last pagination-limit">
+									<a class="page-item" href="/news/{{ paging.totalPages }}"><span class="icon" data-icon="—"></span><span class="icon" data-icon="—"></span></a>
+								</li>
+							{% endif %}
 							</ul>
 						</div>	
 					</div>
