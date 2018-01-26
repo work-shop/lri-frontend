@@ -1,17 +1,18 @@
 <div class="person person-{% if person.acf.external === false %}staff{% endif %}" id="person-{{ person.slug }}">
-	<div class="person-headshot">
-		{% if person.acf.headshot %}
-			<img src="{{ person.acf.headshot.sizes.person }}">
-		{% else %}
-			<img src="/public/images/person.png">
-		{% endif %}
-	</div>
-	<div class="person-info">
-		<h4 class="person-name">
-			{{ person.title.rendered|safe }}
-		</h4>
-		<h4 class="person-title">
-			{{ person.acf.job_title|safe }}{% if person.acf.alum === 'clri' || person.acf.alum === 'lri' %},&nbsp;
+	<a href="#" class="modal-toggle" data-modal-target="modal-person-{{ person.slug }}">
+		<div class="person-headshot">
+			{% if person.acf.headshot %}
+				<img src="{{ person.acf.headshot.sizes.person }}">
+			{% else %}
+				<img src="/public/images/person.png">
+			{% endif %}
+		</div>
+		<div class="person-info">
+			<h4 class="person-name">
+				{{ person.title.rendered|safe }}
+			</h4>
+			<h4 class="person-title">
+				{{ person.acf.job_title|safe }}{% if person.acf.alum === 'clri' || person.acf.alum === 'lri' %},&nbsp;
 				{% if person.acf.alum === 'clri' %}
 					CLRI
 				{% else %}
@@ -49,4 +50,80 @@
 			</h5>
 		{% endif %}
 	</div>
+</a>
+</div>
+
+<div class="modal modal-person off" id="modal-person-{{ person.slug }}">
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-md-4 col-xl-3 modal-person-info">
+				<div class="person-headshot">
+					{% if person.acf.headshot %}
+						<img src="{{ person.acf.headshot.sizes.person }}">
+					{% else %}
+						<img src="/public/images/person.png">
+					{% endif %}
+				</div>
+				<div class="person-info">
+					<h4 class="person-name">
+						{{ person.title.rendered|safe }}
+					</h4>
+					<h4 class="person-title">
+						{{ person.acf.job_title|safe }}{% if person.acf.alum === 'clri' || person.acf.alum === 'lri' %},&nbsp;
+						{% if person.acf.alum === 'clri' %}
+							CLRI
+						{% else %}
+							LRI
+						{% endif %} 
+						'{{ person.acf.lri_year }}
+					{% endif %}
+				</h4>
+				{% if person.acf.external === false %}
+					{% if person.acf.email %}
+						<h4 class="person-email">
+							<a href="mailto:{{ person.acf.email|safe }}" target="_blank">
+								{{ person.acf.email|safe }}
+							</a>
+						</h4>
+					{% endif %}		
+					{% if person.acf.phone_number %}
+						<h4 class="person-phone_number">
+							{{ person.acf.phone_number|safe }}
+						</h4>
+					{% endif %}	
+				{% endif %}
+				{% if person.acf.external %}
+					<h5 class="person-external person-sub">
+						{% if person.acf.external_job_title %}
+							{{ person.acf.external_job_title }}{% if person.acf.external_organization %},{% endif %}
+						{% endif %}
+						{% if person.acf.external_organization %}
+							{{ person.acf.external_organization}}
+						{% endif %}
+					</h5>
+				{% elseif person.acf.contact_about %}
+					<h5 class="person-contact-about person-sub">
+						{{person.acf.contact_about}}
+					</h5>
+				{% endif %}
+			</div>	
+			{% if person.acf.strengths === true %}
+				<div class="person-strengths">
+					<ul class="person-strenghts-list">
+						<li>{{person.acf.strength_1|safe}}</li>
+						<li>{{person.acf.strength_2|safe}}</li>
+						<li>{{person.acf.strength_3|safe}}</li>
+						<li>{{person.acf.strength_4|safe}}</li>
+						<li>{{person.acf.strength_5|safe}}</li>
+					</ul>
+				</div>
+			{% endif %}
+		</div>
+		<div class="col-md-8 col-xl-8">
+			<p class="person-bio">
+				{{person.acf.bio|safe}}
+			</p>
+		</div>
+	</div>
+</div>
 </div>

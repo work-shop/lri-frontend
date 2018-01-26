@@ -61,6 +61,9 @@
 
 	}
 
+}
+
+.person,.modal-person{
 	img{
 		width: 63%;
 		margin: 0 auto 20px auto;	
@@ -84,11 +87,11 @@
 		font-size: 17px;
 
 		@media screen and (max-width: $md) {
-			font-size: 14px;
+			font-size: 15px;
 		}
 
 		@media screen and (max-width: $sm) {
-			font-size: 12px;
+			font-size: 13px;
 		}
 	}
 
@@ -109,9 +112,15 @@
 	h5{
 		width: 80%;
 		margin: 10px auto 0 auto;
-		font-size: 17px;
+		font-size: 16px;
 		font-family: $font-main !important;
 		line-height: 1.27;
+
+		@media screen and (max-width: $md) {
+			font-size: 14px;
+			margin-bottom: 0;
+		}
+
 
 		@media screen and (max-width: $sm) {
 			font-size: 11px;
@@ -122,5 +131,85 @@
 			width: 94%;
 		}
 	}
+}
+
+.modal-person{
+	background: $brand;
+	box-shadow: 0px 0px 2px transparentize(#333, .5);
+	overflow: scroll;
+
+	.person-info,.person-strengths,.person-headshot{
+		max-width: 300px;
+	}
+
+	.modal-body{
+		padding: 50px;
+
+		@media screen and (max-width: $sm) {
+			padding: 20px;
+		}
+	}
+
+	*{
+		color: white !important;
+	}
+
+	img{
+		margin-left: 0;
+	}
+
+	h4{
+		font-size: 15px;
+	}
+
+	.person-name{
+		font-size: 20px;
+	}
+
+
+	h5{
+		border-top: 1px solid transparentize($ultra-light,.75);
+		border-bottom: 1px solid transparentize($ultra-light,.75);
+		margin-top: 15px;
+		margin-bottom: 20px;
+		padding: 20px 0;
+		line-height: 1.2;
+		font-size: 15px;
+		margin-left: 0;
+	}
+
+	.person-strengths{
+
+		ul{
+			width: 80%;
+			padding-bottom: 20px;
+			border-bottom: 1px solid transparentize($ultra-light,.75);
+			line-height: 1.1;
+
+			@media screen and (max-width: $lg) {
+				width: 94%;
+			}
+		}
+
+		li{
+			display: inline-block;
+			margin-right: 15px;
+			font-size: 15px;
+			@extend .bold;
+			margin-bottom: 0;
+		}
+	}
 
 }
+
+.modal-person-info{
+	@media screen and (max-width: $md) {
+		margin-bottom: 60px;
+	}
+}
+
+
+
+
+
+

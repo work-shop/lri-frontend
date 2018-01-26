@@ -7,6 +7,8 @@ module.exports = function($) {
 		if($('body').hasClass('modal-on')){
 			$('.modal').removeClass('on').addClass('off');
 			$('body').removeClass('modal-on').addClass('modal-off');
+			$('#modal-blanket').removeClass('on').addClass('off');
+
 		}
 
 	}
@@ -23,6 +25,7 @@ module.exports = function($) {
 			if($('body').hasClass('modal-off')){
 				$(modalTarget).removeClass('off').addClass('on');
 				$('body').removeClass('modal-off').addClass('modal-on');
+				$('#modal-blanket').removeClass('off').addClass('on');
 			}	
 		}
 
@@ -57,7 +60,7 @@ module.exports = function($) {
 				closeModal();	
 			});
 
-			$(".blanket").click(function(e){
+			$("#modal-blanket").click(function(e){
 				e.preventDefault();
 				closeModal();	
 			});			
