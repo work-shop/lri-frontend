@@ -7,27 +7,19 @@
 	top: 100px;
 	left: 100px;
 	z-index: 9;
+	@include transition(transform $modal-transition);
+	@include transform(translate(150%, 0%));	
 
-	@media only screen and (min-width: 768px){
-		@include transition(transform $modal-transition);
-		@include transform(translate(150%, 0%));	
-	}
 	@media only screen and (max-width: 767px){
-		left: 150%;
+		left: 15px;
+		top: 15px;
+		width: calc(100vw - 30px);
+		height: calc(100vh - 30px); 
 	}	
 
-
 	&.on{
-		@media only screen and (min-width: 768px){
-			@include transition(transform $modal-transition);
-			@include transform(translate(0%, 0%));	
-		}
-		@media only screen and (max-width: 767px){
-			left: 15px;
-			top: 15px;
-			width: calc(100vw - 30px);
-			height: calc(100vh - 30px); 
-		}	
+		@include transition(transform $modal-transition);
+		@include transform(translate(0%, 0%));	
 	}
 
 	&.scroll{
@@ -76,6 +68,30 @@
 	background: transparentize($ultra-light, .2);	
 }
 
+.modal-person-feather{
+	position: fixed;
+	width: calc(100vw - 200px);
+	height: 100px;
+	bottom: 100px;
+	left: 100px;
+	z-index: 10;
+	@include transition(transform $modal-transition);
+	@include transform(translate(150%, 0%));
+
+	@media screen and (max-width: $sm) {
+		width: calc(100vw - 30px);
+		left: 15px;
+		bottom: 15px;
+		height: 50px;
+	}
+
+	background: -webkit-linear-gradient(rgba(0,63,135,0) 0%, rgba(0,63,135,1) 100%);
+	background: -o-linear-gradient(rgba(0,63,135,0) 0%, rgba(0,63,135,1) 100%);
+	background: linear-gradient(rgba(0,63,135,0) 0%, rgba(0,63,135,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00003f87', endColorstr='#003f87',GradientType=0 );
+}
+
+
 //body styles
 .modal-on{
 	overflow: hidden;
@@ -96,6 +112,10 @@
 
 	.modal-person-blanket{
 		opacity: 1;
+	}
+
+	.modal-person-feather{
+		@include transform(translate(0%, 0%));	
 	}
 
 }

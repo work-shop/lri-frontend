@@ -144,6 +144,7 @@
 
 	.modal-body{
 		padding: 50px;
+		position: relative;
 
 		@media screen and (max-width: $sm) {
 			padding: 20px;
@@ -160,10 +161,18 @@
 
 	h4{
 		font-size: 15px;
+
+		@media screen and (max-width: $sm) {
+			font-size: 13px;
+		}
 	}
 
 	.person-name{
 		font-size: 20px;
+
+		@media screen and (max-width: $sm) {
+			font-size: 15px;
+		}
 	}
 
 
@@ -176,6 +185,10 @@
 		line-height: 1.2;
 		font-size: 15px;
 		margin-left: 0;
+
+		@media screen and (max-width: $sm) {
+			font-size: 13px;
+		}
 	}
 
 	.person-strengths{
@@ -195,8 +208,14 @@
 			display: inline-block;
 			margin-right: 15px;
 			font-size: 15px;
-			@extend .bold;
-			margin-bottom: 0;
+
+			@media screen and (max-width: $sm) {
+				font-size: 13px;
+			}
+
+			&.label{
+				@extend .bold;
+			}
 		}
 	}
 
@@ -204,9 +223,14 @@
 
 .modal-person-info{
 	@media screen and (max-width: $md) {
-		margin-bottom: 60px;
+		margin-bottom: 50px;
+	}
+
+	@media screen and (max-width: $sm) {
+		margin-bottom: 30px;
 	}
 }
+
 
 
 
