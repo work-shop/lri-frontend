@@ -19,22 +19,59 @@ module.exports = function($, configuration) {
 	var m5 = '</td><td class="d-organization">';
 	var m7 = '</td><td class="d-title">';
 	var m9 = '</td></tr>';
-	var initialType = 'lri';
-	//replaced with lri end year, set in html template
-	var initialYear = LriInitialYear;	
+	//var initialType;
+	//var initialYear;
 
 
 	function getAlumni( classType, classYear ){
 
 		emptyDirectory();
-		
-		if( typeof classType === 'undefined' ){
-			var _classType = initialType;
-			var _classYear = initialYear;
-			requestAlumni( _classType, _classYear );	
+
+		if( typeof classType === 'undefined' || typeof classYear === 'undefined'){
+			
+			if( typeof classType === 'undefined' && typeof classYear === 'undefined'){
+				console.log('condition 1');
+				var _classType = 'lri';
+				var _classYear = LriInitialYear;
+				requestAlumni( _classType, _classYear );	
+			} 
+
+			if( typeof classType === 'undefined' && !typeof classYear === 'undefined'){
+				console.log('condition 2');
+				var _classType = 'lri';
+				requestAlumni( _classType, classYear );	
+			} 
+
+			if( !typeof classType === 'undefined' && typeof classYear === 'undefined' ){
+				console.log('condition 3');
+				if(classType === 'lri'){
+					var _classYear = LriInitialYear;
+				} else if(classType === 'clri'){
+					var _classYear = ClriInitialYear;
+				}
+				requestAlumni( classType, _classYear );	
+			}
+
 		} else{
+			console.log('condition 4');
 			requestAlumni( classType, classYear );		
 		}
+		
+		// if( typeof classType === 'undefined' ){
+		// 	console.log('classtype undefine');
+		// 	var _classType = 'lri';
+		// 	var _classYear = LriInitialYear;
+		// 	requestAlumni( _classType, _classYear );	
+		// } else{
+		// 	if( typeof classYear === 'undefined' ){
+		// 		if(classType === 'lri'){
+		// 			var _classYear = LriInitialYear;
+		// 		} else if(classType === 'clri'){
+		// 			var _classYear = ClriInitialYear;
+		// 		}
+		// 	}
+		// 	requestAlumni( _classType, _classYear );		
+		// }
 
 	}
 
@@ -199,15 +236,40 @@ module.exports = function($, configuration) {
 
 		$( document ).ready( function() {
 
-			initialYear = LriInitialYear;
-
+			//first check if the classType is set in the URL, to one of the types we accept
 			if ( $.urlParam('class') === 'lri' || $.urlParam('class') === 'clri' || $.urlParam('class') === 'lcf' ){
-				initialType = $.urlParam('class');
-				initialYear = $.urlParam('year');
+				var initialType = $.urlParam('class');
+
+				//store the url Year parameter
+				var urlYear = $.urlParam("year");
+
+				//check to see if the year parameter is in the URL
+				if ( urlYear !== null ){
+					var initialYear = urlYear;
+				} 
+				//if the year parameter is not set, set it to the appropriate year based on the class type
+				else{
+					if(initialType === 'lri'){
+						var initialYear = LriInitialYear;
+					} else if(initialType === 'clri'){
+						var initialYear = ClriInitialYear;
+					}
+				}
+
+				//set the UI controls to the right value
 				$typeInput.val( initialType );
 				toggleType( initialType );
-				$('.d-select-year.active').val( initialYear );		
+				$('.d-select-year.active').val( initialYear );	
+
 			} 
+			//if the classType is not set, set it to LRI, then get the initial year
+			else{
+				var initialType = 'lri';
+				var initialYear = LriInitialYear;
+				$typeInput.val( initialType );
+				toggleType( initialType );
+				$('.d-select-year.active').val( initialYear );	
+			}
 
 			getAlumni( initialType, initialYear);
 			setupAlumni();	
