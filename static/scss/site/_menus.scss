@@ -122,7 +122,7 @@ $text-menu-link: (
 	//display: none;
 	position: fixed;
 	z-index: -10;
-	border: 10px solid black;
+	//border: 10px solid black;
 	// @include transition(opacity .01s ease-in .29s);	
 
 	@media screen and (max-width: $lg) {

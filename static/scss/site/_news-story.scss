@@ -10,8 +10,9 @@
 
 
 .story-intro{
-	width: 61%;
+	//width: 80%;
 	// margin-bottom: 110px;
+	max-width: 768px;
 
 	@media screen and (max-width: $sm) {
 		width: 90%;

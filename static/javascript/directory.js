@@ -20,7 +20,8 @@ module.exports = function($, configuration) {
 	var m7 = '</td><td class="d-title">';
 	var m9 = '</td></tr>';
 	var initialType = 'lri';
-	var initialYear = '2016';	
+	//replaced with lri end year, set in html template
+	var initialYear = LriInitialYear;	
 
 
 	function getAlumni( classType, classYear ){
@@ -197,6 +198,8 @@ module.exports = function($, configuration) {
 	function initialize() {
 
 		$( document ).ready( function() {
+
+			initialYear = LriInitialYear;
 
 			if ( $.urlParam('class') === 'lri' || $.urlParam('class') === 'clri' || $.urlParam('class') === 'lcf' ){
 				initialType = $.urlParam('class');
