@@ -2,10 +2,10 @@
 	{% if item.acf.contacts %}
 		{% for contact_item in item.acf.contacts %}
 			<div class="row contact-item">
-				<div class="col-xs-12 col-sm-4">
-					<h4>{{ contact_item.contact_title }}</h4>
+				<div class="col-sm-12 col-md-4 contact-column">
+					<h4 class="bold">{{ contact_item.contact_title }}</h4>
 				</div>
-				<div class="col-xs-12 col-sm-4">
+				<div class="col-sm-12 col-md-4 contact-column">
 					{% if contact_item.contact_email %}
 						<a href="mailto:{{contact_item.contact_email}}" target="_blank">
 						{% endif %}
@@ -14,8 +14,8 @@
 						</a>
 					{% endif %}
 				</div>
-				<div class="col-xs-12 col-sm-4">
-					<h4>{{ contact_item.contact_phone }}</h4>
+				<div class="col-sm-12 col-md-4 contact-column">
+					<h4 class="contact-item-phone">{{ contact_item.contact_phone }}</h4>
 				</div>										
 			</div>											
 		{% endfor %}

@@ -4,14 +4,21 @@
 		width: 100%;
 		margin-left: 0;
 	}
+
+	address{
+		line-height: 1.7;
+	}
 }
+
+
 
 
 .contact-item{
 	padding: 0px 0 50px 0;
+	//outline: 1px solid black;
 	
 	&:before{
-		width: calc(100% - 40px);
+		width: calc(100% - 20px);
 		margin: 0 auto 25px auto;
 		height: 1px;
 		display: block;
@@ -32,4 +39,21 @@
 		}
 
 	}
+
+	.contact-item-phone{
+		text-align: right;
+		line-height: 1.1;
+		font-size: 16px;
+
+		@media screen and (max-width: $sm) {
+			font-size: 14px;
+			text-align: left;
+		}
+	}
+}
+
+.contact-column{
+	padding-left: 10px;
+	padding-right: 10px;
+	//outline: 1px solid black;
 }

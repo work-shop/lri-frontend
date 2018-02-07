@@ -114,13 +114,15 @@ $text-menu-link: (
 
 #blanket{
 	width: 50%;
-	left: 0;
+	left: -100%;
 	background: transparent;
-	opacity: 0;
+	opacity: 1;
 	@include transform(translateY(-200%));
 	@extend .vhfull;
 	//display: none;
 	position: fixed;
+	z-index: -10;
+	border: 10px solid black;
 	// @include transition(opacity .01s ease-in .29s);	
 
 	@media screen and (max-width: $lg) {
@@ -137,9 +139,11 @@ $text-menu-link: (
 	#blanket.on{
 		//background: transparentize($brand-ultra-light, .8);
 		//display: block;
+		left: 0;
 		top: $nav-drop;
 		opacity: 1;
 		@include transform(translateY(0%));
+		z-index: 10;
 	}
 }
 
