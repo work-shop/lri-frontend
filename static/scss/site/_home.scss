@@ -370,7 +370,11 @@ $text-wwd: (
 		@media screen and (max-width: $sm) {
 			padding-top: $home-section-padding-top / 3;
 			padding-bottom: 0;
-		}		
+		}			
+		@media screen and (max-height: 700px) {
+			padding-top: $home-section-padding-top / 3;
+			padding-bottom: 0;
+		}	
 	}
 
 	.home-section-content{
@@ -379,6 +383,10 @@ $text-wwd: (
 		float: none;
 
 		@media screen and (max-width: $sm) {
+			padding-top: $home-section-padding-top / 3;
+			padding-bottom: $home-section-padding-top / 3;
+		}	
+		@media screen and (max-height: 700px) {
 			padding-top: $home-section-padding-top / 3;
 			padding-bottom: $home-section-padding-top / 3;
 		}			
@@ -420,6 +428,9 @@ $text-wwd: (
 	}
 
 	.slick-dots{
+		position: static;
+		@include transform(translate(0%,0));
+		text-align: center;
 
 		button{
 			background: #B2B5B7;
