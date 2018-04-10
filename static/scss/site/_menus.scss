@@ -59,6 +59,10 @@ $text-menu-link: (
 		color: white;
 	}
 
+	h3{
+		line-height: .7;
+	}
+
 	h3 a{
 		@extend .bold;
 		@extend .uppercase;
@@ -83,7 +87,7 @@ $text-menu-link: (
 	}
 
 	li {
-		margin-bottom: 15px;
+		margin-bottom: 12px;
 		line-height: 1;
 
 		a{
