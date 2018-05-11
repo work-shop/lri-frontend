@@ -219,3 +219,64 @@ $text-hero: (
 }
 
 
+
+//FANCY CONTENT
+
+[data-accordion-group]{
+	margin-top: 3em;
+	margin-bottom: 3em;
+}
+
+
+.accordion{
+
+	margin-bottom: 20px;		
+
+	[data-control]{
+		background: darken($ultra-light, 3%);
+		padding: 10px 6px 5px 15px;	
+		position: relative;
+
+		h4{
+			@extend .bold;	
+		}
+
+		&:hover{
+			cursor: context-menu;
+			cursor: pointer;
+		}
+
+		.icon{
+			float: right;
+			margin-right: 10px;
+			@include transform( rotate( 0deg));
+			@include transition( transform, .125s );
+
+			&:before{
+				top: 0px;
+			}
+		}
+
+	}
+
+	[data-content]{
+		background: lighten($ultra-light, 1%);
+	}
+
+	.wysiwyg{
+		padding: 30px 15px 15px 15px;
+		border: 1px solid $light-blue;
+	}
+
+	&.open{
+		[data-control]{
+			.icon{
+				@include transform( rotate(180deg) );
+			}
+		}
+	}
+
+}
+
+
+
