@@ -34,25 +34,23 @@
 										<div class="wysiwyg">
 											{{ section.section_body|safe }}
 										</div>
-										{# {% if item.section_collapsible_list %} #}
-											<div data-accordion-group>
-												{% for li in section.section_collapsible_list %}
-													<div class="accordion" data-accordion>
-														<div class="accordian-title" data-control>
-															<h4>
-																{{ li.list_item_label|safe }}
-																<span class="icon" data-icon="”"></span>
-															</h4>
-														</div>
-														<div class="accordian-body" data-content>
-															<div class="wysiwyg">
-																{{ li.list_item_body|safe }}
-															</div>
+										<div data-accordion-group>
+											{% for li in section.section_collapsible_list %}
+												<div class="accordion" data-accordion>
+													<div class="accordian-title" data-control>
+														<h4>
+															{{ li.list_item_label|safe }}
+															<span class="icon" data-icon="”"></span>
+														</h4>
+													</div>
+													<div class="accordian-body" data-content>
+														<div class="wysiwyg">
+															{{ li.list_item_body|safe }}
 														</div>
 													</div>
-												{% endfor %}
-											</div>
-										{# {% endif %} #}
+												</div>
+											{% endfor %}
+										</div>
 									</div>
 									{% if section.section_links %}
 										<div class="page-body-section-links">
