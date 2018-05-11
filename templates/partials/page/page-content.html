@@ -31,26 +31,46 @@
 										</h3>
 									</div>
 									<div class="page-body-section-body">
-										<div class="wysiwyg">
-											{{ section.section_body|safe }}
-										</div>
-										<div data-accordion-group>
-											{% for li in section.section_collapsible_list %}
-												<div class="accordion" data-accordion>
-													<div class="accordian-title" data-control>
-														<h4>
-															{{ li.list_item_label|safe }}
-															<span class="icon" data-icon="”"></span>
-														</h4>
-													</div>
-													<div class="accordian-body" data-content>
-														<div class="wysiwyg">
-															{{ li.list_item_body|safe }}
+										{% if section.section_body %} 
+											<div class="wysiwyg section-body-wyswig">
+												{{ section.section_body|safe }}
+											</div>
+										{% endif %}
+										{% if section.section_collapsible_list %} 
+											<div data-accordion-group>
+												{% for li in section.section_collapsible_list %}
+													<div class="accordion" data-accordion>
+														<div class="accordian-title" data-control>
+															<h4>
+																{{ li.list_item_label|safe }}
+																<span class="icon" data-icon="”"></span>
+															</h4>
+														</div>
+														<div class="accordian-body" data-content>
+															<div class="wysiwyg">
+																{{ li.list_item_body|safe }}
+															</div>
 														</div>
 													</div>
+												{% endfor %}
+											</div>
+										{% endif %}
+										{% if section.section_statistics_slider %}
+											<div class="statistics-slider-body">
+												<div class="slick-statistics slick-default">
+													{% for statistic in section.section_statistics_slider %}
+														<div class="slide slide-impact impact-item">
+															<h2 class="impact-item-number">
+																{{ statistic.statistic_heading|safe }}
+															</h2>
+															<h4 class="serif" class="impact-item-label">
+																{{ statistic.statistic_description|safe }}
+															</h4>							
+														</div>
+													{% endfor %}
 												</div>
-											{% endfor %}
-										</div>
+											</div>
+										{% endif %}
 									</div>
 									{% if section.section_links %}
 										<div class="page-body-section-links">

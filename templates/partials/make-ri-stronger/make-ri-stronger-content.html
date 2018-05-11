@@ -20,9 +20,9 @@
 		<div class="page-body-section-introduction">
 			<p>{{ item.acf.impact_introduction|safe }}</p>
 		</div>
-		<div class="impact-body">
+		<div class="impact-body statistics-slider-body">
 			{% if item.acf.impact_body %}
-				<div class="slick-impact slick-default">
+				<div class="slick-statistics slick-default">
 					{% for impact_item in item.acf.impact_body %}
 						<div class="slide slide-impact impact-item">
 							<h2 class="impact-item-number">

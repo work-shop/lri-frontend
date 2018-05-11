@@ -280,3 +280,78 @@ $text-hero: (
 
 
 
+//Statistics slider
+
+.page-body-section-body{
+
+	.slick-statistics{
+		width: 80%;
+		margin-top: 1em;
+		margin-bottom: 3em;
+
+		.slick-prev{
+			&:after{
+				display: none;
+			}
+		}
+
+		.slick-arrow{
+			&:after{
+				color: $yellow-darker;
+				font-size: 90px;
+			}
+		}
+
+		@media screen and (max-width: $sm) {
+			width: 100%;
+
+			.slick-next{
+				right: -10px;
+
+				&:after{
+					font-size: 60px;
+					text-align: right;
+				}
+			}
+		}
+	}
+
+	.statistics-slider-body{
+		padding-top: 1em;
+		padding-bottom: 2em;		
+
+		@media screen and (max-width: $sm) {
+			padding-top: 15px;
+			padding-bottom: 30px;
+		}
+
+		h2{
+			color: $yellow-darker;
+			@extend .h1;
+			@extend .serif;
+			font-weight: bold;
+			text-align: center;
+			width: 92%;
+			margin: 0 auto 15px auto;
+		}
+
+		h4{
+			text-align: center;
+			width: 75%;
+			margin: 0 auto 15px auto;
+			@extend .bold;
+			color: $medium;
+			color: $brand;
+			@extend .h3;
+
+			@media screen and (max-width: $sm) {
+				width: 90%;
+			}
+		}
+
+	}
+
+}
+
+
+
