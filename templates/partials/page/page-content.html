@@ -71,6 +71,27 @@
 												</div>
 											</div>
 										{% endif %}
+
+										{% if section.section_logo_slider %}
+											<div class="logo-slider-body">
+												<div class="slick-clients slick-default">
+													{% for client in section.section_logo_slider %}
+														{% if loop.index0 === 0 || loop.index0 % 6 === 0 %}
+															<div class="slide slide-clients">							
+															{% endif %}
+															<a href="{{ client.client_website }}" target="_blank" class="client-item">
+																<div class="client-image" style="background-image: url('{{ client.client_logo.sizes.xs }}')">
+																</div>
+																{# <img src="{{ client.client_logo.sizes.xs }}"> #}
+															</a>
+															{% if loop.index0 % 6 === 5 || loop.last %}
+															</div>
+														{% endif %}
+													{% endfor %}
+												</div>
+											</div>	
+										{% endif %}
+
 									</div>
 									{% if section.section_links %}
 										<div class="page-body-section-links">
