@@ -24,7 +24,7 @@
 						{# default page content #}
 						{% if item.acf.page_body_sections %}
 							{% for section in item.acf.page_body_sections %}
-								<div class="page-body-section spy-target" id="page-section-{{ loop.index}}">
+								<div class="page-body-section spy-target" id="page-section-{{ loop.index0}}">
 									<div class="page-body-section-title">
 										<h3 class="bold">
 											{{ section.section_title|safe }}
@@ -89,6 +89,11 @@
 														{% endif %}
 													{% endfor %}
 												</div>
+											</div>	
+										{% endif %}
+
+										{% if section.show_section_headshots %}
+											<div class="headshots-body page-people-body" id="headshots-section-{{loop.index0}}">
 											</div>	
 										{% endif %}
 

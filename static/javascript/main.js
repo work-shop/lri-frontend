@@ -29,6 +29,7 @@ var stickies = require('./stickies.js')($);
 var jqueryAccordian = require('./jquery-accordian.js');
 var accordian = require('./accordian.js')($);
 var linksNewTab = require('./links-newtab.js')($);
+var headshots = require('./headshots.js')($);
 
 
 
@@ -41,6 +42,7 @@ modals.setupModals();
 stickies.initialize();
 accordian.initialize();
 linksNewTab.initialize();
+headshots.initialize();
 
 
 

@@ -183,6 +183,7 @@
                     {% endif %}
                     {% if item %}
                     console.log( 'item:' );
+                    var item = {{item|raw|json}};
                     console.log( {% if pageType != "form-page" %}{{ item|json|safe }}{% else %}"Redacted due to unsafe unescaped HTML in item."{% endif %} );
                     console.log( '========================' );
                     {% endif %}
