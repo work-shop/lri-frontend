@@ -49,8 +49,8 @@
     "attempts": 5,
     "delay": 5000
   },
-  "external_api": "http://cms.lri.wsri.host/wp-json",
-  "gravity_forms_api": "http://cms.leadershipri.org/gravityformsapi",
+  "external_api": "https://cms.leadershipri.org/wp-json",
+  "gravity_forms_api": "https://cms.leadershipri.org/gravityformsapi",
   "internal_api": "http://cms.lri.wsri.host/wp-json",
   "frontend": {
     "local_api": "http://localhost/lri/wp-json/wp/v2",
