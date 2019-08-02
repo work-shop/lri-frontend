@@ -3,11 +3,9 @@
 
 module.exports = function($, configuration) {
 
-    console.log("hi");
-
 	var activated = false;
 	var base = 'https://www.eventbriteapi.com/v3/events/';
-	var token = '/?token=' + configuration.eventbrite_token;
+	var token = '/?token=D2CRROODWJBGMSAFWRJ4';
 
 	var upcomingEvents, pastEvents;
 
@@ -46,6 +44,7 @@ module.exports = function($, configuration) {
 	function requestEvent( id, upcoming ){
 
 		var endpoint = base + id + token;
+		console.log(endpoint);
 
 		$.ajax({
 			url: endpoint,

@@ -22,13 +22,13 @@ module.exports = function( express, app, config ) {
         var log = new Logger( config );
 
         request({
-                url: config.external_api,
-                json: true,
-                maxAttempts: config.retries.attempts,
-                retryDelay: config.retries.delay,
-                retryStrategy: request.RetryStrategies.HTTPOrNetworkError,
-                fullResponse: false
-            })
+            url: config.external_api,
+            json: true,
+            maxAttempts: config.retries.attempts,
+            retryDelay: config.retries.delay,
+            retryStrategy: request.RetryStrategies.HTTPOrNetworkError,
+            fullResponse: false
+        })
             /**
              * The initial API request should result in the set of available namespaces
              * Installed on WordPress' rest endpoint. We request this schema to instantiate
@@ -36,7 +36,7 @@ module.exports = function( express, app, config ) {
              *
              * @param schema JSON
              */
-            .then( function( schema ) {
+             .then( function( schema ) {
 
                 var conn = new jsforce.Connection({ loginUrl: config.salesforce.endpoint });
 
@@ -44,8 +44,8 @@ module.exports = function( express, app, config ) {
 
                     if ( err ) {
                         log.error( err, 'initial-salesforce-connection-error');
-                        process.exit( 1 );
-                    }
+                       // process.exit( 1 ); //commented out this line so the site wouldn't break if there was a salesforce API Error
+                   } 
 
                     log.log( "salesforce connection established.", "salesforce-authentication");
 
@@ -55,7 +55,7 @@ module.exports = function( express, app, config ) {
 
                     listen( app, config, globals );
 
-                });
+            });
 
             })
             /**
@@ -66,13 +66,13 @@ module.exports = function( express, app, config ) {
              *
              * @param error Error
              */
-            .catch( function( error ) {
+             .catch( function( error ) {
 
                 log.error( error, 'initial-api-schema-request' );
-                process.exit( 1 );
+               // process.exit( 1 ); //commented out this line so the site wouldn't break if there was a salesforce API Error
 
-            });
+           });
 
-    };
+         };
 
-};
+     };
