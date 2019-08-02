@@ -5,8 +5,7 @@ module.exports = function($, configuration) {
 
 	var activated = false;
 	var base = 'https://www.eventbriteapi.com/v3/events/';
-	var token = '/?token=D2CRROODWJBGMSAFWRJ4';
-
+	var token = '/?token=D2CRROODWJBGMSAFWRJ4'; //updated 8-2-19 after the events page crashed. this token is the "private token" in LRI's eventbrite account, under Developer>Api Keys>LRI Website Events API>Show API key, client secret and tokens
 	var upcomingEvents, pastEvents;
 
 	if($('body').hasClass('page-make-ri-stronger')){
