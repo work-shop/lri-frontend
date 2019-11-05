@@ -61,6 +61,7 @@ $page-sidebar-top: $nav-height + $page-body-section-margin;
 		@extend .uppercase;
 		margin-bottom: 12px;
 		@extend .tracked;
+		line-height: 1.1;
 		color: $yellow-darker;
 	}
 
