@@ -39,6 +39,7 @@ module.exports = function($) {
 
 			var personID = sectionPeople[i].ID;
 			var personUrl = base + personID; 
+			console.log(personUrl);
 			var personTargetID = 'person-' + sectionIndex + '-' + personID;
 			var personTarget = $('<div>').attr({ id: personTargetID });
 			sectionHeadshotsContainer.append(personTarget);

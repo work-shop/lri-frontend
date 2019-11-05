@@ -3,10 +3,14 @@
 
 module.exports = function($, configuration) {
 
-	var activated = false;
+	var upcomingActivated = false;
+	var pastActivated = false;
 	var base = 'https://www.eventbriteapi.com/v3/events/';
 	var token = '/?token=D2CRROODWJBGMSAFWRJ4'; //updated 8-2-19 after the events page crashed. this token is the "private token" in LRI's eventbrite account, under Developer>Api Keys>LRI Website Events API>Show API key, client secret and tokens
 	var upcomingEvents, pastEvents;
+	var upcomingEventsMarkup, pastEventsMarkup;
+	var upcomingCounter = 0;
+	var pastCounter = 0;
 
 	if($('body').hasClass('page-make-ri-stronger')){
 		upcomingEvents = _makeRiStrongerEvents;
@@ -27,23 +31,25 @@ module.exports = function($, configuration) {
 
 	function getEvents(){
 		if( typeof upcomingEvents !== 'undefined' ){
+			upcomingEventsMarkup = new Array(upcomingEvents.length);
 			for( var i = 0; i < upcomingEvents.length; i++ ){
-				requestEvent( upcomingEvents[i].eventbrite_id, true );
+				requestEvent( upcomingEvents[i].eventbrite_id, true, i );
 			}
 		}
 		if( typeof pastEvents !== 'undefined' ){
+			pastEventsMarkup = new Array(pastEvents.length);
 			for( var i = 0; i < pastEvents.length; i++ ){
-				requestEvent( pastEvents[i].eventbrite_id, false );
+				requestEvent( pastEvents[i].eventbrite_id, false, i );
 			}
 		}
 	}
 
 
 	//get events from Evenbrite API
-	function requestEvent( id, upcoming ){
+	function requestEvent( id, upcoming, index ){
 
 		var endpoint = base + id + token;
-		console.log(endpoint);
+		//console.log(endpoint);
 
 		$.ajax({
 			url: endpoint,
@@ -51,7 +57,7 @@ module.exports = function($, configuration) {
 		})
 		.done(function( data ) {
 			//console.log("success loading events");
-			renderEvent( data, upcoming );
+			addEvent( data, upcoming, index );
 		})
 		.fail(function( ) {
 			console.log("error loading events");
@@ -62,12 +68,12 @@ module.exports = function($, configuration) {
 	}
 
 
-	function renderEvent( response, upcoming ){
-		generateMarkup( response, upcoming );
+	function addEvent( response, upcoming, index ){
+		generateMarkup( response, upcoming, index );
 	}
 
 
-	function generateMarkup( event, upcoming ){
+	function generateMarkup( event, upcoming, index ){
 		var m2,m4,m6,m8;
 
 		m2 = event.url;
@@ -82,18 +88,33 @@ module.exports = function($, configuration) {
 		var markup = m1+m2+m3+m4+m5+m6+m7+m8+m9;
 
 		if( upcoming ){
-			$upcomingEventsContainer.append( markup );
+			upcomingEventsMarkup[index] = markup;
+			upcomingCounter++;
+			if( upcomingActivated === false && upcomingCounter === upcomingEvents.length ){
+				upcomingActivated = true;
+				$('#events-upcoming-content .loader-icon.active').removeClass('active');
+				renderUpcomingEvents();
+			}
 		}
 		else{
-			$pastEventsContainer.append( markup );
+			pastEventsMarkup[index] = markup;
+			pastCounter++;
+			if( pastActivated === false && pastCounter === pastEvents.length ){
+				pastActivated = true;
+				$('#events-past-content .loader-icon.active').removeClass('active');
+				renderPastEvents();
+			}
 		}
 
-		if( activated === false ){
-			activated = true;
-			$('.loader-icon.active').removeClass('active');
-		}
+	}
 
 
+	function renderUpcomingEvents(){
+		$upcomingEventsContainer.append( upcomingEventsMarkup );
+	}
+
+	function renderPastEvents(){
+		$pastEventsContainer.append( pastEventsMarkup );
 	}
 
 

@@ -24,7 +24,7 @@
 							{% if item.acf.page_body_sections %}
 								{% for section in item.acf.page_body_sections %}
 									<li>
-										<a href="#page-section-{{ loop.index }}" class="spy-link sidebar-jump">
+										<a href="#page-section-{{ loop.index0 }}" class="spy-link sidebar-jump">
 											{{ section.section_title|safe }}
 										</a>
 									</li>
