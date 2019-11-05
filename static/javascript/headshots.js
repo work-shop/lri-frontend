@@ -33,7 +33,7 @@ module.exports = function($) {
 
 	function getheadshots(sectionPeople, sectionHeadshotsContainer, sectionIndex){
 
-		var base = 'http://cms.leadershipri.org/wp-json/wp/v2/people/';
+		var base = 'https://cms.leadershipri.org/wp-json/wp/v2/people/';
 
 		for (var i = 0; i < sectionPeople.length; i++) {
 
