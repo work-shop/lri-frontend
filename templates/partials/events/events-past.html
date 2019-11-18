@@ -1,26 +1,43 @@
 {% if itemPastEvents %}
-<section class="block page-header pt3 pb3" id="events-past-header">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-xs-12">
-				<h2 class="section-title">
-					<span class="underlined">
-						Past Events
-					</span>
-				</h2>
-			</div>
-		</div>
-	</div>
-</section>
-<section class="block" id="events-past-content">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-9">
-				<div class="row" id="events-past">
-					<div class="loader-icon active"></div>
+	<section class="block page-header pt3 pb3" id="events-past-header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12">
+					<h2 class="section-title">
+						<span class="underlined">
+							Past Events
+						</span>
+					</h2>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
+	<section class="block" id="events-past-content">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-9">
+					<div class="row" id="events-past">
+						<div class="loader-icon active"></div>
+						{% if item.acf.past_events_by_year %}
+							{% for year in item.acf.past_events_by_year %}
+								<div class="col-sm-12">
+									<div class="accordion events-accordion" data-accordion id="events-year-{{ year.year|safe }}">
+										<div class="year-title" data-control>
+											<h4>
+												{{ year.year|safe }}
+												<span class="icon" data-icon="”"></span>
+											</h4>
+										</div>
+										<div class="year-body" data-content id="events-{{ year.year|safe }}">
+											
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+						{% endif %}		
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 {% endif %}

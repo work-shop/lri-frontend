@@ -7,16 +7,18 @@ module.exports = function($, configuration) {
 	var pastActivated = false;
 	var base = 'https://www.eventbriteapi.com/v3/events/';
 	var token = '/?token=D2CRROODWJBGMSAFWRJ4'; //updated 8-2-19 after the events page crashed. this token is the "private token" in LRI's eventbrite account, under Developer>Api Keys>LRI Website Events API>Show API key, client secret and tokens
-	var upcomingEvents, pastEvents;
+	var upcomingEvents, pastEvents, pastEventsByYear;
 	var upcomingEventsMarkup, pastEventsMarkup;
 	var upcomingCounter = 0;
 	var pastCounter = 0;
+	var numPastEvents = 0;
 
 	if($('body').hasClass('page-make-ri-stronger')){
 		upcomingEvents = _makeRiStrongerEvents;
 	}else{
 		upcomingEvents = _itemUpcomingEvents;
 		pastEvents = _itemPastEvents;
+		pastEventsByYear = _itemPastEventsByYear;
 	}
 
 	var $upcomingEventsContainer = $('#events-upcoming');
@@ -36,17 +38,23 @@ module.exports = function($, configuration) {
 				requestEvent( upcomingEvents[i].eventbrite_id, true, i );
 			}
 		}
-		if( typeof pastEvents !== 'undefined' ){
-			pastEventsMarkup = new Array(pastEvents.length);
-			for( var i = 0; i < pastEvents.length; i++ ){
-				requestEvent( pastEvents[i].eventbrite_id, false, i );
+		if( typeof pastEventsByYear !== 'undefined' ){
+			pastEventsMarkup = new Array(pastEventsByYear.length);
+			for( var i = 0; i < pastEventsByYear.length; i++ ){
+				pastEventsMarkup[i] = new Array(pastEventsByYear[i].events);
+				var year = pastEventsByYear[i].year;
+				var yearEvents = pastEventsByYear[i].events;
+				for( var j = 0; j < yearEvents.length; j++ ){
+					requestEvent( yearEvents[j].eventbrite_id, false, i, j );
+					numPastEvents++;
+				}
 			}
 		}
 	}
 
 
 	//get events from Evenbrite API
-	function requestEvent( id, upcoming, index ){
+	function requestEvent( id, upcoming, index, index2 ){
 
 		var endpoint = base + id + token;
 		//console.log(endpoint);
@@ -57,7 +65,7 @@ module.exports = function($, configuration) {
 		})
 		.done(function( data ) {
 			//console.log("success loading events");
-			addEvent( data, upcoming, index );
+			addEvent( data, upcoming, index, index2 );
 		})
 		.fail(function( ) {
 			console.log("error loading events");
@@ -68,12 +76,12 @@ module.exports = function($, configuration) {
 	}
 
 
-	function addEvent( response, upcoming, index ){
-		generateMarkup( response, upcoming, index );
+	function addEvent( event, upcoming, index, index2 ){
+		generateMarkup( event, upcoming, index, index2 );
 	}
 
 
-	function generateMarkup( event, upcoming, index ){
+	function generateMarkup( event, upcoming, index, index2 ){
 		var m2,m4,m6,m8;
 
 		m2 = event.url;
@@ -97,9 +105,9 @@ module.exports = function($, configuration) {
 			}
 		}
 		else{
-			pastEventsMarkup[index] = markup;
+			pastEventsMarkup[index][index2] = markup;
 			pastCounter++;
-			if( pastActivated === false && pastCounter === pastEvents.length ){
+			if( pastActivated === false && pastCounter === numPastEvents ){
 				pastActivated = true;
 				$('#events-past-content .loader-icon.active').removeClass('active');
 				renderPastEvents();
@@ -114,7 +122,15 @@ module.exports = function($, configuration) {
 	}
 
 	function renderPastEvents(){
-		$pastEventsContainer.append( pastEventsMarkup );
+		for( var i = 0; i < pastEventsByYear.length; i++ ){
+			var year = pastEventsByYear[i].year;
+			var yearEvents = pastEventsByYear[i].events;
+			var $container = $('#events-' + year);
+			for( var j = 0; j < yearEvents.length; j++ ){
+				$container.append( pastEventsMarkup[i][j] );
+			}
+		}
+		
 	}
 
 
