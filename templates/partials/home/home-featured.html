@@ -1,5 +1,5 @@
 {% if item.featured_content %}
-	<section class="block vh50" id="home-featured">
+	<section class="block" id="home-featured">
 		{% for feature in item.featured_content %}
 			<div class="half feature feature-{{ feature.featured_content_type }} {% if feature.image %}feature-has-image {% endif %}">
 				{% if feature.image %}
