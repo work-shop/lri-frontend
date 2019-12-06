@@ -5,8 +5,8 @@
 	a{
 		display: block;
 		width: 85%;
-		//height: 400px;
-		margin-bottom: 1em;
+		height: 350px;
+		//margin-bottom: 1em;
 		border-bottom: 3px solid transparent;
 
 		&:hover{
@@ -18,15 +18,15 @@
 
 		@media screen and (max-width: $lg) {
 			width: 90%;
-			//height: 350px;
+			height: 300px;
 		}
 
 		@media screen and (max-width: $md) {
-			//height: 300px;
+			height: 300px;
 		}
 
 		@media screen and (max-width: $sm) {
-			//height: 250px;
+			height: 250px;
 		}
 
 	}
