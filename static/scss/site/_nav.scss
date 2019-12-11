@@ -42,7 +42,7 @@ $text-nav: (
 			}
 
 			&.donate-link{
-				background: $yellow;
+				background: darken($yellow, 18%);
 				border-radius: 2px;
 			}
 		}

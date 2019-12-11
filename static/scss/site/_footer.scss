@@ -11,7 +11,19 @@
 		color: white;
 	}
 
+	.footer-donate-link{
+		margin-top: 15px;
+	}
+	
+	.donate-link{
+		background: darken($yellow, 18%);
+		border-radius: 2px;
+		text-transform: uppercase;
+		@extend .bold;
+		padding: 10px 15px;
+		border-radius: 5px;
 
+	}
 
 	address{
 		@extend .h4;
