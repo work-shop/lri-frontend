@@ -11,6 +11,8 @@ module.exports = function alumniByType( salesforce ) {
         if ( validType( req.params.type ) ) {
             if ( validYear( req.params.year ) ) {
 
+                console.log(buildQueryString( req.params.type, req.params.year ));
+
                 salesforce.query( buildQueryString( req.params.type, req.params.year ), callback );
 
             } else {
