@@ -28,7 +28,7 @@
     "dnscache": "^1.0.1",
     "express": "^4.14.0",
     "isotope-layout": "^3.0.1",
-    "jquery": "1.12.4",
+    "jquery": "3.5.0",
     "jsforce": "^1.7.1",
     "parse-json-response": "^1.0.1",
     "request": "^2.79.0",
