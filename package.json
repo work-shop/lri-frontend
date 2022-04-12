@@ -20,7 +20,7 @@
   "license": "ISC",
   "dependencies": {
     "argparse": "^1.0.7",
-    "async": "^2.1.2",
+    "async": "^3.2.2",
     "bootstrap": "^4.0.0-alpha.5",
     "bourbon": "^4.3.2",
     "cheerio": "^1.0.0-rc.2",
